@@ -1,15 +1,34 @@
 <h1><%= @problem.title %></h1>
 <p><%= @problem.description %></p>
+<h4>Test cases:</h4>
 <p><%= @problem.test_cases %></p>
 
-<form action='<%= repl_url %>' method='POST'>
+<form action='<%= solutions_url %>' method='POST'>
   <%= auth_token %>
+    
+    <input type='hidden' 
+        name='solution[submitter_id]'
+        value='<%= current_user.id %>'>
+    
+    <input type='hidden'
+        name='solution[problem_id]'
+        value='<%= @problem.id %>'>
+    
     Your solution:
     <br>
-    <textarea name='problem_solution[content]'
-      rows="8" cols="60">
-    </textarea>
-
-  
+    
+    <textarea name='solution[content]'rows="8" cols="60"></textarea>
+    
+  <br>
   <input type='submit' value='Submit'>
 </input>
+
+<h4>Solutions</h4>
+<% @problem.solutions.each do |solution| %>
+  <%= solution.submitter.username %>
+  <br>
+  <pre><%= solution.content %></pre>
+  <br>
+<% end %>
+
+<%= link_to 'Problems Index', problems_url %>

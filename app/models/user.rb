@@ -10,6 +10,8 @@
 
 class User < ActiveRecord::Base
   attr_reader :password
+  
+  has_many :solutions
 
   before_validation :ensure_token
   validates :username, :password_digest, presence: true

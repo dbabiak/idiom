@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+.centered {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+body {
+  font-size: small;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  color: grey;
+  background-color: black;
+}
+
+
+h1 {
+  font-size: 130%;
+}
+
+h2 {
+  font-size: 130%;
+}
+
+input[type="text"], textarea {
+  background-color: black;
+  color: grey;
+}

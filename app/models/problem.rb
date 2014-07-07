@@ -14,6 +14,7 @@
 
 class Problem < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
+  has_many :solutions
 
   validates :title, :description, :test_cases, :solution_cases, 
       :submitter_id, presence: true
