@@ -1,4 +1,17 @@
-<p>Code: <%= @code %></p>
+Code:
+<pre><%= @code %></pre>
+<br>
+More code:
+<br>
+
+<form action='<%= repl_url %>' method='POST'>
+  <%= auth_token %>
+  <textarea name='problem_solution[content]'
+    rows="8" cols="60">
+<%= @code %></textarea>
+<br>
+<input type='submit' value='Submit'>
+
 <p>Result: <%= @result %></p>
 
 <%= link_to 'Problems', problems_url %>

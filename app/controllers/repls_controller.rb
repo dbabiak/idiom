@@ -1,7 +1,12 @@
 class ReplsController < ApplicationController
   def create
     @code = prog_params[:content]
-    @result = eval(@code)
+    @result = ''
+    thr = Thread.start do
+      $SAFE = 0
+      @result = eval(@code)
+    end
+    thr.join
     render 'index'
   end
 
