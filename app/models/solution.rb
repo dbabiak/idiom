@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: problem_solutions
+# Table name: solutions
 #
 #  id           :integer          not null, primary key
 #  problem_id   :integer          not null
@@ -12,7 +12,13 @@
 
 class Solution < ActiveRecord::Base
   belongs_to :problem
+  has_many :solution_likes
+  
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
   
   validates :problem_id, :submitter_id, :content, presence: true
+  
+  def likes
+    return solution_likes.count
+  end
 end

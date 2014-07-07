@@ -1,0 +1,11 @@
+<h1><%= @user.username %></h1>
+
+
+<h4>Upvoted solutions:</h4>
+<% @user.liked_solutions.each do |solution| %>
+  =================================<br>
+  <%= solution.submitter.username %>
+  <%= format_solution(solution) %>
+  <%= link_to solution.problem.title, problem_url(solution.problem) %>
+  <br>
+<% end %>

@@ -21,14 +21,16 @@
     
   <br>
   <input type='submit' value='Submit'>
-</input>
+</form>
 
 <h4>Solutions</h4>
 <% @problem.solutions.each do |solution| %>
+  ======================================<br>
   <%= solution.submitter.username %>
-  <br>
-  <pre><%= solution.content %></pre>
-  <br>
+  <%= format_solution(solution) %>
+  <%= "Upvotes: #{solution.likes}" %>
+  <%= rating_buttons(solution) %>
+  <br>  
 <% end %>
 
 <%= link_to 'Problems Index', problems_url %>

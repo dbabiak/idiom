@@ -11,7 +11,9 @@
 
 <% if signed_in? %>
   <%= current_user.username %>
-  <%= button_to "Sign Out", session_url, :method => :delete %>
+  <%= link_to "Sign Out", session_url, :method => :delete %>
+  <%= link_to "Profile Page", user_url(current_user) %>
+  <%= link_to "Problems", problems_url %>
 <% else %>
   <%= link_to "Sign In", new_session_url %>
   <%= link_to "Sign Up", new_user_url %>

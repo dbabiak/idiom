@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707041230) do
+ActiveRecord::Schema.define(version: 20140707045147) do
 
   create_table "problems", force: true do |t|
     t.string   "title",          null: false
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140707041230) do
 
   add_index "problems", ["submitter_id"], name: "index_problems_on_submitter_id"
   add_index "problems", ["title"], name: "index_problems_on_title", unique: true
+
+  create_table "solution_likes", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "solution_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "solution_likes", ["solution_id"], name: "index_solution_likes_on_solution_id"
+  add_index "solution_likes", ["user_id"], name: "index_solution_likes_on_user_id"
 
   create_table "solutions", force: true do |t|
     t.integer  "problem_id",   null: false
