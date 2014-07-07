@@ -1,28 +1,20 @@
-== README
+Things working so far:
+  -User authentication
+  -Problem submission
+  -Solution submission
+  -Sandboxed code-evaluation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To-do
+  -CSS pop-in (what happens on Heroku?)
 
-Things you may want to cover:
+ -Change db from sqlite to postgres
+  -Deploy to Heroku
 
-* Ruby version
+  -Code-eval some tests with a submitted function
+  -Syntax highlighting/formatting in code submission box
+  -How to pass error messages to user?
+  -What about having a smaller REPL in addition to code box?
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  -Tagging
+  -Voting on solutions/problems
+  -Commenting on solutions/problems
