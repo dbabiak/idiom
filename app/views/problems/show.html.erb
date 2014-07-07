@@ -1,0 +1,15 @@
+<h1><%= @problem.title %></h1>
+<p><%= @problem.description %></p>
+<p><%= @problem.test_cases %></p>
+
+<form action='<%= repl_url %>' method='POST'>
+  <%= auth_token %>
+    Your solution:
+    <br>
+    <textarea name='problem_solution[content]'
+      rows="8" cols="60">
+    </textarea>
+
+  
+  <input type='submit' value='Submit'>
+</input>

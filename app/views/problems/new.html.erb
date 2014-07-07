@@ -1,0 +1,35 @@
+<h1>New Problem</h1>
+<form action='<%= problems_url %>' method='POST'>
+  <%= auth_token %>
+  <label>
+    Title
+    <input name='problem[title]' type='text'>
+  </label>
+  <br>
+
+  <label>
+    Description
+    <input name='problem[description]' type='text'>
+  </label>
+  <br>
+
+  <label>
+    Test Cases
+    <input name='problem[test_cases]' type='text'>
+  </label>
+  <br>
+
+  <label>
+    Solution Cases
+    <input name='problem[solution_cases]' type=''>
+  </label>
+
+  <input type='hidden' name='problem[submitter_id]' value='<%= current_user.id %>'>  
+  
+
+  <input type='submit' value='Create Problem'>
+</input>
+
+<br>
+
+<%= link_to "Problems index", problems_url %>
