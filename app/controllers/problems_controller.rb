@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params)
+    @problem.solution_cases.new(solution_case_params)
     if @problem.save!
       redirect_to problem_url(@problem)
     else
@@ -23,7 +24,16 @@ class ProblemsController < ApplicationController
   end
 
   def problem_params
-    params.require(:problem).permit(:title, :description, :test_cases, :solution_cases,
-          :submitter_id)
+    params.require(:problem).permit(:title, :description, :submitter_id)
   end
+
+  def solution_case_params
+    params.permit(solution_cases: [:content])
+          .require(:solution_cases)
+          .values
+  end
+
+  # def solution_case_params
+  #   params.require(:solution_case).permit(:content).values
+  # end
 end

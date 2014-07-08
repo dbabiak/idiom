@@ -2,23 +2,21 @@
 #
 # Table name: problems
 #
-#  id             :integer          not null, primary key
-#  title          :string(255)      not null
-#  description    :text             not null
-#  test_cases     :text             not null
-#  solution_cases :text             not null
-#  submitter_id   :integer          not null
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id           :integer          not null, primary key
+#  title        :string(255)      not null
+#  description  :text             not null
+#  submitter_id :integer          not null
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 class Problem < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
   has_many :solutions
-  has_many :solution_cases
+  has_many :solution_cases, inverse_of: :problem
+  has_many :test_cases
 
-  validates :title, :description, :test_cases, :solution_cases, 
-      :submitter_id, presence: true
+  validates :title, :description,:submitter_id, presence: true
   validates :title, uniqueness: true
 
   # check solution --> return true, or return error messages...
@@ -27,12 +25,11 @@ class Problem < ActiveRecord::Base
     result = true
     thr = Thread.start do
       $SAFE = 0
-
-      # define the function passed in
+      #  the function passed in
       eval(code)
 
       # get all the test cases, and check em
-      #result = self.solution_cases.all? { |case| eval(case) }
+      result = solution_cases.all? { |sol_case| eval(sol_case.content) }
     end
     thr.join
     result

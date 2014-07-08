@@ -2,14 +2,12 @@
 #
 # Table name: problems
 #
-#  id             :integer          not null, primary key
-#  title          :string(255)      not null
-#  description    :text             not null
-#  test_cases     :text             not null
-#  solution_cases :text             not null
-#  submitter_id   :integer          not null
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id           :integer          not null, primary key
+#  title        :string(255)      not null
+#  description  :text             not null
+#  submitter_id :integer          not null
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 require 'test_helper'

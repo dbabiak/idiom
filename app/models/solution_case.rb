@@ -12,5 +12,5 @@
 class SolutionCase < ActiveRecord::Base
   belongs_to :problem
 
-  validates :problem_id, :content, presence: true
+  validates :problem, :content, presence: true
 end
