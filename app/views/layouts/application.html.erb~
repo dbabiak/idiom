@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <title>Links</title>
@@ -8,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="centered">
+
 <% if signed_in? %>
   <%= current_user.username %>
   <%= link_to "Sign Out", session_url, :method => :delete %>
@@ -24,7 +23,7 @@
 <%= flash[:errors].join('<br>').html_safe if flash[:errors].present? %>
 
 <%= yield %>
-</div>
+
 </body>
 </html>
 

@@ -10,16 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
+
 
 .centered {
   margin-left: 30%;
   margin-right: 30%;
 }
 
-a:visited, a:link {
+a:visited {
   color: #99CCFF;
 }
 

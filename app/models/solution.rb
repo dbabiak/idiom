@@ -21,4 +21,8 @@ class Solution < ActiveRecord::Base
   def likes
     return solution_likes.count
   end
+
+  def correct?
+    self.problem.is_solution?(self)
+  end
 end

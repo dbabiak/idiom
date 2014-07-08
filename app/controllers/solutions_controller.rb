@@ -2,6 +2,11 @@ class SolutionsController < ApplicationController
   
   def create
     @solution = Solution.new(solution_params)
+    unless @solution.correct?
+      @fail_message = 'WRONG - try again'
+      render 'problem#show'
+    end
+
     if @solution.save
       redirect_to problem_url(@solution.problem_id)
     else

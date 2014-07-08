@@ -19,4 +19,21 @@ class Problem < ActiveRecord::Base
   validates :title, :description, :test_cases, :solution_cases, 
       :submitter_id, presence: true
   validates :title, uniqueness: true
+
+  # check solution --> return true, or return error messages...
+  def is_solution?(solution)
+    code = solution.content
+    result = true
+    thr = Thread.start do
+      $SAFE = 0
+
+      # define the function passed in
+      eval(code)
+
+      # get all the test cases, and check em
+      result = solution_cases.all { |case| eval(case) }
+    end
+    thr.join
+    result
+  end
 end
