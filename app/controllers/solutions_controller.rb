@@ -2,15 +2,14 @@ class SolutionsController < ApplicationController
   
   def create
     @solution = Solution.new(solution_params)
-    unless @solution.correct?
-      @fail_message = 'WRONG - try again'
-      render 'problem#show'
-    end
-
-    if @solution.save
+    if @solution.correct? && @solution.save
+      flash[:status] = "Hooray!"
+      redirect_to problem_url(@solution.problem_id)
+    elsif @solution.correct?
+      flash.now[:errors] = @solution.error.full_messages
       redirect_to problem_url(@solution.problem_id)
     else
-      flash.now[:errors] = @solution.error.full_messages
+      flash[:status] = "You messed up"
       redirect_to problem_url(@solution.problem_id)
     end
   end
