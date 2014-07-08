@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: solution_cases
+#
+#  id         :integer          not null, primary key
+#  problem_id :integer          not null
+#  content    :text             not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  problem_id: 1
+  content: MyText
+
+two:
+  problem_id: 1
+  content: MyText

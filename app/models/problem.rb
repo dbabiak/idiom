@@ -15,6 +15,7 @@
 class Problem < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
   has_many :solutions
+  has_many :solution_cases
 
   validates :title, :description, :test_cases, :solution_cases, 
       :submitter_id, presence: true
@@ -31,7 +32,7 @@ class Problem < ActiveRecord::Base
       eval(code)
 
       # get all the test cases, and check em
-      result = solution_cases.all { |case| eval(case) }
+      #result = self.solution_cases.all? { |case| eval(case) }
     end
     thr.join
     result
