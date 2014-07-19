@@ -14,11 +14,19 @@
  *= require_self
  */
 
-.centered {
+.col-centered {
+  float: none;
+  margin-top: 20%;
   margin-left: 30%;
   margin-right: 30%;
 }
 
+@import 'bootstrap'
+
+
+
+
+/*
 a:visited, a:link {
   color: #99CCFF;
 }
@@ -43,3 +51,4 @@ input[type="text"], textarea {
   background-color: black;
   color: grey;
 }
+*/

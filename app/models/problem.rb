@@ -24,12 +24,18 @@ class Problem < ActiveRecord::Base
     code = solution.content
     result = true
     thr = Thread.start do
-      $SAFE = 0
-      #  the function passed in
-      eval(code)
-
-      # get all the test cases, and check em
-      result = solution_cases.all? { |sol_case| eval(sol_case.content) }
+      begin
+        Timeout::timeout(1.5) do
+          $SAFE = 0
+          #  the function passed in
+          eval(code)
+          # get all the test cases, and check em
+          result = solution_cases.all? { |sol_case| eval(sol_case.content) }
+        end          
+      rescue
+        puts "INFINITE LOOP"
+        result = false
+      end      
     end
     thr.join
     result
