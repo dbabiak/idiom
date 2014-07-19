@@ -22,6 +22,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
   end
+   
 
   def problem_params
     params.require(:problem).permit(:title, :description, :submitter_id)

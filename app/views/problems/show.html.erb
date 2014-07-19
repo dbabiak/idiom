@@ -1,36 +1,43 @@
-<h1><%= @problem.title %></h1>
-<p><%= @problem.description %></p>
-<h4>Test cases:</h4>
-<p><%= @problem.test_cases %></p>
+<div class='col-xs-5'>
+  <h1><%= @problem.title %></h1>
+  <p><%= @problem.description %></p>
+  <h4>Test cases:</h4>
+  <ul>
+    <% @problem.solution_cases.each do |solution_case| %>
+      <li><%= solution_case.content %></li>
+    <% end %>
+  </ul>
 
-<form action='<%= solutions_url %>' method='POST'>
-  <%= auth_token %>
+  <form action='<%= solutions_url %>' method='POST'>
+    <%= auth_token %>
     
-    <input type='hidden' 
-        name='solution[submitter_id]'
-        value='<%= current_user.id %>'>
+      <input type='hidden' 
+          name='solution[submitter_id]'
+          value='<%= current_user.id %>'>
     
-    <input type='hidden'
-        name='solution[problem_id]'
-        value='<%= @problem.id %>'>
+      <input type='hidden'
+          name='solution[problem_id]'
+          value='<%= @problem.id %>'>
     
-    Your solution:
+      Your solution:
+      <br>
+    
+      <textarea name='solution[content]'rows="8" cols="60"></textarea>
+    
     <br>
-    
-    <textarea name='solution[content]'rows="8" cols="60"></textarea>
-    
-  <br>
-  <input type='submit' value='Submit'>
-</form>
+    <input type='submit' value='Submit'>
+  </form>
 
-<h4>Solutions</h4>
-<% @problem.solutions.each do |solution| %>
-  ======================================<br>
-  <%= solution.submitter.username %>
-  <%= format_solution(solution) %>
-  <%= "Upvotes: #{solution.likes}" %>
-  <%= rating_buttons(solution) %>
-  <br>  
-<% end %>
+  <h4>Solutions</h4>
+  <% @problem.solutions.each do |solution| %>
+    ======================================<br>
+    <%= solution.submitter.username %>
+    <%= format_solution(solution) %>
+    <%= "Upvotes: #{solution.likes}" %>
+    <%= rating_buttons(solution) %>
+    <br>  
+  <% end %>
 
-<%= link_to 'Problems Index', problems_url %>
+  <%= link_to 'Problems Index', problems_url %>
+  
+</div>
