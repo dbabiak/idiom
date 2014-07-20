@@ -1,4 +1,4 @@
-<div class='col-xs-5'>
+<div class='col-xs-4'>
   <h1><%= @problem.title %></h1>
   <p><%= @problem.description %></p>
   <h4>Test cases:</h4>
@@ -7,11 +7,17 @@
       <li><%= solution_case.content %></li>
     <% end %>
   </ul>
+  
+  Your solution:
+  <div id="editor">function foo(items) {
+      var x = "All this is syntax highlighted";
+      return x;
+  }</div>
 
   <form action='<%= solutions_url %>' method='POST'>
     <%= auth_token %>
     
-      <input type='hidden' 
+      <input type='hidden'
           name='solution[submitter_id]'
           value='<%= current_user.id %>'>
     
@@ -20,14 +26,8 @@
           value='<%= @problem.id %>'>
     
       <input type='hidden' name='solution[content]' id='solution'>
-    <input type='submit' value='Submit'>
+    <button type='submit' class='btn btn-sm btn-secondary'>Submit</button>
   </form>
-  
-  Your solution:
-  <div id="editor">function foo(items) {
-      var x = "All this is syntax highlighted";
-      return x;
-  }</div>
   
   <h4>Solutions</h4>
   <% @problem.solutions.each do |solution| %>
@@ -36,7 +36,7 @@
     <%= format_solution(solution) %>
     <%= "Upvotes: #{solution.likes}" %>
     <%= rating_buttons(solution) %>
-    <br>  
+    <br>
   <% end %>
 
   <%= link_to 'Problems Index', problems_url %>
@@ -45,6 +45,6 @@
 
 <script>
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/tomorrow_night_blue");
+    editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/ruby");
 </script>

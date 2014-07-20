@@ -32,7 +32,11 @@
 
   <%= flash[:errors].join('<br>').html_safe if flash[:errors].present? %>
   <div class='container'>
-    <%= yield %>  
+    <div class='row'>
+      <div class='col-xs-offset-3'>
+        <%= yield %>  
+      </div>
+    </div>
   </div>
 </body>
 </html>

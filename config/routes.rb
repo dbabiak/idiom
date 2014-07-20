@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root to: "users#new"
-  resources :users, only: [:new, :create, :show] 
-  resources :solutions
-  resource :session, only: [:new, :create, :destroy]
-
-  resources :links
+  resources :users, only: [:create, :new, :show]
+  resource :session, only: [:create, :destroy, :new, ]
   resources :problems
-  resources :solution_likes
-  resource :repl
+  namespace :api do
+    resources :problems, except: [:edit, :new]
+    resources :solutions, except: [:edit, :new]
+    resources :solution_likes, only: [:create, :destroy]
+  end
 end

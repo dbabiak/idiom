@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'bootstrap-sass'
+gem 'backbone-on-rails'
 
 gem 'bcrypt-ruby', require: 'bcrypt'
 group :development do
