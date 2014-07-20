@@ -1,8 +1,11 @@
 class SolutionLikesController < ApplicationController
   def create
     @solution_like = SolutionLike.new(solution_like_params)
-    @solution_like.save if SolutionLike.find_by(solution_like_params).nil?
-    redirect_to problem_url(@solution_like.solution.problem)
+    if SolutionLike.find_by(solution_like_params).nil? && @solution_like.save
+      render json: @solution_like
+    else
+      render json: @solution_like.errors, status: :unprocessable_entity
+    end
   end
   
   def solution_like_params

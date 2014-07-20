@@ -1,26 +1,25 @@
-class ProblemsController < ApplicationController
+class Api::ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params)
     @problem.solution_cases.new(solution_case_params)
     if @problem.save!
-      redirect_to problem_url(@problem)
+      @solution_cases = @problem.solution_cases
+      render 'show'
     else
-      flash.now[:errors] = @problem.errors.full_messages
+      render :json => @problem.errors, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def index
     @problems = Problem.all
-  end
-
-  def new
+    render 'index'
+    #wtf? don't we have to do something with json?
   end
 
   def show
     @problem = Problem.find(params[:id])
+    @solution_cases = @problem.solution_cases
+    render 'show'  #this is a call to jbuilder I think.
   end
    
 
@@ -33,8 +32,4 @@ class ProblemsController < ApplicationController
           .require(:solution_cases)
           .values
   end
-
-  # def solution_case_params
-  #   params.require(:solution_case).permit(:content).values
-  # end
 end

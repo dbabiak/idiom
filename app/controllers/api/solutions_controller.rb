@@ -3,29 +3,17 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(solution_params)
     if @solution.correct? && @solution.save
-      flash[:status] = "Hooray!"
-      redirect_to problem_url(@solution.problem_id)
-    elsif @solution.correct?
-      flash.now[:errors] = @solution.error.full_messages
-      redirect_to problem_url(@solution.problem_id)
-    else
-      flash[:status] = "You messed up"
-      redirect_to problem_url(@solution.problem_id)
+      render json: @solution
+    else @solution.correct?
+      render json: false
     end
-  end
-  
-  def edit
   end
 
   def index
+    # This will be for all of a user's solutions
+    # or for all of a problem's solutions
   end
 
-  def new
-  end
-
-  def show
-  end
-  
   def solution_params
     params.require(:solution)
         .permit(:submitter_id, :problem_id, :content)

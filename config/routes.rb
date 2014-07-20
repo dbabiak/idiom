@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "users#new"
+  root to: "site#index"
+  resources :site, only: [:index]
   resources :users, only: [:create, :new, :show]
   resource :session, only: [:create, :destroy, :new, ]
   resources :problems

@@ -1,7 +1,7 @@
 <h1>Problems</h1>
 
 <ul>
-  <% @problems.each do |problem| %>  
+  <% @problems.each do |problem| %>
   <li>
     <%= link_to problem.title, problem_url(problem) %>
   </li>
@@ -9,4 +9,3 @@
 </ul>
 
 <%= link_to 'Add Problem', new_problem_url %>
-
