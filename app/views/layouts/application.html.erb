@@ -13,14 +13,14 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">bitiom</a>
+        <a class="navbar-brand" href="#/">bitiom</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <ul class="nav navbar-nav">
         <% if signed_in? %>
-          <li><a href='/users/2'>RHUBARB</a></li>
+          <li><a href='#/users/2'>RHUBARB</a></li>
           <li><a href='/session'>Sign Out</a></li>
-          <li><a href='/'>Problems</a></li>
+          <li><a href='#/'>Problems</a></li>
         <% else %>
           <li><a href='/session/new'>Sign In</a></li>
           <li><a href='/users/new'>Sign Up</a></li>
@@ -31,9 +31,9 @@
   </nav>
 
   <%= flash[:errors].join('<br>').html_safe if flash[:errors].present? %>
-  <div class='container' id='content'>
+  <div class='container'>
     <div class='row'>
-      <div class='col-xs-offset-3'>
+      <div class='col-xs-offset-3' id='content'>
         <%= yield %>
       </div>
     </div>

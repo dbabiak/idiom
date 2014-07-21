@@ -1,4 +1,4 @@
-<div class='col-xs-4'>
+<div class='col-xs-4' >
   <h1><%= problem.get('title') %></h1>
   <p><%= problem.get('description') %></p>
   <h4>Test cases:</h4>
@@ -15,21 +15,19 @@
   <form>
       <input type='hidden'
           name='solution[submitter_id]'
-          %>'>
+          %>
     
       <input type='hidden'
           name='solution[problem_id]'
           value='<%= problem.get('id') %>'>
     
       <input type='hidden' name='solution[content]' id='solution'>
-    <button type='submit' class='btn btn-sm btn-secondary'>Submit</button>
+    <button class='btn btn-sm btn-secondary submit'>Submit</button>
   </form>
   
   <h4>Solutions</h4>
   <p>Another collection we have to handle explicitly</p>
 
-  <a href='#'>Problems Index</a>
-  
 </div>
 
 <script>

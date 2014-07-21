@@ -24,3 +24,4 @@
 //= require_tree .
 //= require bootstrap
 //= require src/ace
+//= jquery.serializeJSON
