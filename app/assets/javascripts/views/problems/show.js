@@ -27,5 +27,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       }
       
     });
+  },
+  attachSubViews: function() {
+    
   }
+  
 });
