@@ -20,10 +20,12 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     var newSoln = new App.Models.Solution(params['solution']);
     newSoln.save({}, {
       success: function() {
-        
         //HAVE TO ADD IT TO SOME NESTED COLLECTION
-        Backbone.history.navigate('/', {trigger: true});
+      },
+      failure: function() {
+        alert("you suck");
       }
+      
     });
   }
 });

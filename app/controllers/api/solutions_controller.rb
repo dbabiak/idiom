@@ -6,7 +6,7 @@ class Api::SolutionsController < ApplicationController
     if @solution.correct? && @solution.save
       render json: @solution
     else @solution.correct?
-      render json: false
+      render json: "you suck", status: :unprocessable_entity
     end
   end
 
