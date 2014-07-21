@@ -1,4 +1,4 @@
-class SolutionLikesController < ApplicationController
+class Api::SolutionLikesController < ApplicationController
   def create
     @solution_like = SolutionLike.new(solution_like_params)
     if SolutionLike.find_by(solution_like_params).nil? && @solution_like.save

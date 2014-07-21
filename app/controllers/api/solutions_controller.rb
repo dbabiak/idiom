@@ -1,7 +1,8 @@
-class SolutionsController < ApplicationController
+class Api::SolutionsController < ApplicationController
   
   def create
     @solution = Solution.new(solution_params)
+    @solution.submitter_id = current_user.id
     if @solution.correct? && @solution.save
       render json: @solution
     else @solution.correct?
@@ -16,6 +17,6 @@ class SolutionsController < ApplicationController
 
   def solution_params
     params.require(:solution)
-        .permit(:submitter_id, :problem_id, :content)
+        .permit(:problem_id, :content)
   end
 end

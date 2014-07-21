@@ -14,11 +14,16 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   },
   submit: function(event) {
     event.preventDefault();
-    debugger;
     var content = editor.getValue();
     this.$('#solution').val(content);
-    var params = $(event.currentTarget).serializeJSON();
-    var newSoln = App.Models.Solution(params['solution'])
-    //Now serialize to JSON and post to the server
+    var params = this.$('form').serializeJSON();
+    var newSoln = new App.Models.Solution(params['solution']);
+    newSoln.save({}, {
+      success: function() {
+        
+        //HAVE TO ADD IT TO SOME NESTED COLLECTION
+        Backbone.history.navigate('/', {trigger: true});
+      }
+    });
   }
 });
