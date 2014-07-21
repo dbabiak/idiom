@@ -12,8 +12,7 @@ class Api::ProblemsController < ApplicationController
 
   def index
     @problems = Problem.all
-    render 'index'
-    #wtf? don't we have to do something with json?
+    render json: @problems
   end
 
   def show

@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :site, only: [:index]
   resources :users, only: [:create, :new, :show]
   resource :session, only: [:create, :destroy, :new, ]
-  resources :problems
-  namespace :api do
+  namespace :api, default: {format: :json} do
     resources :problems, except: [:edit, :new]
     resources :solutions, except: [:edit, :new]
     resources :solution_likes, only: [:create, :destroy]

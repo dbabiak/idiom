@@ -18,12 +18,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <ul class="nav navbar-nav">
         <% if signed_in? %>
-          <li><%= link_to current_user.username, user_url(current_user) %></li>
-          <li><%= link_to "Sign Out", session_url, :method => :delete %></li>
-          <li><%= link_to "Problems", problems_url %></li>
+          <li><a href='/users/2'>RHUBARB</a></li>
+          <li><a href='/session'>Sign Out</a></li>
+          <li><a href='/'>Problems</a></li>
         <% else %>
-          <li><%= link_to "Sign In", new_session_url %></li>
-          <li><%= link_to "Sign Up", new_user_url %></li>
+          <li><a href='/session/new'>Sign In</a></li>
+          <li><a href='/users/new'>Sign Up</a></li>
         <% end %>
       </ul>
       </div><!-- /.navbar-collapse -->
@@ -31,13 +31,12 @@
   </nav>
 
   <%= flash[:errors].join('<br>').html_safe if flash[:errors].present? %>
-  <div class='container'>
+  <div class='container' id='content'>
     <div class='row'>
       <div class='col-xs-offset-3'>
-        <%= yield %>  
+        <%= yield %>
       </div>
     </div>
   </div>
 </body>
 </html>
-
