@@ -5,12 +5,13 @@ App.Models.Problem = Backbone.Model.extend({
       this._solutionCases =
           new App.Collections.SolutionCases([], {problem: this});
     }
-    return this._comments;
+    return this._solutionCases;
   },
   parse: function(payload) {
-    if (payload.solutionCases) {
-      this.solutionCases().set(payload.solutionCases, {parse: true});
-      delete payload.solutionCases;
+    debugger;
+    if (payload.solution_cases) {
+      this.solutionCases().set(payload.solution_cases, {parse: true});
+      delete payload.solution_cases;
     }
     return payload;
   }

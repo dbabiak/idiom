@@ -3,7 +3,9 @@
   <p><%= problem.get('description') %></p>
   <h4>Test cases:</h4>
   <ul>
-    <li>Associations have to be handled a little differently</li>
+    <% problem.solutionCases().each(function(solutionCase) { %>
+      <div class='read-editor'><%= solutionCase.escape('content') %></div>
+    <% }); %>
   </ul>
   
   Your solution:
@@ -27,6 +29,7 @@
 </div>
 
 <script>
+    debugger;
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/ruby");

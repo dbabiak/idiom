@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :problems, except: [:edit, :new]
     resources :solutions, except: [:edit, :new]
     resources :solution_likes, only: [:create, :destroy]
+    resources :solution_cases
   end
 end

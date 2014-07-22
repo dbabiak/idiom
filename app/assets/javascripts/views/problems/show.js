@@ -8,6 +8,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     'click button.submit': 'submit'
   },
   render: function() {
+    debugger;
     var content = this.template({problem: this.model});
     this.$el.html(content);
     return this;

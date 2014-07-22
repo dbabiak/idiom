@@ -25,9 +25,18 @@ h1.title {
   padding-bottom: 50px;
 }
 
-#editor { 
+#editor {
   width: 600px;
   height: 250px;
+  border: 1px solid;
+  border-radius: 15px;
+  border-color: darkblue;
+  margin: 5px;
+}
+
+.read-editor {
+  width: 600px;
+  height: 100px;
   border: 1px solid;
   border-radius: 15px;
   border-color: darkblue;
