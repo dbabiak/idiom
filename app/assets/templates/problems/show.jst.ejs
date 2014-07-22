@@ -2,11 +2,7 @@
   <h1><%= problem.get('title') %></h1>
   <p><%= problem.get('description') %></p>
   <h4>Test cases:</h4>
-  <ul>
-    <% problem.solutionCases().each(function(solutionCase) { %>
-      <div class='read-editor'><%= solutionCase.escape('content') %></div>
-    <% }); %>
-  </ul>
+  <div id='solution-cases'></div>
   
   Your solution:
   <div id="editor">function foo(items) {

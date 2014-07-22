@@ -11,6 +11,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     debugger;
     var content = this.template({problem: this.model});
     this.$el.html(content);
+    this.attachSubViews();
     return this;
   },
   submit: function(event) {
@@ -30,7 +31,13 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     });
   },
   attachSubViews: function() {
-    
+    var solutionCases = new App.Views.SolutionCaseIndexView({
+      collection: this.model.solutionCases()
+    });
+    this.$('#solution-cases').append(solutionCases.render().$el);
+    //This is enough to work for now no? 
+    //Now we have to move the view stuff into sub-folders.
+    //Fuck. listeners. 
   }
   
 });
