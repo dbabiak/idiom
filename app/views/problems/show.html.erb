@@ -2,11 +2,7 @@
   <h1><%= @problem.title %></h1>
   <p><%= @problem.description %></p>
   <h4>Test cases:</h4>
-  <ul>
-    <% @problem.solution_cases.each do |solution_case| %>
-      <li><%= solution_case.content %></li>
-    <% end %>
-  </ul>
+
   
   Your solution:
   <div id="editor">function foo(items) {

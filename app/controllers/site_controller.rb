@@ -1,7 +1,5 @@
 class SiteController < ApplicationController
-  def index
-    @problems = Problem.all
-    render 'problems/home'
-    #wtf? don't we have to do something with json?
+  before_action :require_signed_in!
+  def root
   end
 end

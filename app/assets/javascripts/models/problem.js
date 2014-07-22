@@ -3,7 +3,7 @@ App.Models.Problem = Backbone.Model.extend({
   solutionCases: function() {
     if (!this._solutionCases) {
       this._solutionCases =
-          new App.Collections.solutionCases([], {problem: this});
+          new App.Collections.SolutionCases([], {problem: this});
     }
     return this._comments;
   },

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root to: "site#index"
-  resources :site, only: [:index]
-  resources :users, only: [:create, :new, :show]
-  resource :session, only: [:create, :destroy, :new, ]
+  root to: "site#root"
+  resources :site, only: [:root]
+  resources :users
+  resource :session
   namespace :api, default: {format: :json} do
     resources :problems, except: [:edit, :new]
     resources :solutions, except: [:edit, :new]

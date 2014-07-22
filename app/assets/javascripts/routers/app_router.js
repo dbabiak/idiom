@@ -4,12 +4,17 @@ App.Routers.AppRouter = Backbone.Router.extend({
     this.$rootEl = $rootEl;
   },
   routes: {
-    '': 'problemsIndex',
-    'problems/new': 'problemsNew',
-    'problems/:id': 'problemsShow',
-    'users/:id': 'usersShow'
+    // Havin index be '' causes user login to go screwy
+    // the index will eat every domain.
+    'home': 'problemsIndex',
+    'home/problems/new': 'problemsNew',
+    'home/problems/:id': 'problemsShow',
+    'home/users/:id': 'usersShow',
+    'home/users/new': 'usersNew'
   },
   problemsIndex: function() {
+    // for when router starts getting greedy again
+    // debugger;
     App.problems.fetch();
     var indexView = new App.Views.ProblemsIndexView({collection: App.problems});
     this._swapView(indexView);
@@ -25,11 +30,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
   usersShow: function() {
     //so get all their associations... and then>
+  },
+  usersNew: function() {
+    debugger;
   }
+  
   ,
   _swapView: function(newView) {
     if (this.currentView) { this.currentView.remove(); }
     this.currentView = newView;
     this.$rootEl.html(newView.render().$el);
   }
+  
 });

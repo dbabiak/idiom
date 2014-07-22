@@ -17,6 +17,8 @@ window.App = {
   }
 };
 
+//This might be the problem...
+
 $(document).ready(function(){
   App.initialize();
 });
