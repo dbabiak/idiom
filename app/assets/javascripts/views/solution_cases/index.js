@@ -1,7 +1,8 @@
 App.Views.SolutionCaseIndexView = Backbone.View.extend({
   initialize: function(){
     //this.collection = options.collection
-    this.listenTo(this.collection, 'sync', this.testSync);
+    this.listenTo(this.collection, 'sync add', this.testSync);
+    debugger;
   },
   tagName: 'ul',
   template: JST['solution_cases/index'],
@@ -9,15 +10,18 @@ App.Views.SolutionCaseIndexView = Backbone.View.extend({
     this.collection.fetch();
     var content = this.template();
     this.$el.html(content);
+    var that = this;
     this.collection.each(function(solutionCase) {
       var view = new App.Views.SolutionCaseView({model: solutionCase});
-      this.$el.append(view.render().$el);
+      debugger;
+      that.$el.append(view.render().$el);
       //EDITOR WILL SET THE THING UP HERE.
-      debugger
     });
     return this;
   },
   testSync: function() {
+    console.log("LINE 22 IN INDEX VIEW")
+    this.render();
     debugger;
   }
 });
@@ -34,7 +38,4 @@ App.Views.SolutionCaseView = Backbone.View.extend({
     this.$el.html(content);
     return this;
   },
-  testSync: function() {
-    debugger;
-  }
 });

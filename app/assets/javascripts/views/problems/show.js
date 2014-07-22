@@ -3,6 +3,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   template: JST['problems/show'],
   initialize: function() {
     //Might have to do something with subviews, etc.
+    // this.listenTo(this.model.solutionCases(), 'sync add', this.testSync)
   },
   events: {
     'click button.submit': 'submit'
@@ -38,6 +39,11 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     //This is enough to work for now no? 
     //Now we have to move the view stuff into sub-folders.
     //Fuck. listeners. 
+  },
+
+  testSync: function() {
+    console.log("LINE 45 IN SHOW VIEW")
+    debugger;
   }
   
 });
