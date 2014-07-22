@@ -1,11 +1,12 @@
 App.Views.SolutionCaseIndexView = Backbone.View.extend({
   initialize: function(){
     //this.collection = options.collection
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.testSync);
   },
   tagName: 'ul',
   template: JST['solution_cases/index'],
   render: function() {
+    this.collection.fetch();
     var content = this.template();
     this.$el.html(content);
     this.collection.each(function(solutionCase) {
@@ -15,12 +16,16 @@ App.Views.SolutionCaseIndexView = Backbone.View.extend({
       debugger
     });
     return this;
+  },
+  testSync: function() {
+    debugger;
   }
 });
 
+
 App.Views.SolutionCaseView = Backbone.View.extend({
   initialize: function(){
-    //this.model = options.model
+    this.listenTo(this.model, 'sync', this.testSync);
   },
   tagName: 'li',
   template: JST['solution_cases/show'],
@@ -28,5 +33,8 @@ App.Views.SolutionCaseView = Backbone.View.extend({
     var content = this.template({solutionCase: this.model});
     this.$el.html(content);
     return this;
+  },
+  testSync: function() {
+    debugger;
   }
 });

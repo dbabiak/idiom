@@ -1,4 +1,7 @@
 App.Models.Problem = Backbone.Model.extend({
+  initialize: function() {
+    this.listenTo(this.solutionCases(), 'sync', this.render)
+  },
   urlRoot: '/api/problems',
   solutionCases: function() {
     if (!this._solutionCases) {
