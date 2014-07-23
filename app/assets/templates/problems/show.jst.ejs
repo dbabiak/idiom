@@ -3,7 +3,7 @@
   <p><%= problem.get('description') %></p>
   <h4>Test cases:</h4>
   <div id='solution-cases'></div>
-  
+
   Your solution:
   <div id="editor">function foo(items) {
       var x = "All this is syntax highlighted";
@@ -14,18 +14,17 @@
       <input type='hidden'
           name='solution[problem_id]'
           value='<%= problem.get('id') %>'>
-    
+
       <input type='hidden' name='solution[content]' id='solution'>
     <button class='btn btn-sm btn-secondary submit'>Submit</button>
   </form>
-  
+
   <h4>Solutions</h4>
   <p>Another collection we have to handle explicitly</p>
 
 </div>
 
 <script>
-    debugger;
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/chrome");
     editor.getSession().setMode("ace/mode/ruby");

@@ -6,7 +6,8 @@ App.Views.SolutionCaseIndexView = Backbone.View.extend({
   tagName: 'ul',
   template: JST['solution_cases/index'],
   render: function() {
-    this.collection.fetch();
+    // this.collection.fetch();
+    debugger
     var content = this.template();
     this.$el.html(content);
     var that = this;
@@ -37,5 +38,5 @@ App.Views.SolutionCaseView = Backbone.View.extend({
     this.$el.html(content);
     return this;
   },
-  
+
 });

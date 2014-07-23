@@ -6,7 +6,6 @@ App.Views.ProblemsIndexView = Backbone.View.extend({
     this.listenTo(this.collection, 'sync add', this.render);
   },
   render: function() {
-    debugger;
     var content = this.template();
     this.$el.html(content);
     var $problemsIndex = this.$('.problems-index');

@@ -20,9 +20,9 @@ class Api::ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @solution_cases = @problem.solution_cases
-    render 'show'  #this is a call to jbuilder I think.
+    render :show #this is a call to jbuilder I think.
   end
-   
+
 
   def problem_params
     params.require(:problem).permit(:title, :description, :submitter_id)

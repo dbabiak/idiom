@@ -1,1 +1,1 @@
-json.(solution_case, :id, :problem_id, :content, :created_at, :updated_at)
+json.(solution_case, :id, :content)

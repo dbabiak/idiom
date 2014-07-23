@@ -7,7 +7,7 @@ window.App = {
   initialize: function() {
     var $rootEl = $('#content');
     App.problems = new App.Collections.Problems();
-    
+
     App.problems.fetch({
       success: function() {
         new App.Routers.AppRouter($rootEl);

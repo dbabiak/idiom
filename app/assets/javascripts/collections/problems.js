@@ -4,13 +4,14 @@ App.Collections.Problems = Backbone.Collection.extend({
   model: App.Models.Problem,
   getOrFetch: function(id) {
     var problem;
+    var problems = this;
     if (problem = this.get(id)) {
       problem.fetch();
     } else {
       problem = new App.Models.Problem({id: id});
       problem.save({
         success: function(response) {
-          this.add(response);
+          problems.add(response);
         }
       });
     }

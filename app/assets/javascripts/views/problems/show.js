@@ -24,9 +24,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
         //HAVE TO ADD IT TO SOME NESTED COLLECTION
       },
       failure: function() {
-        alert("you suck");
+        alert("problems...");
       }
-      
+
     });
   },
   attachSubViews: function() {
@@ -41,7 +41,6 @@ App.Views.ProblemsShowView = Backbone.View.extend({
 
   testSync: function() {
     console.log("LINE 45 IN SHOW VIEW")
-    debugger;
   }
-  
+
 });
