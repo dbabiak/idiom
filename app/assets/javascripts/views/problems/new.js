@@ -12,11 +12,15 @@ App.Views.ProblemsNewView = Backbone.View.extend({
     var params = this.$('form').serializeJSON();
     var problem = new App.Models.Problem(params.problem);
     
-    debugger;
     problem.save({}, {
       success: function(response) {
         debugger;
+        console.log("hello from inside the function!");
+        params.solution_cases.forEach(function(scparam){
+          problem.solutionCases().create( _.extend(scparam, {problem_id: problem.id}) );
+        });
       }
     });
+    Backbone.history.navigate('#/home', {trigger: true})
   }
 });

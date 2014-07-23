@@ -17,22 +17,5 @@ App.Models.Problem = Backbone.Model.extend({
       delete payload.solution_cases;
     }
     return payload;
-  },
-  create: function (callback, solution_cases) {
-      var problem = this;
-
-      $.ajax({
-        url: "/api/problems",
-        type: "POST",
-        data: { problem: this.attributes,
-          solution_cases: solution_cases
-        },
-        success: function (newAttrs) {
-          debugger;
-          _(problem.attributes).extend(newAttrs);
-
-          App.problems.add(problem);
-        }
-      });
-    }
+  }
 });
