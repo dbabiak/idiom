@@ -2,14 +2,12 @@
 App.Views.ProblemsShowView = Backbone.View.extend({
   template: JST['problems/show'],
   initialize: function() {
-    //Might have to do something with subviews, etc.
-    // this.listenTo(this.model.solutionCases(), 'sync add', this.testSync)
+    this.listenTo(this.model.solutionCases(), 'add', 'testSync')
   },
   events: {
     'click button.submit': 'submit'
   },
   render: function() {
-    debugger;
     var content = this.template({problem: this.model});
     this.$el.html(content);
     this.attachSubViews();

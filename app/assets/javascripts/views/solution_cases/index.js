@@ -1,8 +1,7 @@
 App.Views.SolutionCaseIndexView = Backbone.View.extend({
   initialize: function(){
     //this.collection = options.collection
-    this.listenTo(this.collection, 'sync add', this.testSync);
-    debugger;
+    this.listenTo(this.collection, 'add', this.addSolutionCase);
   },
   tagName: 'ul',
   template: JST['solution_cases/index'],
@@ -19,23 +18,24 @@ App.Views.SolutionCaseIndexView = Backbone.View.extend({
     });
     return this;
   },
-  testSync: function() {
-    console.log("LINE 22 IN INDEX VIEW")
-    this.render();
+  addSolutionCase: function(solutionCase) {
     debugger;
+    var view = new App.Views.SolutionCaseView({model: solutionCase});
+    this.$el.append(view.render().$el);
   }
 });
 
 
 App.Views.SolutionCaseView = Backbone.View.extend({
-  initialize: function(){
-    this.listenTo(this.model, 'sync', this.testSync);
-  },
-  tagName: 'li',
   template: JST['solution_cases/show'],
+  tagName: 'li',
+  initialize: function(options) {
+    this.listenTo(this.model, 'sync', this.render);
+  },
   render: function() {
     var content = this.template({solutionCase: this.model});
     this.$el.html(content);
     return this;
   },
+  
 });

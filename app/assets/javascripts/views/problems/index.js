@@ -3,9 +3,10 @@ App.Views.ProblemsIndexView = Backbone.View.extend({
   template: JST['problems/index'],
   initialize: function() {
     //this.collection = options.collection;
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync add', this.render);
   },
   render: function() {
+    debugger;
     var content = this.template();
     this.$el.html(content);
     var $problemsIndex = this.$('.problems-index');

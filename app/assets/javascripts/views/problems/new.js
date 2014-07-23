@@ -21,6 +21,7 @@ App.Views.ProblemsNewView = Backbone.View.extend({
         });
       }
     });
+    debugger
     Backbone.history.navigate('#/home', {trigger: true})
   }
 });
