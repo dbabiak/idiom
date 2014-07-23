@@ -2,21 +2,22 @@
 #
 # Table name: problems
 #
-#  id           :integer          not null, primary key
-#  title        :string(255)      not null
-#  description  :text             not null
-#  submitter_id :integer          not null
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id            :integer          not null, primary key
+#  title         :string(255)      not null
+#  description   :text             not null
+#  example_spec  :text             not null
+#  solution_spec :text             not null
+#  submitter_id  :integer          not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Problem < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
   has_many :solutions
-  has_many :solution_cases, inverse_of: :problem
-  has_many :test_cases
 
-  validates :title, :description,:submitter_id, presence: true
+  validates :title, :description,:submitter_id, :solution_spec,
+      :example_spec, presence: true
   validates :title, uniqueness: true
 
   # check solution --> return true, or return error messages...
@@ -30,7 +31,8 @@ class Problem < ActiveRecord::Base
           #  the function passed in
           eval(code)
           # get all the test cases, and check em
-          result = solution_cases.all? { |sol_case| eval(sol_case.content) }
+          # this should probably be done in rspec eventually
+          result = eval(self.solution_spec)
         end
       rescue Exception => e
         puts e.message
@@ -41,4 +43,5 @@ class Problem < ActiveRecord::Base
     thr.join
     result
   end
+
 end

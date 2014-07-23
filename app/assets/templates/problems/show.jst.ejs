@@ -1,8 +1,10 @@
 <div class='col-xs-4' >
   <h1><%= problem.get('title') %></h1>
   <p><%= problem.get('description') %></p>
-  <h4>Test cases:</h4>
-  <div id='solution-cases'></div>
+  <h4>Example spec:</h4>
+  <div id='example-spec'>
+    <pre><%= problem.escape('example_spec')%></pre>
+  </div>
 
   Your solution:
   <div id="editor">function foo(items) {
@@ -20,7 +22,8 @@
   </form>
 
   <h4>Solutions</h4>
-  <p>Another collection we have to handle explicitly</p>
+  <p>Another collection we have to handle explicitly. <br> This is going to
+    be a legit other thing. </p>
 
 </div>
 

@@ -3,8 +3,8 @@ class CreateProblems < ActiveRecord::Migration
     create_table :problems do |t|
       t.string :title, null: false
       t.text :description, null: false
-      t.text :test_cases, null: false
-      t.text :solution_cases, null: false
+      t.text :example_spec, null: false
+      t.text :solution_spec, null: false
       t.integer :submitter_id, null: false
 
       t.timestamps

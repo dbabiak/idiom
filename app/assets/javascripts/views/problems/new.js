@@ -1,6 +1,5 @@
 App.Views.ProblemsNewView = Backbone.View.extend({
   template: JST['problems/new'],
-  initialize: function() {/*does nothing */},
   render: function() {
     var content = this.template();
     this.$el.html(content);
@@ -14,10 +13,8 @@ App.Views.ProblemsNewView = Backbone.View.extend({
 
     problem.save({}, {
       success: function(response) {
-        console.log("hello from inside the function!");
-        params.solution_cases.forEach(function(scparam){
-          problem.solutionCases().create( _.extend(scparam, {problem_id: problem.id}) );
-        });
+        alert(response);
+        App.problems.add(response);
       }
     });
     Backbone.history.navigate('#/home', {trigger: true})

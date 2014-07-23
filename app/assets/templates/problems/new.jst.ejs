@@ -7,21 +7,37 @@
   </label>
   <br>
 
-  
+
     Description
     <br>
-    <textarea name='problem[description]'rows="8" cols="60"></textarea>
+    <textarea name='problem[description]'rows="6" cols="60"></textarea>
     <br>
 
-    Solution Cases
-    <br>
-    <input name='solution_cases[1][content]' type='text' size='60'>
+    <!-- Example Spec:
+    <div class="editor" id='example-spec'>
+      #It squares its target:
+      tron(4) == 16
+
+      #It is positive
+      tron(5) > 0
+    }</div>
+
+    Solution Spec:
+    <div class="editor" id='solution-spec'>
+      tron(4) == 16
+      tron(5) > 0
+    }</div>
     <br>
 
+    <input name='problem[solution_spec]' type='hidden'>
+ s
+    <input name='problem[example_spec]' type='hidden'> -->
+    solution_spec:
+    <textarea name='problem[solution_spec]' rows='4' cols='60'></textarea>
     <br>
-    <input name='solution_cases[2][content]' type='text' size='60'>
+    example spec:
+    <textarea name='problem[example_spec]' rows='4' cols='60'></textarea>
     <br>
-  
 
   <button class='submit'>Create Problem</button>
 </form>

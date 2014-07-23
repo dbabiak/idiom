@@ -7,7 +7,6 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   render: function() {
     var content = this.template({problem: this.model});
     this.$el.html(content);
-    this.attachSubViews();
     return this;
   },
   submit: function(event) {
@@ -26,10 +25,5 @@ App.Views.ProblemsShowView = Backbone.View.extend({
 
     });
   },
-  attachSubViews: function() {
-    var solutionCases = new App.Views.SolutionCaseIndexView({
-      collection: this.model.solutionCases()
-    });
-    this.$('#solution-cases').append(solutionCases.render().$el);
-  }
+
 });
