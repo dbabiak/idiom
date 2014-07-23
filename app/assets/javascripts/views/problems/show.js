@@ -22,7 +22,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     var params = this.$('form').serializeJSON();
     var newSoln = new App.Models.Solution(params['solution']);
     newSoln.save({}, {
-      success: function() {
+      success: function(response) {
         //HAVE TO ADD IT TO SOME NESTED COLLECTION
       },
       failure: function() {
@@ -36,9 +36,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       collection: this.model.solutionCases()
     });
     this.$('#solution-cases').append(solutionCases.render().$el);
-    //This is enough to work for now no? 
+    //This is enough to work for now no?
     //Now we have to move the view stuff into sub-folders.
-    //Fuck. listeners. 
+    //Fuck. listeners.
   },
 
   testSync: function() {

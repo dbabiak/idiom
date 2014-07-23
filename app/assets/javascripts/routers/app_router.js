@@ -20,7 +20,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
     this._swapView(indexView);
   },
   problemsNew: function() {
-    
+    var newView = new App.Views.ProblemsNewView();
+    this._swapView(newView);
   },
   problemsShow: function(id) {
     var problem = App.problems.getOrFetch(id);
