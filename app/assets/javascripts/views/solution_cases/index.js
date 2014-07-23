@@ -7,20 +7,17 @@ App.Views.SolutionCaseIndexView = Backbone.View.extend({
   template: JST['solution_cases/index'],
   render: function() {
     // this.collection.fetch();
-    debugger
     var content = this.template();
     this.$el.html(content);
     var that = this;
     this.collection.each(function(solutionCase) {
       var view = new App.Views.SolutionCaseView({model: solutionCase});
-      debugger;
       that.$el.append(view.render().$el);
       //EDITOR WILL SET THE THING UP HERE.
     });
     return this;
   },
   addSolutionCase: function(solutionCase) {
-    debugger;
     var view = new App.Views.SolutionCaseView({model: solutionCase});
     this.$el.append(view.render().$el);
   }

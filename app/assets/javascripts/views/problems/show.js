@@ -1,9 +1,6 @@
 /* global App, JST*/
 App.Views.ProblemsShowView = Backbone.View.extend({
   template: JST['problems/show'],
-  initialize: function() {
-    this.listenTo(this.model.solutionCases(), 'add', 'testSync')
-  },
   events: {
     'click button.submit': 'submit'
   },
@@ -21,10 +18,10 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     var newSoln = new App.Models.Solution(params['solution']);
     newSoln.save({}, {
       success: function(response) {
-        //HAVE TO ADD IT TO SOME NESTED COLLECTION
+        alert('hooray!')
       },
-      failure: function() {
-        alert("problems...");
+      error: function(response) {
+        alert(response);
       }
 
     });
@@ -34,13 +31,5 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       collection: this.model.solutionCases()
     });
     this.$('#solution-cases').append(solutionCases.render().$el);
-    //This is enough to work for now no?
-    //Now we have to move the view stuff into sub-folders.
-    //Fuck. listeners.
-  },
-
-  testSync: function() {
-    console.log("LINE 45 IN SHOW VIEW")
   }
-
 });

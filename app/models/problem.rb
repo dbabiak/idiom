@@ -31,11 +31,12 @@ class Problem < ActiveRecord::Base
           eval(code)
           # get all the test cases, and check em
           result = solution_cases.all? { |sol_case| eval(sol_case.content) }
-        end          
-      rescue
-        puts "INFINITE LOOP"
+        end
+      rescue Exception => e
+        puts e.message
+        debugger
         result = false
-      end      
+      end
     end
     thr.join
     result
