@@ -45985,3 +45985,50 @@ Processing by Api::UsersController#show as JSON
   [1m[35mSolution Load (0.1ms)[0m  SELECT "solutions".* FROM "solutions" INNER JOIN "solution_likes" ON "solutions"."id" = "solution_likes"."solution_id" WHERE "solution_likes"."user_id" = ?  [["user_id", 2]]
   Rendered api/users/show.json.jbuilder (1.7ms)
 Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (16.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140706235554)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255) NOT NULL, "password_digest" character varying(255) NOT NULL, "token" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_users_on_token" ON "users"  ("token")[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140706235554"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProblems (20140706235726)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "problems" ("id" serial primary key, "title" character varying(255) NOT NULL, "description" text NOT NULL, "example_spec" text NOT NULL, "solution_spec" text NOT NULL, "submitter_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_problems_on_submitter_id" ON "problems"  ("submitter_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_problems_on_title" ON "problems"  ("title")[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140706235726"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProblemSolutions (20140707033039)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "solutions" ("id" serial primary key, "problem_id" integer NOT NULL, "submitter_id" integer NOT NULL, "content" text NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_solutions_on_problem_id" ON "solutions"  ("problem_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_solutions_on_submitter_id" ON "solutions"  ("submitter_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140707033039"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSolutionLikes (20140707045147)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "solution_likes" ("id" serial primary key, "user_id" integer NOT NULL, "solution_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_solution_likes_on_user_id" ON "solution_likes"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_solution_likes_on_solution_id" ON "solution_likes"  ("solution_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140707045147"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/api/problems/1" for 127.0.0.1 at 2014-07-24 12:01:32 -0700
+Processing by Api::ProblemsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mProblem Load (0.1ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered api/problems/_problem.json.jbuilder (5.9ms)
+  Rendered api/problems/show.json.jbuilder (15.4ms)
+Completed 200 OK in 34ms (Views: 17.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-24 12:01:33 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
