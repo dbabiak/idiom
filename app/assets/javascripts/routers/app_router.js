@@ -10,7 +10,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
     'problems/new': 'problemsNew',
     'problems/:id': 'problemsShow',
     'users/:id': 'usersShow',
-    'users/new': 'usersNew'
+    'profile': 'profile'
   },
   problemsIndex: function() {
     // for when router starts getting greedy again
@@ -31,8 +31,10 @@ App.Routers.AppRouter = Backbone.Router.extend({
   usersShow: function() {
     //so get all their associations... and then>
   },
-  usersNew: function() {
-    debugger;
+  profile: function() {
+    App.user.fetch();
+    var view = new App.Views.ProfileView({model: App.user});
+    this._swapView(view);
   }
 
   ,

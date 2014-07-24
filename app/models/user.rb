@@ -10,8 +10,8 @@
 
 class User < ActiveRecord::Base
   attr_reader :password
-  
-  has_many :solutions
+
+  has_many :solutions, class_name: 'Solution', foreign_key: :submitter_id
   has_many :solution_likes
   has_many :liked_solutions, through: :solution_likes, source: :solution
 

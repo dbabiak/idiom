@@ -1,5 +1,6 @@
 App.Views.ProblemsNewView = Backbone.View.extend({
   template: JST['problems/new'],
+  className: 'col-xs-offset-3',
   render: function() {
     var content = this.template();
     this.$el.html(content);
