@@ -26,4 +26,4 @@
 //= require bootstrap
 //= require src/ace
 //= require src/mode-ruby
-//= require src/theme-tomorrow_night
+//= require src/theme-tomorrow_night_blue
