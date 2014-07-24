@@ -25,3 +25,5 @@
 //= require_tree .
 //= require bootstrap
 //= require src/ace
+//= require src/mode-ruby
+//= require src/theme-tomorrow_night
