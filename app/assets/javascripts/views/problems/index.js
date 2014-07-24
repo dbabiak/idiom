@@ -1,6 +1,7 @@
 /* global App, JST*/
 App.Views.ProblemsIndexView = Backbone.View.extend({
   template: JST['problems/index'],
+  className: 'col-centered',
   initialize: function() {
     //this.collection = options.collection;
     this.listenTo(this.collection, 'sync add', this.render);

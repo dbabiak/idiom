@@ -5,28 +5,27 @@
 
     <form action="<%= users_url %>" method="post" role='form'>
       <%= auth_token %>
-  
+
       <div class='form-group'>
         <label for='user-username'>Username</label>
-        <input type="text" 
-            name="user[username]" 
-            class='form-control' 
+        <input type="text"
+            name="user[username]"
+            class='form-control'
             id='user-username'>
       </div>
 
       <div class='form-group'>
         <label for='user-password'>Password</label>
-        <input type="password" 
-            name="user[password]" 
-            class='form-control' 
+        <input type="password"
+            name="user[password]"
+            class='form-control'
             id='user-password'>
       </div>
 
-      <input 
-        type="submit" 
-        class='btn btn-default' 
-        value="Sign Up"
-        align='center'>
+      <button
+        type="submit"
+        class='btn btn-default submit'
+        align='center'>Sign Up</button>
     </form>
   </div>
 </div>
