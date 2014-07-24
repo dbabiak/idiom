@@ -1,12 +1,13 @@
 class Api::SolutionsController < ApplicationController
-  
+
   def create
     @solution = Solution.new(solution_params)
     @solution.submitter_id = current_user.id
+    sleep 1
     if @solution.correct? && @solution.save
       render json: @solution
     else @solution.correct?
-      render json: ["you suck"], status: 403
+      render json: {error: "stuff went wrong"}, status: 403
     end
   end
 

@@ -36,7 +36,7 @@ class Problem < ActiveRecord::Base
         end
       rescue Exception => e
         puts e.message
-        debugger
+        # debugger
         result = false
       end
     end

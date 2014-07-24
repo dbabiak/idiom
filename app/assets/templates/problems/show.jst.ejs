@@ -2,9 +2,7 @@
   <h1><%= problem.get('title') %></h1>
   <p><%= problem.get('description') %></p>
   <h4>Example spec:</h4>
-  <div id='example-spec'>
-    <pre><%= problem.escape('example_spec')%></pre>
-  </div>
+  <div id='example-spec'><%= problem.escape('example_spec')%></div>
 
   Your solution:
   <div id="editor">function foo(items) {
@@ -18,17 +16,59 @@
           value='<%= problem.get('id') %>'>
 
       <input type='hidden' name='solution[content]' id='solution'>
-    <button class='btn btn-sm btn-secondary submit'>Submit</button>
+    <button class='btn btn-default submit' data-toggle="modal"
+        data-target="#myModal">Submit</button>
   </form>
 
   <h4>Solutions</h4>
   <p>Another collection we have to handle explicitly. <br> This is going to
     be a legit other thing. </p>
 
-</div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <div id='response-message'></div>
+          <div class="spinner">
+            <div class="spinner-container container1">
+              <div class="circle1"></div>
+              <div class="circle2"></div>
+              <div class="circle3"></div>
+              <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+              <div class="circle1"></div>
+              <div class="circle2"></div>
+              <div class="circle3"></div>
+              <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+              <div class="circle1"></div>
+              <div class="circle2"></div>
+              <div class="circle3"></div>
+              <div class="circle4"></div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/chrome");
+    var editor = ace.edit('example-spec');
+    editor.setTheme('ace/theme/tomorrow_night_blue')
+    // editor.setReadOnly(true);
+    editor.getSession().setMode('ace/mode/ruby')
+
+    editor = ace.edit("editor");
+    editor.setTheme("ace/theme/tomorrow_night_blue");
     editor.getSession().setMode("ace/mode/ruby");
 </script>
