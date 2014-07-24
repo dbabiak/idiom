@@ -1,12 +1,10 @@
 App.Views.SolutionView = Backbone.View.extend({
   template: JST['solutions/show'],
 
-  className: 'read-editor',
-
   initialize: function(options) {
     this.listenTo(this.model, 'sync', this.render);
   },
-
+  className: 'solution-view',
   events: {
   },
 

@@ -7,18 +7,14 @@
 </div>
 
 <script>
-
-    $(function() {
-      var editor;
-      $('.own-solutions').bind('DOMNodeInserted', function(event){
-        if (event.target.className === 'read-editor') {
-          editor = ace.edit(event.target.id);
-          editor.setTheme('ace/theme/tomorrow_night_blue');
-          editor.setReadOnly(true);
-          editor.getSession().setMode('ace/mode/ruby');
-        }
-
-      })
-    });
-
+  $(function() {
+    $('.own-solutions').bind('DOMNodeInserted', function(event){
+      if (event.target.className === 'solution-view') {
+        var editor = ace.edit($(event.target).find('.read-editor').attr('id'));
+        editor.setTheme('ace/theme/tomorrow_night_blue');
+        editor.setReadOnly(true);
+        editor.getSession().setMode('ace/mode/ruby');
+      }
+    })
+  });
 </script>

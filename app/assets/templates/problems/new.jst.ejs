@@ -3,17 +3,17 @@
 <form>
   <label>
     Title
-    <input name='problem[title]' type='text'>
+    <input class='roundish' name='problem[title]' type='text'>
   </label>
   <br>
 
 
     Description
     <br>
-    <textarea name='problem[description]'rows="6" cols="60"></textarea>
+    <textarea class='roundish' name='problem[description]'rows="6" cols="60"></textarea>
     <br>
 
-    Example Spec:
+    <!-- Example Spec:
     <div class="new-problem" id='np-example-spec'>#It squares its target:
 tron(4) == 16
 
@@ -30,27 +30,28 @@ expect('foo to be positive', foo(n) > 0)
 
     <input name='problem[solution_spec]' type='hidden'>
 
-    <input name='problem[example_spec]' type='hidden'>
-    <!-- solution_spec:
+    <input name='problem[example_spec]' type='hidden'> -->
+    solution_spec:
     <br>
-    <textarea name='problem[solution_spec]' rows='4' cols='60'></textarea>
+    <textarea class='roundish' name='problem[solution_spec]' rows='4' cols='60'></textarea>
     <br>
     example spec:
     <br>
-    <textarea name='problem[example_spec]' rows='4' cols='60'></textarea>
-    <br> -->
+    <textarea class='roundish' name='problem[example_spec]' rows='4' cols='60'></textarea>
+    <br>
 
   <button class='submit btn btn-default'>Create Problem</button>
 </form>
 
-<script>
-  $(function(){
-    var editor = ace.edit('np-example-spec');
-    editor.setTheme('ace/theme/tomorrow_night_blue')
-    editor.getSession().setMode('ace/mode/ruby')
-
-    editor = ace.edit("np-solution-spec");
-    editor.setTheme("ace/theme/tomorrow_night_blue");
-    editor.getSession().setMode("ace/mode/ruby");
-  })
-</script>
+ <script>
+//   $(function(){
+//     var editor = ace.edit('np-example-spec');
+//     editor.setTheme('ace/theme/tomorrow_night_blue')
+//     editor.getSession().setMode('ace/mode/ruby')
+//
+//     editor = ace.edit("np-solution-spec");
+//     editor.setTheme("ace/theme/tomorrow_night_blue");
+//     editor.getSession().setMode("ace/mode/ruby");
+//     debugger;
+//   })
+ </script>

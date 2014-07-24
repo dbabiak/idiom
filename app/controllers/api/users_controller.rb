@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
     @user = current_user
     @own_solutions = @user.solutions
     @like_solutions = @user.liked_solutions
+    #Does the query have to be finished here?
     render 'show'
   end
 

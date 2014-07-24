@@ -22,13 +22,7 @@ App.Views.ProfileView = Backbone.View.extend({
     $ownSolutions = this.$('.own-solutions');
     this.model.ownSolutions().forEach(function(solution) {
       var view = new App.Views.SolutionView({model: solution});
-      var content = $(view.render().$el);
-      content.attr('id', 'solution-' + solution.id);
       $ownSolutions.append(view.render().$el);
-      // var editor = ace.edit('solution-' + solution.id);
-      // editor.setTheme('ace/theme/tomorrow_night_blue')
-      // editor.setReadOnly(true);
-      // editor.getSession().setMode('ace/mode/ruby')
     })
   }
 
