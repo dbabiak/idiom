@@ -28,7 +28,20 @@ h1.title {
   padding-bottom: 50px;
 }
 
-#editor, #example-spec {
+.roundish {
+  border: 1px solid $dark_blue;
+  border-radius: 15px;
+}
+
+.blueish {
+  background-color: black;
+}
+
+.new_problem {
+  height: 120x;
+}
+
+#editor, #example-spec, .editor {
   width: 600px;
   height: 250px;
   border: 1px solid;
@@ -36,6 +49,16 @@ h1.title {
   border-color: $dark_blue;
   margin: 5px;
 }
+
+.new-problem {
+  width: 600px;
+  height: 120px;
+  border: 1px solid;
+  border-radius: 15px;
+  border-color: $dark_blue;
+  margin: 5px;
+}
+
 
 #example-spec {
   height: 80px;

@@ -3,11 +3,13 @@ class Api::SolutionsController < ApplicationController
   def create
     @solution = Solution.new(solution_params)
     @solution.submitter_id = current_user.id
+    #give sort of latency
     sleep 1
-    if @solution.correct? && @solution.save
+    result = @solution.check
+    if result[:success] && @solution.save
       render json: @solution
-    else @solution.correct?
-      render json: {error: "stuff went wrong"}, status: 403
+    else
+      render json: result, status: 402
     end
   end
 

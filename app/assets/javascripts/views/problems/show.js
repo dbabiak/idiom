@@ -30,8 +30,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
         $('.spinner').toggle(1000)
       },
       error: function(response) {
+        var errorMsg = "Error! " + arguments[1].responseJSON.message
         setTimeout(function() {
-          $('#response-message').text('Error. Stack traces coming soon (tm)');
+          $('#response-message').text(errorMsg);
         }, 900)
         $('.spinner').toggle(1000)
       }

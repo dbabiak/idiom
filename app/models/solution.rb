@@ -13,16 +13,16 @@
 class Solution < ActiveRecord::Base
   belongs_to :problem
   has_many :solution_likes
-  
+
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
-  
+
   validates :problem_id, :submitter_id, :content, presence: true
-  
+
   def likes
     return solution_likes.count
   end
 
-  def correct?
-    self.problem.is_solution?(self)
+  def check
+    self.problem.check_solution(self)
   end
 end

@@ -21,27 +21,31 @@ class Problem < ActiveRecord::Base
   validates :title, uniqueness: true
 
   # check solution --> return true, or return error messages...
-  def is_solution?(solution)
+  def check_solution(solution)
     code = solution.content
     result = true
     thr = Thread.start do
+      result = {success: true}
       begin
         Timeout::timeout(1.5) do
+          #sandbox thread from system calls:
           $SAFE = 0
           #  the function passed in
           eval(code)
-          # get all the test cases, and check em
-          # this should probably be done in rspec eventually
-          result = eval(self.solution_spec)
+          # get all the test cases and check em
+          eval(self.solution_spec)
         end
       rescue Exception => e
-        puts e.message
-        # debugger
-        result = false
+        result = {success: false, message: e.message}
       end
     end
     thr.join
     result
   end
+
+  private
+    def expect(msg, condition)
+      raise 'Expected: ' + msg unless condition
+    end
 
 end
