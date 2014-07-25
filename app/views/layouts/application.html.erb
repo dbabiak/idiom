@@ -7,6 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= flash[:status] %>
+  </script>
 </head>
 <body>
   <nav class="navbar navbar-default" role="navigation">
@@ -23,6 +24,7 @@
           <li><%= link_to 'Sign Out', session_url, method: :delete %></li>
 
           <li><a href='#/'>Problems</a></li>
+          <li><a href='#/graph'>Graph</a></li>
         <% else %>
           <li><a href='/session/new'>Sign In</a></li>
           <li><a href='/users/new'>Sign Up</a></li>

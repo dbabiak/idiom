@@ -10,7 +10,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
     'problems/new': 'problemsNew',
     'problems/:id': 'problemsShow',
     'users/:id': 'usersShow',
-    'profile': 'profile'
+    'profile': 'profile',
+    'graph': 'graph'
   },
   problemsIndex: function() {
     // for when router starts getting greedy again
@@ -34,6 +35,11 @@ App.Routers.AppRouter = Backbone.Router.extend({
   profile: function() {
     App.user.fetch();
     var view = new App.Views.ProfileView({model: App.user});
+    this._swapView(view);
+  },
+
+  graph: function() {
+    var view = new App.Views.GraphView();
     this._swapView(view);
   }
 

@@ -27,3 +27,4 @@
 //= require src/ace
 //= require src/mode-ruby
 //= require src/theme-tomorrow_night_blue
+//= require jit

@@ -140,6 +140,15 @@ button.submit {
   transform: rotateZ(90deg);
 }
 
+.a {
+  transition: color 0.2s ease-in-out;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: initial;
+  text-decoration: none;
+}
+
 .circle1 { top: 0; left: 0; }
 .circle2 { top: 0; right: 0; }
 .circle3 { right: 0; bottom: 0; }
