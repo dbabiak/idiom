@@ -60,27 +60,16 @@ end</div>
 
 <script>
   $(function() {
-    // var seditor = ace.editor('example-spec');
-    //   seditor.setTheme('ace/theme/tomorrow_night_blue');
-    //   seditor.setReadOnly(true);
-    //   seditor.getSession().setMode('ace/mode/ruby');
-    //   seditor = ace.editor('editor')
-    //   seditor.setTheme('ace/theme/tomorrow_night_blue');
-    //   seditor.setReadOnly(true);
-    //   seditor.getSession().setMode('ace/mode/ruby');
+    App.editor = App.geditor('example-spec');
+    App.editor = App.geditor('editor');
 
-    var editor = App.geditor('example-spec');
-
-    var gedit = ace.edit('editor')
-    gedit = App.geditor('editor');
-    gedit.moveCursorTo(1,2);
-    // $('#response-message').bind('DOMNodeInserted', function(event){
-    //   if (event.target.className === 'solution-view') {
-    //     var seditor = ace.edit($(event.target).find('.read-editor').attr('id'));
-    //     seditor.setTheme('ace/theme/tomorrow_night_blue');
-    //     seditor.setReadOnly(true);
-    //     seditor.getSession().setMode('ace/mode/ruby');
-    //   }
-    // })
+    $('#response-message').bind('DOMNodeInserted', function(event){
+      if (event.target.className === 'solution-view') {
+        var seditor = ace.edit($(event.target).find('.read-editor').attr('id'));
+        seditor.setTheme('ace/theme/tomorrow_night_blue');
+        seditor.setReadOnly(true);
+        seditor.getSession().setMode('ace/mode/ruby');
+      }
+    })
   });
 </script>

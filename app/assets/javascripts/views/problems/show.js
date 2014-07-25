@@ -20,8 +20,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     event.preventDefault();
     $('#response-message').text('');
     $('.spinner').toggle()
-    debugger;
-    var content = editor.getValue();
+    var content = App.editor.getValue();
     this.$('#solution').val(content);
     var params = this.$('form').serializeJSON();
     var newSoln = new App.Models.Solution(params['solution']);
