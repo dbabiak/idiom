@@ -1,11 +1,11 @@
 <div id="left-container">
-  <div style="text-align:center; padding-right: 70px">
+  <div style="text-align:center; padding-right: 65px; padding-bottom: 20px;">
     <h4>Problems</h4>
   </div>
 </div>
 
 <div id="center-container">
-  <div id="infovis" style='width: 600px; height: 600px; margin: 0 auto;'>
+  <div id="infovis" style='width: 700px; height: 700px; margin: 0 auto;'>
   </div>
 </div>
 
@@ -17,6 +17,22 @@
 <div id="log">
 </div>
 
+
+<div id='node-modal' class='modal fade'tab-index='-1'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Node info</h4>
+      </div>
+      <div class="modal-body">
+        Nodenodenode
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 
@@ -394,7 +410,6 @@
               enable: true,
               type: 'Native',
               onMouseEnter: function(node, eventInfo, e){
-                debugger;
               },
               onMouseLeave: function(node, eventInfo, e){
                 ht.canvas.getElement().style.cursor = '';
@@ -413,10 +428,6 @@
           //labels. This method is only triggered on label
           //creation
           onCreateLabel: function(domElement, node){
-            domElement.setAttribute('data-toggle', 'tooltip');
-            domElement.setAttribute('data-placement', 'top');
-            domElement.setAttribute('title', 'Tooltip on top');
-            $(domElement).tooltip();
               domElement.innerHTML = node.name;
               $jit.util.addEvent(domElement, 'click', function () {
                   ht.onClick(node.id, {
@@ -429,6 +440,17 @@
           //Change node styles when labels are placed
           //or moved.
           onPlaceLabel: function(domElement, node){
+            var title = (node._depth > 0) ? 'some title here' : '';
+            domElement.setAttribute('data-toggle', 'tooltip');
+            domElement.setAttribute('data-placement', 'top');
+            domElement.setAttribute('data-original-title', title);
+            $(domElement).tooltip();
+
+            if (node._depth === 0) {
+              domElement.setAttribute('data-toggle', "modal");
+              domElement.setAttribute('data-target', "#node-modal");
+            }
+
               var style = domElement.style;
               style.display = '';
               style.cursor = 'pointer';
