@@ -22,6 +22,6 @@ class Api::ProblemsController < ApplicationController
 
   def problem_params
     params.require(:problem).permit(:title, :description, :submitter_id,
-        :solution_spec, :example_spec)
+        :solution_spec, :example_spec, :rating, :category)
   end
 end

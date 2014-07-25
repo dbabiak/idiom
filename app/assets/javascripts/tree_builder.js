@@ -20,13 +20,13 @@ App.Tree = function(problems, options) {
 App.Tree.makeSubTree = function(root, problems) {
   // add all problem children
   problems.forEach(function(problem) {
-    if (problem.rating === root.data.rating && problem.tag === root.name) {
+    if (problem.rating === root.data.rating && problem.category === root.name) {
       root.children.push(problem);
     }
   });
   if (root.children.length > 0) {
     //With the rating bumped up by one.
-    var subRoot = rootNode(root.name, root.data.rating + 1)
+    var subRoot = App.Tree.rootNode(root.name, root.data.rating + 1)
     root.children.push(subRoot);
     App.Tree.makeSubTree(subRoot, problems);
   }
@@ -38,7 +38,7 @@ App.Tree.nid = 0;
 
 App.Tree.rootNode = function(name, rating) {
   var node = {};
-  node['id'] = ++App.Tree.nid;
+  node['id'] = "_" + (++App.Tree.nid);
   node['name'] = name;
   node['data'] = { 'rating': (rating || 0) };
   node['children']= [];

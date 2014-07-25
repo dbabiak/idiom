@@ -67,7 +67,10 @@
 
     function init(){
         //init data
-        var json = App.Tree(App.problems);
+        var json = App.Tree(App.problems.map(function(obj) {
+            return obj.attributes;
+          })
+        );
         //end
         var infovis = document.getElementById('infovis');
         var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
