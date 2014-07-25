@@ -21,7 +21,7 @@ App.Tree.makeSubTree = function(root, problems) {
   // add all problem children
   problems.forEach(function(problem) {
     if (problem.rating === root.data.rating && problem.category === root.name) {
-      root.children.push(problem);
+      root.children.push(App.Tree.problemNode(problem));
     }
   });
   if (root.children.length > 0) {
@@ -46,6 +46,7 @@ App.Tree.rootNode = function(name, rating) {
 };
 
 App.Tree.problemNode = function(problem) {
+  debugger;
   var node = {}
   node['id'] = problem.id;
   node['name'] = problem.title;

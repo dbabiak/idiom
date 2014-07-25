@@ -28,7 +28,9 @@
         <h4 class="modal-title" id="myModalLabel">Node info</h4>
       </div>
       <div class="modal-body">
-        Nodenodenode
+        <a href='#' id='problem-link' class='close' data-dismiss='modal'>
+          This will be replaced.
+        </a>
       </div>
     </div>
   </div>
@@ -76,7 +78,7 @@
         var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
 
         //init Hypertree
-        var ht = new $jit.Hypertree({
+        var ht = window.ht = new $jit.Hypertree({
           //id of the visualization container
           injectInto: 'infovis',
           //canvas width and height
@@ -91,6 +93,7 @@
           },
           Edge: {
               lineWidth: 2,
+              dim: 2,
               color: "#088"
           },
           Events: {
@@ -132,6 +135,8 @@
             if (node._depth === 0) {
               domElement.setAttribute('data-toggle', "modal");
               domElement.setAttribute('data-target', "#node-modal");
+              debugger;
+              $('#problem-link').attr('href', '#/problems/' + node.id)
             }
 
               var style = domElement.style;
@@ -183,5 +188,4 @@
     }
     init();
   });
-
 </script>
