@@ -14,8 +14,16 @@ class Api::SolutionsController < ApplicationController
   end
 
   def index
+    sleep 1
     # This will be for all of a user's solutions
     # or for all of a problem's solutions
+    @problem = Problem.find(params[:problem_id])
+    if @problem
+      @solutions = @problem.solutions
+      render 'index'
+    else
+      render ['we got nothing'], status: 404
+    end
   end
 
   def solution_params

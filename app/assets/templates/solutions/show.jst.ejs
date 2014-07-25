@@ -1,5 +1,11 @@
 <a href='#/problems/<%= solution.escape('problem_id') %>'>
   <%= solution.escape('problem_title') %>
 </a>
+<% if (solution.escape('submitter')) { %>
+  Submitted by:
+  <a href='#/users/<% solution.escape('submitter') %>'>
+    <%= solution.escape('submitter') %>
+  </a>
+<% } %>
 <br>
 <div id='<%= 'solution-' + solution.id %>' class='read-editor'><%= solution.escape('content') %></div>

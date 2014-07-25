@@ -5,10 +5,9 @@
   <div id='example-spec'><%= problem.escape('example_spec')%></div>
 
   Your solution:
-  <div id="editor">function foo(items) {
-      var x = "All this is syntax highlighted";
-      return x;
-  }</div>
+  <div id="editor">def foo(args)
+  #Your code here
+end</div>
 
   <form>
       <input type='hidden'
@@ -24,12 +23,15 @@
   <p>Another collection we have to handle explicitly. <br> This is going to
     be a legit other thing. </p>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <div id='response-message'></div>
+  <button class='show-solutions btn btn-default roundish'
+  data-toggle="modal" data-target="#myModal">View Solutions</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <div id='response-message'></div>
           <div class="spinner">
             <div class="spinner-container container1">
               <div class="circle1"></div>
@@ -51,21 +53,34 @@
             </div>
           </div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
-
-
+</div>
 
 <script>
-    var editor = ace.edit('example-spec');
-    editor.setTheme('ace/theme/tomorrow_night_blue')
-    editor.setReadOnly(true);
-    editor.getSession().setMode('ace/mode/ruby')
+  $(function() {
+    // var seditor = ace.editor('example-spec');
+    //   seditor.setTheme('ace/theme/tomorrow_night_blue');
+    //   seditor.setReadOnly(true);
+    //   seditor.getSession().setMode('ace/mode/ruby');
+    //   seditor = ace.editor('editor')
+    //   seditor.setTheme('ace/theme/tomorrow_night_blue');
+    //   seditor.setReadOnly(true);
+    //   seditor.getSession().setMode('ace/mode/ruby');
 
-    editor = ace.edit("editor");
-    editor.setTheme("ace/theme/tomorrow_night_blue");
-    editor.getSession().setMode("ace/mode/ruby");
+    var editor = App.geditor('example-spec');
+
+    var gedit = ace.edit('editor')
+    gedit = App.geditor('editor');
+    gedit.moveCursorTo(1,2);
+    // $('#response-message').bind('DOMNodeInserted', function(event){
+    //   if (event.target.className === 'solution-view') {
+    //     var seditor = ace.edit($(event.target).find('.read-editor').attr('id'));
+    //     seditor.setTheme('ace/theme/tomorrow_night_blue');
+    //     seditor.setReadOnly(true);
+    //     seditor.getSession().setMode('ace/mode/ruby');
+    //   }
+    // })
+  });
 </script>

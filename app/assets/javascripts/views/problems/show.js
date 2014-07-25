@@ -5,7 +5,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   className: 'col-xs-offset-3',
 
   events: {
-    'click button.submit': 'submit'
+    'click button.submit': 'submit',
+    'click button.show-solutions': 'fetchSolutions',
+    'click button.close': 'close'
   },
 
   render: function() {
@@ -18,6 +20,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     event.preventDefault();
     $('#response-message').text('');
     $('.spinner').toggle()
+    debugger;
     var content = editor.getValue();
     this.$('#solution').val(content);
     var params = this.$('form').serializeJSON();
@@ -38,5 +41,29 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       }
     });
   },
+
+  fetchSolutions: function(event) {
+    event.preventDefault();
+    $('#response-message').text('');
+    $('.spinner').toggle()
+    //Give this a callback to determine when to start a transition
+    this.model.fetchSolutions(this.insertSolutions.bind(this));
+    //pop in a modal.
+  },
+
+  close: function() {
+    event.preventDefault();
+    $('#response-message').text('');
+    $('.spinner').css('display', 'none');
+  },
+
+  insertSolutions: function(solutions) {
+    this.$('.spinner').toggle(1000)
+    $solutions = this.$('#response-message');
+    solutions.forEach(function(solution) {
+      var view = new App.Views.SolutionView({model: solution});
+      $solutions.append(view.render().$el);
+    })
+  }
 
 });

@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users
   resource :session
   namespace :api, defaults: {format: :json} do
-    resources :problems, except: [:edit, :new]
+    resources :problems, except: [:edit, :new] do
+      resources :solutions, only: [:index]
+    end
     resources :solutions, except: [:edit, :new]
     resources :solution_likes, only: [:create, :destroy]
-    resources :users, only: [:show]
+    resources :users, only: [:show] 
   end
 end

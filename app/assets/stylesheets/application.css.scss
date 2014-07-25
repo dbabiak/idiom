@@ -59,9 +59,21 @@ h1.title {
   margin: 5px;
 }
 
+.modal-content {
+  width: 660px;
+  border: 1px transparent;
+  border-radius: 15px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 
 #example-spec {
   height: 80px;
+}
+
+.solution-view {
+  text-align: left;
 }
 
 .read-editor {

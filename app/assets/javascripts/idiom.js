@@ -20,3 +20,12 @@ window.App = {
     });
   }
 };
+
+App.geditor = function(id) {
+  var _editor = ace.edit(id);
+  _editor.setTheme('ace/theme/tomorrow_night_blue')
+  _editor.getSession().setMode('ace/mode/ruby')
+  _editor.getSession().setTabSize(2);
+  _editor.getSession().setUseSoftTabs(true);
+  return _editor;
+};
