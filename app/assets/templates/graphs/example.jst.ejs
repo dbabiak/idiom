@@ -413,11 +413,6 @@
               },
               onMouseLeave: function(node, eventInfo, e){
                 ht.canvas.getElement().style.cursor = '';
-              },
-              onDragMove: function(node, eventInfo, e){
-                var pos = eventInfo.getPos();
-                node.pos.setc(pos.x, pos.y);
-                ht.plot();
               }
           },
 
