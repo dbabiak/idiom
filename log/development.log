@@ -70248,3 +70248,48 @@ Processing by Api::SolutionsController#index as JSON
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
   Rendered api/solutions/index.json.jbuilder (5.3ms)
 Completed 200 OK in 1059ms (Views: 53.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/solutions" for 127.0.0.1 at 2014-07-24 23:33:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SolutionsController#create as JSON
+  Parameters: {"problem_id"=>"2", "content"=>"def foo(args)\r\n  #Your code here\r\nend", "solution"=>{"problem_id"=>"2", "content"=>"def foo(args)\r\n  #Your code here\r\nend"}}
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'GSKZgH00he0t7hKlNuQfQg' LIMIT 1
+  [1m[36mProblem Load (0.9ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 402 Payment Required in 1237ms (Views: 0.4ms | ActiveRecord: 12.5ms)
+
+
+Started POST "/api/solutions" for 127.0.0.1 at 2014-07-24 23:34:20 -0700
+Processing by Api::SolutionsController#create as JSON
+  Parameters: {"problem_id"=>"2", "content"=>"def tron(x)\r\n  3 * x\r\nend", "solution"=>{"problem_id"=>"2", "content"=>"def tron(x)\r\n  3 * x\r\nend"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'GSKZgH00he0t7hKlNuQfQg' LIMIT 1
+  [1m[36mProblem Load (1.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "solutions" ("content", "created_at", "problem_id", "submitter_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "def tron(x)\r\n  3 * x\r\nend"], ["created_at", "2014-07-25 06:34:21.670326"], ["problem_id", 2], ["submitter_id", 2], ["updated_at", "2014-07-25 06:34:21.670326"]]
+  [1m[35m (11.0ms)[0m  COMMIT
+Completed 200 OK in 1374ms (Views: 0.6ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-24 23:34:26 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2014-07-24 23:34:27 -0700
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'GSKZgH00he0t7hKlNuQfQg' LIMIT 1
+  [1m[36mSolution Load (0.5ms)[0m  [1mSELECT "solutions".* FROM "solutions"  WHERE "solutions"."submitter_id" = $1[0m  [["submitter_id", 2]]
+  [1m[35mProblem Load (0.4ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mProblem Load (0.3ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSolution Load (0.8ms)[0m  [1mSELECT "solutions".* FROM "solutions" INNER JOIN "solution_likes" ON "solutions"."id" = "solution_likes"."solution_id" WHERE "solution_likes"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered api/users/show.json.jbuilder (62.9ms)
+Completed 200 OK in 171ms (Views: 122.7ms | ActiveRecord: 3.8ms)
