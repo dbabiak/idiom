@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -16,9 +15,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'minitest'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -36,17 +32,14 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
-gem 'better_errors'
-gem 'binding_of_caller'
 gem 'bootstrap-sass'
 gem 'backbone-on-rails'
-
 gem 'bcrypt-ruby', require: 'bcrypt'
-group :development do
-	gem 'pry-rails'
-	gem 'better_errors'
+gem 'pry-rails'
+
+group :development, :test do
+	gem 'debugger'
 	gem 'binding_of_caller'
-  gem 'better_errors'
+	gem 'better_errors'
 	gem 'annotate'
 end
