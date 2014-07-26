@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140725220115) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "problems", force: true do |t|
     t.string   "title",         null: false
     t.text     "description",   null: false
@@ -28,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140725220115) do
     t.string   "category"
   end
 
-  add_index "problems", ["submitter_id"], name: "index_problems_on_submitter_id", using: :btree
-  add_index "problems", ["title"], name: "index_problems_on_title", unique: true, using: :btree
+  add_index "problems", ["submitter_id"], name: "index_problems_on_submitter_id"
+  add_index "problems", ["title"], name: "index_problems_on_title", unique: true
 
   create_table "solution_likes", force: true do |t|
     t.integer  "user_id",     null: false
@@ -38,8 +35,8 @@ ActiveRecord::Schema.define(version: 20140725220115) do
     t.datetime "updated_at"
   end
 
-  add_index "solution_likes", ["solution_id"], name: "index_solution_likes_on_solution_id", using: :btree
-  add_index "solution_likes", ["user_id"], name: "index_solution_likes_on_user_id", using: :btree
+  add_index "solution_likes", ["solution_id"], name: "index_solution_likes_on_solution_id"
+  add_index "solution_likes", ["user_id"], name: "index_solution_likes_on_user_id"
 
   create_table "solutions", force: true do |t|
     t.integer  "problem_id",   null: false
@@ -49,8 +46,8 @@ ActiveRecord::Schema.define(version: 20140725220115) do
     t.datetime "updated_at"
   end
 
-  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id", using: :btree
-  add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id", using: :btree
+  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id"
+  add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id"
 
   create_table "users", force: true do |t|
     t.string "username",        null: false
@@ -58,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140725220115) do
     t.string "token",           null: false
   end
 
-  add_index "users", ["token"], name: "index_users_on_token", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  add_index "users", ["token"], name: "index_users_on_token"
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
