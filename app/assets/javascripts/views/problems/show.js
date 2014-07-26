@@ -2,8 +2,6 @@
 App.Views.ProblemsShowView = Backbone.View.extend({
   template: JST['problems/show'],
 
-  className: 'col-xs-offset-3',
-
   events: {
     'click button.submit': 'submit',
     'click button.show-solutions': 'fetchSolutions',

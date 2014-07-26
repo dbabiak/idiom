@@ -90,9 +90,6 @@
                 ht.canvas.getElement().style.cursor = '';
               },
               onClick: function(node, eventInfo, e){
-                if (node._depth === 0){
-                  debugger;
-                }
               }
           },
 
@@ -114,7 +111,19 @@
           //Change node styles when labels are placed
           //or moved.
           onPlaceLabel: function(domElement, node){
-            // if (node.data.special) debugger;
+
+            if (node._depth === 0) {
+              setTimeout(function(){
+                var id = (node.id[0] === '_' || node.id[0] === "0") ? 5 : node.id
+                var problem = App.problems.get(id);
+                var view = new App.Views.ProblemsShowView({model: problem});
+
+                if (App.currentView) { App.currentView.remove(); }
+                App.currentView = view;
+                $('#right-container').html(view.render().$el)
+              }, 800)
+            }
+
             var title = (node._depth > 0) ? 'some title here' : '';
             domElement.setAttribute('data-toggle', 'tooltip');
             domElement.setAttribute('data-placement', 'top');
@@ -145,7 +154,6 @@
 
           onComplete: function(){
               var node = ht.graph.getClosestNodeToOrigin("current");
-
           }
         });
         //load JSON data.

@@ -101856,3 +101856,4272 @@ Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:18:50 -0700
 Processing by Api::ProblemsController#index as JSON
   [1m[35mProblem Load (1.5ms)[0m  SELECT "problems".* FROM "problems"
 Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:21:10 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.7ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/problems/1" for 127.0.0.1 at 2014-07-26 00:21:13 -0700
+Processing by Api::ProblemsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mProblem Load (0.9ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered api/problems/_problem.json.jbuilder (0.5ms)
+  Rendered api/problems/show.json.jbuilder (21.6ms)
+Completed 200 OK in 43ms (Views: 40.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/solutions" for 127.0.0.1 at 2014-07-26 00:21:27 -0700
+Processing by Api::SolutionsController#create as JSON
+  Parameters: {"problem_id"=>"1", "content"=>"def foo(args)\r\n  #Your code here\r\nend", "solution"=>{"problem_id"=>"1", "content"=>"def foo(args)\r\n  #Your code here\r\nend"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  [1m[35mProblem Load (0.5ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 402 Payment Required in 1006ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/solutions" for 127.0.0.1 at 2014-07-26 00:26:02 -0700
+Processing by Api::SolutionsController#create as JSON
+  Parameters: {"problem_id"=>"5", "content"=>"def foo(n)\r\n  3 * n\r\nend", "solution"=>{"problem_id"=>"5", "content"=>"def foo(n)\r\n  3 * n\r\nend"}}
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  [1m[35mProblem Load (0.8ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (58.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (41.1ms)[0m  INSERT INTO "solutions" ("content", "created_at", "problem_id", "submitter_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "def foo(n)\r\n  3 * n\r\nend"], ["created_at", "2014-07-26 07:26:03.668685"], ["problem_id", 5], ["submitter_id", 5], ["updated_at", "2014-07-26 07:26:03.668685"]]
+  [1m[36m (13.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 1137ms (Views: 0.5ms | ActiveRecord: 114.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:37:35 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 943ms (Views: 941.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:37:36 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.9ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 140ms (Views: 137.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:15 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:39:16 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.8ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:56 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:39:57 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 314ms (Views: 311.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:41:12 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:41:13 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (1.0ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:41:29 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/problems/1" for 127.0.0.1 at 2014-07-26 00:41:31 -0700
+Processing by Api::ProblemsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mProblem Load (0.8ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered api/problems/_problem.json.jbuilder (0.4ms)
+  Rendered api/problems/show.json.jbuilder (21.2ms)
+Completed 200 OK in 39ms (Views: 36.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 87ms (Views: 84.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:42:00 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.8ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 324ms (Views: 320.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:43:12 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.8ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:54:08 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 821ms (Views: 818.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:54:09 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:54:10 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:58:05 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1304ms (Views: 1301.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:06 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:58:07 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 00:58:27 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 738ms (Views: 735.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 00:58:28 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 709ms (Views: 706.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:45 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:00:46 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 166ms (Views: 164.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:01:07 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 132ms (Views: 129.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:37 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:38 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:38 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:38 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:01:38 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 146ms (Views: 143.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:01:48 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:01:49 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:02:07 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (7.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 984ms (Views: 974.6ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:02:08 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.9ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 219ms (Views: 216.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:02:19 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:03:36 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 163ms (Views: 161.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:03:37 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:15:40 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.8ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/problems/2" for 127.0.0.1 at 2014-07-26 01:15:41 -0700
+Processing by Api::ProblemsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered api/problems/_problem.json.jbuilder (0.5ms)
+  Rendered api/problems/show.json.jbuilder (33.1ms)
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 705ms (Views: 702.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:17:07 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:17:08 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:19:54 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 699ms (Views: 696.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:19:55 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.6ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:22:56 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 900ms (Views: 896.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:22:57 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:22:58 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (1.0ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 209ms (Views: 207.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:19 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:23:20 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 128ms (Views: 126.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:23:58 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (1.2ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:24:01 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:24:02 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:24:20 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 139ms (Views: 136.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:24:21 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (1.0ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:24:32 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 216ms (Views: 212.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:24:33 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:24:46 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 746ms (Views: 744.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:24:47 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (2.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 127ms (Views: 124.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:32 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:25:33 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.6ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-07-26 01:25:37 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pJgPePa9IdFemNjTVSJaBRz69scqqP0+WrClob6NU5o="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'j2ixt6qyCbUReLm0BM0W3g' LIMIT 1[0m
+  [1m[35m (32.7ms)[0m  BEGIN
+  [1m[36mUser Exists (34.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."username" = 'pesto' AND "users"."id" != 5) LIMIT 1[0m
+  [1m[35mSQL (20.1ms)[0m  UPDATE "users" SET "token" = $1 WHERE "users"."id" = 5  [["token", "QvN-Yxmtr0sNZ6b9fmfudw"]]
+  [1m[36m (20.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 128ms (ActiveRecord: 108.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 61ms (Views: 60.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:38 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:25:39 -0700
+
+
+Started POST "/session" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"pJgPePa9IdFemNjTVSJaBRz69scqqP0+WrClob6NU5o=", "user"=>{"username"=>"markov", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'markov' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."username" = 'markov' AND "users"."id" != 2) LIMIT 1
+  [1m[36mSQL (1.1ms)[0m  [1mUPDATE "users" SET "token" = $1 WHERE "users"."id" = 2[0m  [["token", "_DQmqEi3qQCo8Z2IKZs2kg"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 131ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = '_DQmqEi3qQCo8Z2IKZs2kg' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:26:11 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:26:12 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.6ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:26:12 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.9ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:27:25 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (0.8ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/problems/1" for 127.0.0.1 at 2014-07-26 01:27:27 -0700
+Processing by Api::ProblemsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mProblem Load (1.0ms)[0m  [1mSELECT  "problems".* FROM "problems"  WHERE "problems"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered api/problems/_problem.json.jbuilder (0.3ms)
+  Rendered api/problems/show.json.jbuilder (21.6ms)
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = '_DQmqEi3qQCo8Z2IKZs2kg' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 126ms (Views: 124.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 01:31:51 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.6ms)
