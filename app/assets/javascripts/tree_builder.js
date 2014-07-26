@@ -53,3 +53,33 @@ App.Tree.problemNode = function(problem) {
   node['children'] = [];
   return node;
 };
+
+var RFT = App.RatingFirstTree = function(problems) {
+  var root = {
+    'id': '0',
+    'name': 'root',
+    'data': {},
+    'children': []
+  };
+
+  var ratings = [0, 1, 2, 3]
+  var categories = ['recursion', 'fundamentals', 'algorithms', 'data-structures', 'logic'];
+  ratings.forEach(function(rating) {
+    var subRoot = App.RatingFirstTree.rootNode(rating);
+    root.children.push(subRoot);
+    App.Tree.makeSubTree(subRoot, problems);
+  });
+
+  return root;
+}
+
+//What do we get by having it be a constructor? 
+//this is simply a bundle of information
+App.RatingFirstTree.rootNode = function(rating) {
+  var node = {};
+  node.id = "_" + (++App.Tree.nid);
+  node.name = name;
+  node.rating = (rating || 0)
+  node.children = [];
+  return node;
+};
