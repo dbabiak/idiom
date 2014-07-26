@@ -27,10 +27,12 @@
           <span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel">Node info</h4>
       </div>
-      <div class="modal-body">
-        <a href='#' id='problem-link' class='close' data-dismiss='modal'>
+      <div class="modal-body align-left">
+        <a href='#' id='problem-link' class='center'>
           This will be replaced.
         </a>
+        <div id='#problem-description'>
+        </div>
       </div>
     </div>
   </div>
@@ -133,10 +135,19 @@
             domElement.setAttribute('data-original-title', title);
             $(domElement).tooltip();
 
+            // Attach special listeners for root
             if (node._depth === 0) {
-              domElement.setAttribute('data-toggle', "modal");
-              domElement.setAttribute('data-target', "#node-modal");
+              $(domElement).on('click', function(event) {
+                //This is a nightmare. just make it by hand.
+                $('#node-modal').modal({keyboard: true});
+              })
               $('#problem-link').attr('href', '#/problems/' + node.id)
+              $('#problem-link').text(node.name);
+              $('#problem-description').text(node.data.description)
+              $('#problem-link').on('click', function(event) {
+                console.log("Go elsewhere(someday)");
+                $('.modal-backdrop').toggle()
+              })
             }
 
               var style = domElement.style;
