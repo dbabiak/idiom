@@ -46,7 +46,6 @@ App.Tree.rootNode = function(name, rating) {
 };
 
 App.Tree.problemNode = function(problem) {
-  debugger;
   var node = {}
   node['id'] = problem.id;
   node['name'] = problem.title;
