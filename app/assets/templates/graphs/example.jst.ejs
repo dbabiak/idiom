@@ -1,18 +1,14 @@
-<div id="left-container">
+<div id="left-container" class='col-md-8'>
   <div style="text-align:center; padding-right: 65px; padding-bottom: 20px;">
     <h4>Problems</h4>
   </div>
-  <div id="infovis" style='width: 700px; height: 700px; margin: 0 auto;'>
+  <div id="infovis" style='width: 780px; height: 780px; margin: 0 auto;'>
   </div>
 </div>
 
-<div id="right-container">
-  <div id="inner-details">
-  </div>
+<div id="right-container" class='col-md-4'>
 </div>
 
-<div id="log">
-</div>
 
 <div id='node-modal' class='modal fade'tab-index='-1'>
   <div class="modal-dialog">
@@ -54,16 +50,6 @@
       animate = !(iStuff || !nativeCanvasSupport);
     })();
 
-    var Log = {
-      elem: false,
-      write: function(text){
-        if (!this.elem)
-          this.elem = document.getElementById('log');
-        this.elem.innerHTML = text;
-        this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
-      }
-    };
-
 
     function init(){
         //init data
@@ -104,12 +90,13 @@
                 ht.canvas.getElement().style.cursor = '';
               },
               onClick: function(node, eventInfo, e){
-                debugger;
+                if (node._depth === 0){
+                  debugger;
+                }
               }
           },
 
           onBeforeCompute: function(node){
-              Log.write("centering");
           },
           //Attach event handlers and add text to the
           //labels. This method is only triggered on label
@@ -134,20 +121,7 @@
             domElement.setAttribute('data-original-title', title);
             $(domElement).tooltip();
 
-            // Attach special listeners for root
-            if (node._depth === 0) {
-              // $(domElement).on('click', function(event) {
-              //   //This is a nightmare. just make it by hand.
-              //   $('#node-modal').modal({keyboard: true});
-              // })
-              // $('#problem-link').attr('href', '#/problems/' + node.id)
-              // $('#problem-link').text(node.name);
-              // $('#problem-description').text(node.data.description)
-              // $('#problem-link').on('click', function(event) {
-              //   console.log("Go elsewhere(someday)");
-              //   $('.modal-backdrop').toggle()
-              // })
-            }
+
 
               var style = domElement.style;
               style.display = '';
@@ -170,23 +144,8 @@
           },
 
           onComplete: function(){
-              Log.write("done");
-
-              //Build the right column relations list.
-              //This is done by collecting the information (stored in the data property)
-              //for all the nodes adjacent to the centered node.
               var node = ht.graph.getClosestNodeToOrigin("current");
-              var html = "<h4>" + node.name + "</h4><b>Connections:</b>";
-              html += "<ul>";
-              node.eachAdjacency(function(adj){
-                  var child = adj.nodeTo;
-                  if (child.data) {
-                      var rel = (child.data.band == node.name) ? child.data.relation : node.data.relation;
-                      html += "<li>" + child.name + " " + "<div class=\"relation\">(relation: " + rel + ")</div></li>";
-                  }
-              });
-              html += "</ul>";
-              $jit.id('inner-details').innerHTML = html;
+
           }
         });
         //load JSON data.
