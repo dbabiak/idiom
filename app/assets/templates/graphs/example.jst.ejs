@@ -2,9 +2,6 @@
   <div style="text-align:center; padding-right: 65px; padding-bottom: 20px;">
     <h4>Problems</h4>
   </div>
-</div>
-
-<div id="center-container">
   <div id="infovis" style='width: 700px; height: 700px; margin: 0 auto;'>
   </div>
 </div>
@@ -16,7 +13,6 @@
 
 <div id="log">
 </div>
-
 
 <div id='node-modal' class='modal fade'tab-index='-1'>
   <div class="modal-dialog">
@@ -106,6 +102,9 @@
               },
               onMouseLeave: function(node, eventInfo, e){
                 ht.canvas.getElement().style.cursor = '';
+              },
+              onClick: function(node, eventInfo, e){
+                debugger;
               }
           },
 

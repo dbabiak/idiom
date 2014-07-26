@@ -217,3 +217,78 @@ Problem.create(title: "Triply-linked list",
   rating: 2,
   submitter_id: 2
 )
+
+
+
+Problem.create(title: "Determining if a graph has a solution",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 0,
+  submitter_id: 2
+)
+
+Problem.create(title: "Reversing linked list",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 0,
+  submitter_id: 2
+)
+
+
+Problem.create(title: "Circular linked-list",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 1,
+  submitter_id: 2
+)
+
+Problem.create(title: "Did Colonel Mustard commit the crime? (!)",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 2,
+  submitter_id: 2
+)
+
+Problem.create(title: "2 plus 2 ?",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 2,
+  submitter_id: 2
+)
+
+Problem.create(title: "Should marijuana be delegalized?",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 3,
+  submitter_id: 2
+)
+
+Problem.create(title: "What is the spoon?",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'logic',
+  rating: 3,
+  submitter_id: 2
+)
+
+Problem.create(title: "One hand clapping",
+  description: "Create a method",
+  solution_spec: "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')",
+  example_spec: "string_parse(['some','words']) == 'somewords'",
+  category: 'algorithms',
+  rating: 3,
+  submitter_id: 2
+)

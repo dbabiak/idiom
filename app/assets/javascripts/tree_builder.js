@@ -7,7 +7,7 @@ App.Tree = function(problems, options) {
     'children': []
   };
 
-  var subRoots = ['recursion', 'fundamentals', 'algorithms', 'data-structures'];
+  var subRoots = ['recursion', 'fundamentals', 'algorithms', 'data-structures', 'logic'];
   subRoots.forEach(function(name) {
     var subRoot = App.Tree.rootNode(name, 0);
     root.children.push(subRoot);
