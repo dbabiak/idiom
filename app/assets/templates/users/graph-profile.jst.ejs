@@ -51,7 +51,7 @@
 
   function init(){
     //need to take in the blah that blahs.
-    var json = App.Tree(user.ownSolutions().map(function(obj) {
+    var json = App.SolutionTree(App.user.ownSolutions().map(function(obj) {
         return obj.attributes;
       })
     );
@@ -72,12 +72,12 @@
       Node: {
           overridable: true,
           dim: 9,
-          color: "#f00"
+          color: "#0ef"
       },
       Edge: {
           lineWidth: 2,
           dim: 2,
-          color: "#088"
+          color: "#444"
       },
       Events: {
         enable: true,
@@ -87,8 +87,8 @@
             var root;
             ht.graph.each(function(g) {if (g._depth === 0) { root = g; }});
 
-            if (problem = App.problems.get(root.id)) {
-                var view = new App.Views.ProblemsShowView({model: problem});
+            if (solution = App.user.ownSolutions().get(root.id)) {
+                var view = new App.Views.SolutionView({model: solution});
                 if (App.currentView) { App.currentView.remove(); }
                 App.currentView = view;
                 $('#right-container').html(view.render().$el);
@@ -103,10 +103,6 @@
       onBeforeCompute: function(node){
       },
 
-      onAfterCompute: function() {
-        debugger;
-        alert("HELLO");
-      },
       //Attach event handlers and add text to the
       //labels. This method is only triggered on label
       //creation
@@ -138,11 +134,11 @@
           style.cursor = 'pointer';
           if (node._depth <= 1) {
               style.fontSize = "0.8em";
-              style.color = "#ddd";
+              style.color = "#bbb";
 
           } else if(node._depth == 2){
               style.fontSize = "0.7em";
-              style.color = "#555";
+              style.color = "#bbb";
 
           } else {
               style.display = 'none';

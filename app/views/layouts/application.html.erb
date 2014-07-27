@@ -19,7 +19,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <ul class="nav navbar-nav">
         <% if signed_in? %>
-          <li><a href='#/profile'><%= current_user.username%></a></li>
+          <li><a href='#/graph_profile'><%= current_user.username%></a></li>
           <!-- <li><a href='/session'>Sign Out</a></li> -->
           <li><%= link_to 'Sign Out', session_url, method: :delete %></li>
 

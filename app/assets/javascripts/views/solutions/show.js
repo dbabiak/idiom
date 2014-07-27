@@ -3,10 +3,12 @@ App.Views.SolutionView = Backbone.View.extend({
 
   initialize: function(options) {
     this.listenTo(this.model, 'sync', this.render);
-  },
-  className: 'solution-view',
-  events: {
-  },
+    },
+
+    className: 'solution-view',
+    
+    events: {
+    },
 
   render: function() {
     var content = this.template({solution: this.model});

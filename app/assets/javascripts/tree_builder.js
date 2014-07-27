@@ -1,5 +1,6 @@
 var RootNode,
     ProblemNode,
+    SolutionNode,
     Tree;
 Tree = App.Tree = function(problems, options) {
   var root = new RootNode({id: "root" + (Tree.nid++)})
@@ -43,7 +44,7 @@ Tree.makeSubTree = function(root, problems) {
   }
 };
 
-var RootNode = function(options) {
+RootNode = function(options) {
   this.id = options.id;
   this.name = (options.category + ': ' + options.rating);
   this.children = [];
@@ -54,10 +55,16 @@ var RootNode = function(options) {
   }
 };
 
-var ProblemNode = function(problem) {
+ProblemNode = function(problem) {
   this.id = problem.id;
   this.name = problem.title;
   this.description = problem;
+  this.children = [];
+}
+
+SolutionNode = function(solution) {
+  this.id = solution.id;
+  this.name = solution.problem_title;
   this.children = [];
 }
 
@@ -126,3 +133,41 @@ App.RatingFirstTree.makeCategorySubTree = function(categoryRoot, problems) {
     }
   });
 }
+
+App.SolutionTree = function(solutions, options) {
+  var root = new RootNode({id: "root" + (Tree.nid++)})
+  root.name = 'root'
+  // Categories should be a class constant on problems.
+  var categories = ['recursion', 'fundamentals', 'algorithms', 'data-structures', 'logic'];
+  categories.forEach(function(category) {
+    var subRoot = new RootNode({
+      id: "root" + (App.SolutionTree.nid++),
+      category: category,
+      rating: 0
+    });
+    root.children.push(subRoot);
+    App.makeSolSubTree(subRoot, solutions);
+  });
+  return root;
+}
+
+App.SolutionTree.nid = 0
+
+App.makeSolSubTree = function(root, solutions) {
+  solutions.forEach(function(solution) {
+    if (solution.rating === root.data.rating &&
+        solution.category === root.data.category) {
+      root.children.push(new SolutionNode(solution));
+    }
+  });
+
+  if (root.children.length > 0) {
+    var subRoot = new RootNode({
+      id: "_" + (App.SolutionTree.nid++),
+      category: root.data.category,
+      rating: root.data.rating + 1
+    });
+    root.children.push(subRoot);
+    App.makeSolSubTree(subRoot, solutions);
+  }
+};
