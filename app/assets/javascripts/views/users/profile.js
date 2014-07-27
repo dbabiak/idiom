@@ -21,7 +21,10 @@ App.Views.ProfileView = Backbone.View.extend({
   attachSolutionViews: function() {
     $ownSolutions = this.$('.own-solutions');
     this.model.ownSolutions().forEach(function(solution) {
-      var view = new App.Views.SolutionView({model: solution});
+      var view = new App.Views.SolutionView({
+          model: solution,
+          includeProblemLink: true
+        });
       $ownSolutions.append(view.render().$el);
     })
   }

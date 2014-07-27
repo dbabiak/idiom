@@ -6,4 +6,5 @@ json.solutions @solutions do |solution|
   json.problem_title solution.problem.title
   json.rating solution.problem.rating
   json.category solution.problem.category
+  json.upvotes solution.likes
 end

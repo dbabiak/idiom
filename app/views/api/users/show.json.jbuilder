@@ -9,6 +9,7 @@ json.own_solutions @user.solutions do |solution|
   json.problem_title solution.problem.title
   json.rating solution.problem.rating
   json.category solution.problem.category
+  json.upvotes solution.likes
 end
 
 json.liked_solutions @user.liked_solutions do |solution|
