@@ -69,6 +69,10 @@
         return obj.attributes;
       })
     );
+
+    var graph = "[{id:'root', adjacencies: ['node0']}, {id:'node0', name:'node0 name'}]";
+
+
     //end
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
@@ -178,7 +182,19 @@
     ht.refresh();
     //end
     ht.controller.onComplete();
+
+    ht.addNode = function() {
+      var trueGraph = eval('(' + graph + ')');
+      var type = 'fade:seq';
+      ht.op.sum(trueGraph, {
+        type: type,
+        fps: 30,
+        duration: 1000
+      });
+    };
   }
     init();
   });
+
+
 </script>

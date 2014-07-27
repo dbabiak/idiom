@@ -3,14 +3,14 @@ var RootNode,
     SolutionNode,
     Tree;
 Tree = App.Tree = function(problems, options) {
-  var root = new RootNode({id: "root" + (Tree.nid++)})
+  var root = new RootNode({id: "root"})
   root.name = 'root'
 
   // Categories should be a class constant on problems.
   var categories = ['recursion', 'fundamentals', 'algorithms', 'data-structures', 'logic'];
   categories.forEach(function(category) {
     var subRoot = new RootNode({
-      id: "root" + (Tree.nid++),
+      id: category[0] + '0',
       category: category,
       rating: 0
     });
@@ -19,9 +19,6 @@ Tree = App.Tree = function(problems, options) {
   });
   return root;
 }
-
-//Initialize id - this might need changing.
-Tree.nid = 0;
 
 Tree.makeSubTree = function(root, problems) {
   // add all problem children
@@ -35,7 +32,7 @@ Tree.makeSubTree = function(root, problems) {
   if (root.children.length > 0) {
     //With the rating bumped up by one.
     var subRoot = new RootNode({
-      id: "_" + (++Tree.nid),
+      id: root.data.category[0] + (root.data.rating + 1),
       category: root.data.category,
       rating: root.data.rating + 1
     });
