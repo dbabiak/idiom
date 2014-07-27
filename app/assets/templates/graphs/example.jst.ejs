@@ -131,23 +131,20 @@
         domElement.setAttribute('data-original-title', title);
         $(domElement).tooltip();
 
-
-
           var style = domElement.style;
           style.display = '';
           style.cursor = 'pointer';
           if (node._depth <= 1) {
               style.fontSize = "0.8em";
               style.color = "#ddd";
-
           } else if(node._depth == 2){
               style.fontSize = "0.7em";
-              style.color = "#555";
-
+              style.color = "#bbb";
+          // } else if (node._depth == 3) {
+          //     style.fontSize = "0.5em";
+          //     style.color = "#777";
           } else {
               style.display = 'none';
-          }
-          if (node.data.hello === 'some stuff') {
           }
 
           var left = parseInt(style.left);
