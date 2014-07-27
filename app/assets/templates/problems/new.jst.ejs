@@ -33,21 +33,20 @@ expect('foo to be positive', foo(n) > 0)
     <input name='problem[example_spec]' type='hidden'> -->
     solution_spec:
     <br>
-    <textarea class='roundish' name='problem[solution_spec]' rows='4' cols='60'></textarea>
+    <textarea class='roundish' name='problem[solution_spec]' rows='3' cols='60'></textarea>
     <br>
     example spec:
     <br>
-    <textarea class='roundish' name='problem[example_spec]' rows='4' cols='60'></textarea>
+    <textarea class='roundish' name='problem[example_spec]' rows='3' cols='60'></textarea>
     <br>
 
-    <label>Category:
-    <input class='roundish' name='problem[category]'>
-    </label>
+    <div>
+      <span class='right-margined'>Category: <%= options.category %></span>
+      <span class='right-margined'>Difficulty: <%= options.rating %></span>
+    </div>
 
-    <label>Difficulty:
-    <input class='roundish' name='problem[rating]' cols='4'>
-    </label>
-    <br>
+    <input type='hidden' name='problem[category]'>
+    <input type='hidden' name='problem[rating]'>
   <button class='submit btn btn-default'>Create Problem</button>
 </form>
 

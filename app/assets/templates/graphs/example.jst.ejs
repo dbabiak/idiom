@@ -108,7 +108,7 @@
             if (problem = App.problems.get(root.id)) {
               view = new App.Views.ProblemsShowView({model: problem});
             } else if (root.id !== 'root') {
-              view = new App.Views.ProblemsNewView();
+              view = new App.Views.ProblemsNewView(root.data);
             } else {
               view = new App.Views.RootPartialView();
             }
@@ -178,10 +178,12 @@
     //end
     ht.controller.onComplete();
 
-    ht.addNode = function(root_id, leaf_id) {
+    ht.addNode = function(problem) {
+      debugger;
+      var root_id = problem.category[0] + problem.rating
       var tree = {
         id: root_id,
-        children: [ { id: leaf_id, name: leaf_id + ' name'} ]
+        children: [ { id: problem.id, name: problem.title} ]
       };
 
       ht.op.sum(tree, {

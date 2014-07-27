@@ -1,8 +1,13 @@
 App.Views.ProblemsNewView = Backbone.View.extend({
   template: JST['problems/new'],
   className: 'col-xs-offset-3',
+  initialize: function(options) {
+    this.options = options;
+    this.options.category = options.category.charAt(0).toUpperCase() +
+        options.category.slice(1);
+  },
   render: function() {
-    var content = this.template();
+    var content = this.template({options: this.options});
     this.$el.html(content);
     return this;
   },
@@ -15,11 +20,8 @@ App.Views.ProblemsNewView = Backbone.View.extend({
     problem.save({}, {
       success: function(response) {
         App.problems.add(response);
-        var rootId = response.attributes.category[0] + response.attributes.rating;
-            debugger;
-        ht.addNode(rootId, problem.id)
+        ht.addNode(response.attributes)
       }
     });
-    Backbone.history.navigate('#/home', {trigger: true})
   }
 });
