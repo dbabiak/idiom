@@ -106573,3 +106573,747 @@ Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 17:22:15 -0700
 Processing by Api::ProblemsController#index as JSON
   [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"
 Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.7ms)
+  [1m[36m (51.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (13.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140706235554)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255) NOT NULL, "password_digest" character varying(255) NOT NULL, "token" character varying(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_users_on_token" ON "users"  ("token")[0m
+  [1m[35mSQL (16.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140706235554"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProblems (20140706235726)
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "problems" ("id" serial primary key, "title" character varying(255) NOT NULL, "description" text NOT NULL, "example_spec" text NOT NULL, "solution_spec" text NOT NULL, "submitter_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_problems_on_submitter_id" ON "problems"  ("submitter_id")
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_problems_on_title" ON "problems"  ("title")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140706235726"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProblemSolutions (20140707033039)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "solutions" ("id" serial primary key, "problem_id" integer NOT NULL, "submitter_id" integer NOT NULL, "content" text NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_solutions_on_problem_id" ON "solutions"  ("problem_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_solutions_on_submitter_id" ON "solutions"  ("submitter_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140707033039"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSolutionLikes (20140707045147)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "solution_likes" ("id" serial primary key, "user_id" integer NOT NULL, "solution_id" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_solution_likes_on_user_id" ON "solution_likes"  ("user_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_solution_likes_on_solution_id" ON "solution_likes"  ("solution_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140707045147"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to AddRatingAndCategory (20140725220115)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (19.2ms)[0m  [1mALTER TABLE "problems" ADD COLUMN "rating" integer[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "problems" ADD COLUMN "category" character varying(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140725220115"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'otto' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("password_digest", "token", "username") VALUES ($1, $2, $3) RETURNING "id"  [["password_digest", "$2a$10$WaRL2KmY0cH3TdAxBx6gqe7QuF79u4VgcC59Z3dJKEQg2HWbCLSRC"], ["token", "GVI5yiIk09W7XSWbtc6L4A"], ["username", "otto"]]
+  [1m[36m (4.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'epicurious_george' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("password_digest", "token", "username") VALUES ($1, $2, $3) RETURNING "id"  [["password_digest", "$2a$10$t6KTDRJ0/2qVcwLjQ7nr2u3l7Ohh984D5pP73QEvv4NIUF5Mvv6We"], ["token", "tSBKcWUyb0MRsE_hb_suug"], ["username", "epicurious_george"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'pesto' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("password_digest", "token", "username") VALUES ($1, $2, $3) RETURNING "id"  [["password_digest", "$2a$10$wvcy1YKWOiuSV8ZQ40utnOcpo77Q/CWo1RiJ7lEpbxn1nu82OipgG"], ["token", "QxSgZIsPZ4UwY8P14sVUWg"], ["username", "pesto"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'otto' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (1.2ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Monkey Patch Array' LIMIT 1
+  [1m[36mSQL (13.6ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.410593"], ["description", "Define a new instance method on the Array class called second, which returns the second item in an array (similar to the way .first and .last work in Ruby).\n\nIf there is no element wisth index 1 in the array, return nil in Ruby, or undefined in Javascript."], ["example_spec", "[3, 4, 5].second\n# => 4\n\n[].second\n# => nil"], ["rating", 0], ["solution_spec", "expect('.', [1,2,3].second == 2)\n  expect('.', [1].second == nil)"], ["submitter_id", 1], ["title", "Monkey Patch Array"], ["updated_at", "2014-07-27 00:38:50.410593"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.7ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Merge Sort' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.455967"], ["description", "Merge sort! Use a helper merge(arr1, arr2) that combines two sorted arrays into a sorted output. Use this in the signature mergesort(arr)"], ["example_spec", "merge([1,4,10],[3,5]) == [1,3,4,5,10]"], ["rating", 0], ["solution_spec", "expect('.', merge([0,2,3], [-1,5]) == [-1,0,2,3,5])\n  expect('.', mergesort([3,1,5,0,2]) == [0,1,2,3,5])"], ["submitter_id", 1], ["title", "Merge Sort"], ["updated_at", "2014-07-27 00:38:50.455967"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.4ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Power' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "recursion"], ["created_at", "2014-07-27 00:38:50.460484"], ["description", "Write a pow(base, exp) that recursively copmutes base to the exp power (for integer exp)"], ["example_spec", "pow(3,2) == 9\n  pow(4,0) == 1"], ["rating", 0], ["solution_spec", "expect('.', pow(3,3) == 27)\n  expect('.', pow(4,2) == 16)"], ["submitter_id", 1], ["title", "Power"], ["updated_at", "2014-07-27 00:38:50.460484"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.4ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Concatenate' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.464979"], ["description", "Create a method that takes in an Array of Strings and uses inject to return the concatenation of the strings."], ["example_spec", "concatenate(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Concatenate"], ["updated_at", "2014-07-27 00:38:50.464979"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.3ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Quicksort' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.468498"], ["description", "Create a method"], ["example_spec", "quicksort(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Quicksort"], ["updated_at", "2014-07-27 00:38:50.468498"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.6ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Fibonacci numbers' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "recursion"], ["created_at", "2014-07-27 00:38:50.471984"], ["description", "Create a method"], ["example_spec", "fibonacci(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Fibonacci numbers"], ["updated_at", "2014-07-27 00:38:50.471984"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.4ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Map' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.475069"], ["description", "Create a method "], ["example_spec", "map(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Map"], ["updated_at", "2014-07-27 00:38:50.475069"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.4ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'String Parsing' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.478602"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "String Parsing"], ["updated_at", "2014-07-27 00:38:50.478602"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mProblem Exists (0.4ms)[0m  SELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Map' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Select' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.489166"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Select"], ["updated_at", "2014-07-27 00:38:50.489166"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Reduce' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.492973"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Reduce"], ["updated_at", "2014-07-27 00:38:50.492973"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Linked List' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.496676"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 0], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Linked List"], ["updated_at", "2014-07-27 00:38:50.496676"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Stack' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.499864"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 0], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Stack"], ["updated_at", "2014-07-27 00:38:50.499864"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Queue' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.502963"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 0], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Queue"], ["updated_at", "2014-07-27 00:38:50.502963"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Doubly Linked List' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.506136"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Doubly Linked List"], ["updated_at", "2014-07-27 00:38:50.506136"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Priority Queue' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.509037"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Priority Queue"], ["updated_at", "2014-07-27 00:38:50.509037"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Solve Sexism' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "fundamentals"], ["created_at", "2014-07-27 00:38:50.512009"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Solve Sexism"], ["updated_at", "2014-07-27 00:38:50.512009"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'n-body problem' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.515431"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "n-body problem"], ["updated_at", "2014-07-27 00:38:50.515431"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Goldbach conjecture' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.519432"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Goldbach conjecture"], ["updated_at", "2014-07-27 00:38:50.519432"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Primes Less Than 1000' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.522593"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Primes Less Than 1000"], ["updated_at", "2014-07-27 00:38:50.522593"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Triply-linked list' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "data-structures"], ["created_at", "2014-07-27 00:38:50.525586"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Triply-linked list"], ["updated_at", "2014-07-27 00:38:50.525586"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Determining if a graph has a solution' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.529141"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 0], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Determining if a graph has a solution"], ["updated_at", "2014-07-27 00:38:50.529141"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Reversing linked list' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.532371"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 0], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Reversing linked list"], ["updated_at", "2014-07-27 00:38:50.532371"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Circular linked-list' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.535373"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 1], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Circular linked-list"], ["updated_at", "2014-07-27 00:38:50.535373"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Did Colonel Mustard commit the crime? (!)' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.538318"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Did Colonel Mustard commit the crime? (!)"], ["updated_at", "2014-07-27 00:38:50.538318"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = '2 plus 2 ?' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.541262"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 2], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "2 plus 2 ?"], ["updated_at", "2014-07-27 00:38:50.541262"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'Should marijuana be delegalized?' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.544171"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 3], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "Should marijuana be delegalized?"], ["updated_at", "2014-07-27 00:38:50.544171"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'What is the spoon?' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "logic"], ["created_at", "2014-07-27 00:38:50.547145"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 3], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "What is the spoon?"], ["updated_at", "2014-07-27 00:38:50.547145"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mProblem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "problems"  WHERE "problems"."title" = 'One hand clapping' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "problems" ("category", "created_at", "description", "example_spec", "rating", "solution_spec", "submitter_id", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["category", "algorithms"], ["created_at", "2014-07-27 00:38:50.550131"], ["description", "Create a method"], ["example_spec", "string_parse(['some','words']) == 'somewords'"], ["rating", 3], ["solution_spec", "expect('.', concatenate(['some', 'words','here']) == 'somewordshere')"], ["submitter_id", 2], ["title", "One hand clapping"], ["updated_at", "2014-07-27 00:38:50.550131"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 17:39:53 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (1.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = 'Kd4_WPculuB9N8-yQgjtlA' LIMIT 1
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_signed_in! rendered or redirected
+Completed 302 Found in 74ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = 'Kd4_WPculuB9N8-yQgjtlA' LIMIT 1[0m
+Completed 200 OK in 196ms (Views: 194.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 17:39:54 -0700
+
+
+Started POST "/session" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"yfGhDe9p7vKPpPuz2JI4nM4upoqAXxknCSlNckiDjhQ=", "user"=>{"username"=>"otto", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'otto' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."username" = 'otto' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "token" = $1 WHERE "users"."id" = 1[0m  [["token", "2n8d-eX-T2wmyRDle3WRDg"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 101ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+Processing by SiteController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."token" = '2n8d-eX-T2wmyRDle3WRDg' LIMIT 1[0m
+  Rendered site/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 50ms (Views: 48.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:00 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[35mProblem Load (1.7ms)[0m  SELECT "problems".* FROM "problems"
+Completed 200 OK in 49ms (Views: 28.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 17:40:01 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.7ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 61ms (Views: 59.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = '2n8d-eX-T2wmyRDle3WRDg' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 167ms (Views: 164.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 17:41:17 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.7ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+Processing by SiteController#root as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."token" = '2n8d-eX-T2wmyRDle3WRDg' LIMIT 1
+  Rendered site/root.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 164ms (Views: 161.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/links.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problems.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/repl.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problem_solutions.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/backbone_trigger_logger.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/idiom.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problems/index_row.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/models/problem.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/models/solution.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/models/user.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/collections/problems.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/collections/solutions.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/graphs/example.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/problems/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/problems/new.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/problems/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/solution_cases/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/solutions/index.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/solutions/show.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/views/users/profile.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/routers/app_router.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/tree_builder.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/src/ace.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/src/mode-ruby.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/src/theme-tomorrow_night_blue.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/jit.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+
+
+Started GET "/api/problems" for 127.0.0.1 at 2014-07-26 17:43:24 -0700
+Processing by Api::ProblemsController#index as JSON
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"[0m
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.5ms)
