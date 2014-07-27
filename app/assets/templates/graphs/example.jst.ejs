@@ -107,17 +107,18 @@
 
           setTimeout(function() {
             if (App.currentView) { App.currentView.remove(); }
-            var root;
+            var root, view;
             ht.graph.each(function(g) {if (g._depth === 0) { root = g; }});
             if (problem = App.problems.get(root.id)) {
-              var view = new App.Views.ProblemsShowView({model: problem});
-              App.currentView = view;
-              $('#right-container').html(view.render().$el);
-              $('#right-container').fadeIn(700);
+              view = new App.Views.ProblemsShowView({model: problem});
+            } else if (root.id !== 'root') {
+              view = new App.Views.ProblemsNewView();
             } else {
-              App.currentView = null;
-              $('#right-container').html('');
+              view = new App.Views.RootPartialView();
             }
+            App.currentView = view;
+            $('#right-container').html(view.render().$el);
+            $('#right-container').fadeIn(700);
           }, 700);
         }
       },
