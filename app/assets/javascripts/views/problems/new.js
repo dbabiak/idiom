@@ -14,8 +14,10 @@ App.Views.ProblemsNewView = Backbone.View.extend({
 
     problem.save({}, {
       success: function(response) {
-        alert(response);
         App.problems.add(response);
+        var rootId = response.attributes.category[0] + response.attributes.rating;
+            debugger;
+        ht.addNode(rootId, problem.id)
       }
     });
     Backbone.history.navigate('#/home', {trigger: true})

@@ -70,10 +70,6 @@
       })
     );
 
-    var graph = "[{id:'root', adjacencies: ['node0']}, {id:'node0', name:'node0 name'}]";
-
-
-    //end
     var infovis = document.getElementById('infovis');
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
 
@@ -123,8 +119,6 @@
         }
       },
 
-      onBeforeCompute: function(node){
-      },
       //Attach event handlers and add text to the
       //labels. This method is only triggered on label
       //creation
@@ -184,13 +178,16 @@
     //end
     ht.controller.onComplete();
 
-    ht.addNode = function() {
-      var trueGraph = eval('(' + graph + ')');
-      var type = 'fade:seq';
-      ht.op.sum(trueGraph, {
-        type: type,
+    ht.addNode = function(root_id, leaf_id) {
+      var tree = {
+        id: root_id,
+        children: [ { id: leaf_id, name: leaf_id + ' name'} ]
+      };
+
+      ht.op.sum(tree, {
+        type: 'fade:seq',
         fps: 30,
-        duration: 1000
+        duration: 2000
       });
     };
   }
