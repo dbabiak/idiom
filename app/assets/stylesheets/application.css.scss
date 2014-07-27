@@ -26,6 +26,14 @@ div.container {
   margin-right: 10px;
 }
 
+.top-margined {
+  margin-top: 50px;
+}
+
+.left-margined {
+  margin-left: 10px;
+}
+
 .col-centered {
   float: none;
   margin-top: 10%;
@@ -87,6 +95,15 @@ h1.title {
 
 .solution-view {
   text-align: left;
+}
+
+.slideable {
+    -webkit-transition: -webkit-transform 3s ease-in-out;;  /* For Safari 3.1 to 6.0 */
+    transition: transform 3s;
+}
+
+.anim{
+    -webkit-transform:translate(-300px,0);
 }
 
 .read-editor {

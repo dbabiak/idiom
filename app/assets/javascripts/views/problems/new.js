@@ -1,6 +1,8 @@
 App.Views.ProblemsNewView = Backbone.View.extend({
   template: JST['problems/new'],
-  className: 'col-xs-offset-3',
+
+  className: 'top-margined',
+
   initialize: function(options) {
     this.options = options;
     this.options.category = options.category.charAt(0).toUpperCase() +

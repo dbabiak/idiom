@@ -1,4 +1,4 @@
-<div id="left-container" class='col-md-8 fadein'>
+<div id="left-container" class='col-md-8 fadein slideable'>
 
   <div id="infovis" style='width: 780px; height: 780px; margin: 0 auto;'>
   </div>
@@ -97,8 +97,9 @@
         enable: true,
         type: 'Native',
         onClick: function(node, eventInfo, e){
-          //kill current center
-          App.center(true);
+          // Don't do anything if click was on empty space
+
+          //Otherwise do stuff
           $('#right-container').fadeOut(700)
 
           setTimeout(function() {
