@@ -1,4 +1,4 @@
-<div id="left-container" class='col-md-8'>
+<div id="left-container" class='col-md-8 fadein'>
 
   <div id="infovis" style='width: 780px; height: 780px; margin: 0 auto;'>
   </div>
@@ -29,6 +29,20 @@
 </div>
 
 <script>
+    App.center = function(kill) {
+      if (kill) {
+        App._center = undefined
+      } else {
+        if (App._center) return App._center;
+
+        ht.graph.each(function(node) {
+          if (node._depth === 0) {
+            return (App._center = node);
+          }
+        });
+      }
+    };
+
 
   $(function(){
     var labelType, useGradients, nativeTextSupport, animate;
@@ -83,29 +97,28 @@
         enable: true,
         type: 'Native',
         onClick: function(node, eventInfo, e){
+          //kill current center
+          App.center(true);
+          $('#right-container').fadeOut(700)
+
           setTimeout(function() {
+            if (App.currentView) { App.currentView.remove(); }
             var root;
             ht.graph.each(function(g) {if (g._depth === 0) { root = g; }});
-
             if (problem = App.problems.get(root.id)) {
-                var view = new App.Views.ProblemsShowView({model: problem});
-                if (App.currentView) { App.currentView.remove(); }
-                App.currentView = view;
-                $('#right-container').html(view.render().$el);
+              var view = new App.Views.ProblemsShowView({model: problem});
+              App.currentView = view;
+              $('#right-container').html(view.render().$el);
+              $('#right-container').fadeIn(700);
             } else {
-              if (App.currentView) { App.currentView.remove(); }
+              App.currentView = null;
               $('#right-container').html('');
             }
-          }, 800);
+          }, 700);
         }
       },
 
       onBeforeCompute: function(node){
-      },
-
-      onAfterCompute: function() {
-        debugger;
-        alert("HELLO");
       },
       //Attach event handlers and add text to the
       //labels. This method is only triggered on label
@@ -123,8 +136,6 @@
       //Change node styles when labels are placed
       //or moved.
       onPlaceLabel: function(domElement, node){
-
-
         var title = (node._depth > 0) ? 'some title here' : '';
         domElement.setAttribute('data-toggle', 'tooltip');
         domElement.setAttribute('data-placement', 'top');
@@ -137,12 +148,16 @@
           if (node._depth <= 1) {
               style.fontSize = "0.8em";
               style.color = "#ddd";
-          } else if(node._depth == 2){
+          } else if (node._depth == 2) {
               style.fontSize = "0.7em";
               style.color = "#bbb";
           // } else if (node._depth == 3) {
           //     style.fontSize = "0.5em";
           //     style.color = "#777";
+          } else if (node._depth == 3)  {
+              style.fontSize = "0.6em";
+              style.color = "#aaa";
+
           } else {
               style.display = 'none';
           }
@@ -154,7 +169,8 @@
 
       onComplete: function(){
           var node = ht.graph.getClosestNodeToOrigin("current");
-      }
+      },
+
     });
     //load JSON data.
     ht.loadJSON(json);

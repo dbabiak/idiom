@@ -153,6 +153,46 @@ button.submit {
   transform: rotateZ(90deg);
 }
 
+
+.fadein {
+    animation: fadein 2.5s;
+    -moz-animation: fadein 2.5s; /* Firefox */
+    -webkit-animation: fadein 2.5s; /* Safari and Chrome */
+    -o-animation: fadein 2.5s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .a {
   transition: color 0.2s ease-in-out;
   transition-property: color;
