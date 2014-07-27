@@ -109,17 +109,18 @@
           //Change node styles when labels are placed
           //or moved.
           onPlaceLabel: function(domElement, node){
-
-            if (node._depth === 0) {
+            var problem;
+            if (node._depth === 0 && (problem = App.problems.get(node.id))) {
               setTimeout(function(){
-                var id = (node.id[0] === '_' || node.id[0] === "0") ? 5 : node.id
-                var problem = App.problems.get(id);
+                debugger;
                 var view = new App.Views.ProblemsShowView({model: problem});
-
                 if (App.currentView) { App.currentView.remove(); }
                 App.currentView = view;
                 $('#right-container').html(view.render().$el)
               }, 800)
+            } else if (node._depth === 0) {
+              if (App.currentView) { App.currentView.remove(); }
+              $('#right-container').html('');
             }
 
             var title = (node._depth > 0) ? 'some title here' : '';
@@ -143,6 +144,8 @@
 
               } else {
                   style.display = 'none';
+              }
+              if (node.data.hello === 'some stuff') {
               }
 
               var left = parseInt(style.left);
