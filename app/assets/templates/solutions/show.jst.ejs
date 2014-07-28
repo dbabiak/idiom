@@ -14,8 +14,12 @@
 </span>
 
 <span class='right-margined'>
-  Upvotes: <%= solution.upvotes %>
-  <a href='#'>InsertUpvoteSymbolHere</a>
+  Upvotes: <%= solution.escape('upvotes') %>
+  <a class='upvote' href='#'
+      aria-hidden="true"
+      style='margin-left: 5px;'>
+      upvote
+  </a>
 </span>
 
 <br>
