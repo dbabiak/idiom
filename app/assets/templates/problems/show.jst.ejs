@@ -8,7 +8,7 @@
   #Your code here
 end</div>
 
-  <form>
+  <form style='display: inline;'>
       <input type='hidden'
           name='solution[problem_id]'
           value='<%= problem.get('id') %>'>
@@ -18,12 +18,12 @@ end</div>
         data-target="#myModal">Submit</button>
   </form>
 
-  <h4>Solutions</h4>
-  <p>Another collection we have to handle explicitly. <br> This is going to
-    be a legit other thing. </p>
-
-  <button class='show-solutions btn btn-default roundish'
-  data-toggle="modal" data-target="#myModal">View Solutions</button>
+  <button
+      id='show-solutions'
+      class='show-solutions btn btn-default roundish'
+      data-toggle="modal" data-target="#myModal">
+      View Solutions
+  </button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
