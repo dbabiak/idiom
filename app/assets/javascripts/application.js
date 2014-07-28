@@ -15,7 +15,6 @@
 //= require jquery.serializeJSON
 //= require underscore
 //= require backbone
-//= require backbone_trigger_logger
 //= require idiom
 //= require_tree ../templates
 //= require_tree ./models

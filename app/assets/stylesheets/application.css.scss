@@ -36,6 +36,10 @@ textarea, input {
   border-radius: 15px;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
 .top-margined {
   margin-top: 50px;
 }
@@ -59,11 +63,10 @@ textarea, input {
 }
 
 .comment-body {
-  padding-left: 11px;
 }
 
 .comment-footer {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 

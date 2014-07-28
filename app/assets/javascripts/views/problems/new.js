@@ -24,7 +24,6 @@ App.Views.ProblemsNewView = Backbone.View.extend({
     problem.save({}, {
       success: function(response) {
         App.problems.add(response);
-        debugger;
         ht.addNode(response.attributes)
       }
     });

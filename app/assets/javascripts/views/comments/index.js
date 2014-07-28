@@ -6,26 +6,59 @@ App.Views.CommentsIndexView = Backbone.View.extend({
   },
 
   className: 'comment-index',
-  
+
   render: function() {
     var content = this.template();
     this.$el.html(content);
     var $commentsIndex = this.$('.comment-list');
+    var ndx = 0;
     this.collection.each(function(comment) {
-      var indexRow = new App.Views.CommentsIndexRow({model: comment});
+      var padding = Math.min(180, ndx * 30);
+      var indexRow = new App.Views.CommentsIndexRow({
+        model: comment,
+        padding: padding
+      });
+      indexRow.$el.css('padding-left', padding + 'px');
       $commentsIndex.append(indexRow.render().$el);
+      ndx++
     });
     return this;
   }
-
 });
 
 App.Views.CommentsIndexRow = Backbone.View.extend({
   template: JST['comments/index_row'],
-  initialize: function() {},
+  initialize: function(options) {
+    this.padding = options.padding;
+  },
   render: function() {
+    // *********************************
+    // ***********************COME BACK TO THIS*******************
+    var numCols = 'some number here that we have to figure out'
     var content = this.template({comment: this.model});
     this.$el.html(content);
     return this;
+  },
+
+  events: {
+    'click a.reply': 'reply',
+    'click submit-comment cancel': 'closeCommentBox',
+    'click toggle-comment': 'toggleComments'
+  },
+
+  reply: function(event) {
+    event.preventDefault();
+    var commentBox = new App.Views.NewCommentView({
+      numCols: 20
+    });
+    this.$el.append(commentBox.render().$el);
+  },
+
+  toggleComments: function(event) {
+    event.preventDefault();
+    this.$('.comment-list').slideToggle(1500);
+    var commentToggle = this.$('a.toggle-comment')
+    var symbol = (commentToggle.html() === '&plus;') ? '&minus;' : '&plus;';
+    commentToggle.html(symbol);
   }
 });

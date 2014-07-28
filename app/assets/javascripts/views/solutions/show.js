@@ -10,6 +10,7 @@ App.Views.SolutionView = Backbone.View.extend({
     className: 'solution-view',
 
     events: {
+      'click new-comment': 'newComment'
     },
 
   render: function() {
@@ -29,6 +30,10 @@ App.Views.SolutionView = Backbone.View.extend({
       collection: this.model.comments()
     });
     this.$el.append(commentsView.render().$el)
+  },
+
+  newComment: function(event) {
+    debugger;
   }
 
 });
