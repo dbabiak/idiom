@@ -180,7 +180,6 @@
     ht.controller.onComplete();
 
     ht.addNode = function(problem) {
-      debugger;
       var root_id = problem.category[0] + problem.rating
       var tree = {
         id: root_id,
@@ -192,6 +191,14 @@
         fps: 30,
         duration: 2000
       });
+    };
+
+    ht.center = function() {
+      var center_node;
+      ht.graph.each(function(node) {
+        if (node._depth === 0) { center_node = node; }
+      });
+      return center_node;
     };
   }
     init();

@@ -6,7 +6,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     // Havin index be '' causes user login to go screwy
     // the index will eat every domain.
-    '': 'problemsIndex',
+    '': 'graph',
     'problems/new': 'problemsNew',
     'problems/:id': 'problemsShow',
     'users/:id': 'usersShow',

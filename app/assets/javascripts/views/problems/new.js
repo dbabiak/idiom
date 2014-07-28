@@ -17,11 +17,14 @@ App.Views.ProblemsNewView = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     var params = this.$('form').serializeJSON();
+    params.problem.category = ht.center().data.category.toLowerCase();
+    params.problem.rating = ht.center().data.rating;
     var problem = new App.Models.Problem(params.problem);
 
     problem.save({}, {
       success: function(response) {
         App.problems.add(response);
+        debugger;
         ht.addNode(response.attributes)
       }
     });
