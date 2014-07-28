@@ -1,0 +1,4 @@
+git clone git@heroku.com:idiom.git -o heroku
+
+App URL: http://idiom.herokuapp.com/
+Git URL: git@heroku.com:idiom.git
