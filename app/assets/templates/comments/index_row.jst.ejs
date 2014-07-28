@@ -1,3 +1,12 @@
-<%= comment.escape('submitter') %>,
-<%= comment.escape('created_at') %>
-<%= comment.escape('content') %>
+<div class='comment-header'>
+  <span><a href='#'><%= comment.escape('submitter') %></a></span>
+  <span class='time'><%= comment.escape('created_at') %></span>
+  <span><a href='#'>upvote</a></span>
+</div>
+<div class='comment-body'>
+  <%= comment.escape('content') %>
+</div>
+
+<div class='comment-footer'>
+  <a href='#' class='reply'>reply</a>
+</div>

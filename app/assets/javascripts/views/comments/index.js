@@ -4,10 +4,13 @@ App.Views.CommentsIndexView = Backbone.View.extend({
     //this.collection = options.collection;
     this.listenTo(this.collection, 'sync add', this.render);
   },
+
+  className: 'comment-index',
+  
   render: function() {
     var content = this.template();
     this.$el.html(content);
-    var $commentsIndex = this.$('.comments-index');
+    var $commentsIndex = this.$('.comment-list');
     this.collection.each(function(comment) {
       var indexRow = new App.Views.CommentsIndexRow({model: comment});
       $commentsIndex.append(indexRow.render().$el);
