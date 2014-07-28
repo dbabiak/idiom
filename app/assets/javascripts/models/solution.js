@@ -5,8 +5,15 @@ App.Models.Solution = Backbone.Model.extend({
       this._comments = new App.Collections.Comments([], {solution: this});
     }
     return this._comments;
-  }
-  ,
+  },
+
+  parse: function(payload){
+    if (payload.comments) {
+      this.comments().set(payload.comments);
+      delete payload.comments;
+    }
+    return payload;
+  },
 
   fetchComments: function(callback) {
     var that = this;
@@ -16,7 +23,6 @@ App.Models.Solution = Backbone.Model.extend({
       data: { solution_id: this.id },
       success: function (response) {
         that.comments().set(response.comments, {parse: true});
-        callback(that.comments());
       }
     });
   }

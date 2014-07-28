@@ -6,7 +6,7 @@ window.App = {
   Routers: {},
   initialize: function() {
     var $rootEl = $('#content');
-    App.problems = new App.Collections.Problems();
+    App.problems = new App.Collections.Problems()
 
     // THIS IS A HACK. App ignores id and just returns current user's info
     // We'll eventually have to move to a 'manual' AJAX query
