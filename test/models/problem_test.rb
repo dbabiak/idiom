@@ -10,6 +10,8 @@
 #  submitter_id  :integer          not null
 #  created_at    :datetime
 #  updated_at    :datetime
+#  rating        :integer
+#  category      :string(255)
 #
 
 require 'test_helper'

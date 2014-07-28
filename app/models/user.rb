@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :solutions, class_name: 'Solution', foreign_key: :submitter_id
   has_many :solution_likes
   has_many :liked_solutions, through: :solution_likes, source: :solution
+  has_many :comments
 
   before_validation :ensure_token
   validates :username, :password_digest, presence: true

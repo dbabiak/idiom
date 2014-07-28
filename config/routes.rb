@@ -7,8 +7,13 @@ Rails.application.routes.draw do
     resources :problems, except: [:edit, :new] do
       resources :solutions, only: [:index]
     end
-    resources :solutions, except: [:edit, :new]
+    resources :solutions, except: [:edit, :new] do
+      resources :comments, only: [:index]
+    end
     resources :solution_likes, only: [:create, :destroy]
-    resources :users, only: [:show] 
+    resources :users, only: [:show] do
+      resources :comments, only: [:index]
+    end
+    resources :comments, only: [:create]
   end
 end
