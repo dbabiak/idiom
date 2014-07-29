@@ -10,63 +10,68 @@ App.Views.CommentChain = Backbone.View.extend({
   render: function() {
     var content = this.template();
     this.$el.html(content);
-    this.attachComments;
+    this.attachComments();
     this.$('.comment-list').css('display', 'none');
     this.$el.css('padding', this.padding + 'px')
     return this;
   },
 
   attachComments: function() {
-    debugger;
+    var that = this;
     this.comments.each(function(comment) {
-      var indexRow = new App.Views.CommentShow({
+      var indexRow = new App.Views.CommentView({
         model: comment,
         padding: this.padding + 20,
         parent: this.parent
       });
-      this.$('.comment-list').append(indexRow.render().$el);
+        that.$('.comment-list:first').append(indexRow.render().$el);
     });
   },
 
   events: {
-    'click a.toggle-comments': 'toggle-comments',
+    'click a.toggle-comments': 'toggleComments',
     'click a.reply': 'openReply',
     'click a.submit-reply': 'submitReply',
     'click a.close-reply': 'closeReply'
   },
 
   toggleComments: function(event) {
-    debugger;
     event.preventDefault();
-    this.$('.comment-list').slideToggle(800);
-    var commentToggle = this.$('a.toggle-comment');
+    this.$('.comment-list:first').slideToggle(500);
+    var commentToggle = this.$('a.toggle-comments:first');
     var symbol = (commentToggle.html() === '+') ? '-' : '+';
     commentToggle.html(symbol);
+    return false;
   },
 
   openReply: function(event) {
     event.preventDefault();
     // abort mission if comment already in progress
-    if (this.commentOpen) { return; }
+    if (this.commentOpen) { return false; }
     this.commentOpen = true;
     var commentBox = new App.Views.NewCommentView({
       numCols: 20
     });
-     this.$('.new-comment').append(commentBox.render().$el);
+    commentBox.$el.css('display', 'none');
+    this.$('.new-comment:first').append(commentBox.render().$el);
+    commentBox.$el.slideToggle(400);
+    return false;
   },
 
   submitReply: function(event) {
-    //This has to post to server properly. 
+    //This has to post to server properly.
     event.preventDefault();
     this.$('.new-comment').children().remove();
     this.commentOpen = false;
     var comment = new App.Models.Comment({})
     debugger;
+    return false;
   },
 
   closeReply: function(event) {
     event.preventDefault();
     this.commentOpen = false;
     this.$('.new-comment').children().remove();
+    return false;
   }
 });

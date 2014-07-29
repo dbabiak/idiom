@@ -16,6 +16,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
 
   submit: function(event) {
     event.preventDefault();
+    var that = this;
     $('#response-message').text('');
     $('.spinner').toggle()
     var content = App.editor.getValue();
@@ -28,6 +29,8 @@ App.Views.ProblemsShowView = Backbone.View.extend({
           $('#response-message').text('Success!');
         }, 900)
         $('.spinner').toggle(1000)
+        // that.model.solutions.add(newSoln);
+        // debugger;
       },
       error: function(response) {
         var errorMsg = "Error! " + arguments[1].responseJSON.message
@@ -62,7 +65,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       var view = new App.Views.SolutionView({model: solution});
       $solutions.append(view.render().$el);
     })
-    $solutions.slideToggle(700);
+    $solutions.slideToggle(500);
   }
 
 });

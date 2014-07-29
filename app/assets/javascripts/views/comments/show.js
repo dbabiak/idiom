@@ -10,6 +10,7 @@ App.Views.CommentView = Backbone.View.extend({
     var numCols = 'some number here that we have to figure out'
     var content = this.template({comment: this.model});
     this.$el.html(content);
+    this.appendComments();
     return this;
   },
 
@@ -17,7 +18,7 @@ App.Views.CommentView = Backbone.View.extend({
     var commentChain = new App.Views.CommentChain({
       parent: this.model,
       comments: this.model.comments(),
-      padding: 5
+      padding: this.padding + 25
     });
     this.$el.append(commentChain.render().$el);
   }
