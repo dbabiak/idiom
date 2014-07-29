@@ -6,9 +6,11 @@ json.solutions @solutions do |solution|
   json.rating solution.problem.rating
   json.category solution.problem.category
   json.upvotes solution.likes
+  json.commentable_type 'solution'
   json.comments solution.comments do |comment|
     json.extract! comment, :id, :content, :created_at
     json.submitter comment.user.username
+    json.commentable_type 'comment'
   end
 
 end

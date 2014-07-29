@@ -69,7 +69,17 @@ App.Views.CommentChain = Backbone.View.extend({
       $commentBox.remove();
     });
 
-    var comment = new App.Models.Comment({})
+    var parent_id = this.parent.attributes.commentable_type + '_id';
+    params = {};
+    params[parent_id] = parent.id;
+    params['content'] = $('.new-comment:first').find('textarea').text();
+    debugger;
+    var comment = new App.Models.Comment(params);
+    comment.save({
+      success: function(response) {
+        debugger;
+      }
+    });
 
     this.commentOpen = false;
     return false;
