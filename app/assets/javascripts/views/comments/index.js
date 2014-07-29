@@ -17,7 +17,8 @@ App.Views.CommentsIndexView = Backbone.View.extend({
       var padding = Math.min(180, ndx * 30);
       var indexRow = new App.Views.CommentsIndexRow({
         model: comment,
-        padding: padding
+        padding: padding,
+        commentable: this.commentable
       });
       indexRow.$el.css('padding-left', padding + 'px');
       $commentsIndex.append(indexRow.render().$el);
@@ -108,6 +109,7 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
     event.preventDefault();
     this.$('a.reply').toggle();
     this.$('.new-comment').remove();
+    var comment = new App.Models.Comment({})
   },
 
   cancel: function(event) {
