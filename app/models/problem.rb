@@ -17,6 +17,7 @@
 class Problem < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User', foreign_key: :submitter_id
   has_many :solutions
+  has_many :comments, as: :commentable
 
   validates :title, :description,:submitter_id, :solution_spec,
       :example_spec, presence: true

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show] do
       resources :comments, only: [:index]
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :show] do
+      resources :comments, only: [:index]
+    end
   end
 end
