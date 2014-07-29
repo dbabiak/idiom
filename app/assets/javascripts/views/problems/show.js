@@ -55,12 +55,14 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   },
 
   insertSolutions: function(solutions) {
-    this.$('.spinner').toggle(1000)
+    this.$('.spinner').slideToggle(400);
     $solutions = this.$('#response-message');
+    $solutions.css('display', 'none');
     solutions.forEach(function(solution) {
       var view = new App.Views.SolutionView({model: solution});
       $solutions.append(view.render().$el);
     })
+    $solutions.slideToggle(800);
   }
 
 });

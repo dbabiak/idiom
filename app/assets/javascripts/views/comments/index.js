@@ -22,7 +22,20 @@ App.Views.CommentsIndexView = Backbone.View.extend({
       $commentsIndex.append(indexRow.render().$el);
       ndx++
     });
+    this.$('.comment-list').css('display', 'none');
     return this;
+  },
+
+  events: {
+    'click a.toggle-comment': 'toggleComments'
+  },
+
+  toggleComments: function(event) {
+    event.preventDefault();
+    this.$('.comment-list').slideToggle(800);
+    var commentToggle = this.$('a.toggle-comment')
+    var symbol = (commentToggle.html() === '+') ? '-' : '+';
+    commentToggle.html(symbol);
   }
 });
 
@@ -42,8 +55,7 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
 
   events: {
     'click a.reply': 'reply',
-    'click submit-comment cancel': 'closeCommentBox',
-    'click toggle-comment': 'toggleComments'
+    'click submit-comment cancel': 'closeCommentBox'
   },
 
   reply: function(event) {
@@ -52,13 +64,5 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
       numCols: 20
     });
     this.$el.append(commentBox.render().$el);
-  },
-
-  toggleComments: function(event) {
-    event.preventDefault();
-    this.$('.comment-list').slideToggle(1500);
-    var commentToggle = this.$('a.toggle-comment')
-    var symbol = (commentToggle.html() === '&plus;') ? '&minus;' : '&plus;';
-    commentToggle.html(symbol);
   }
 });
