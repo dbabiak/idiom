@@ -2,7 +2,7 @@ App.Views.CommentChain = Backbone.View.extend({
   template: JST['comments/comment_chain'],
   initialize: function(options) {
     this.comments = options.comments;
-    this.listenTo(this.comments, 'sync add', this.render);
+    this.listenTo(this.comments, 'sync', this.render);
     this.parent = options.parent;
     this.padding = options.padding;
   },

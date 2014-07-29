@@ -27,14 +27,12 @@ App.Views.NewCommentView = Backbone.View.extend({
     });
 
     var parent_id = this.parent.attributes.commentable_type + '_id';
-    params = {};
+    params = this.$('form').serializeJSON();
     params[parent_id] = this.parent.id;
-    params['content'] = this.$('textarea').text();
     var comment = new App.Models.Comment(params);
-    comment.save({
+    comment.save({}, {
       success: function(response) {
-        alert("it worked");
-        debugger;
+        that.parent.comments().add(response);
       }
     });
 
@@ -44,7 +42,6 @@ App.Views.NewCommentView = Backbone.View.extend({
 
   closeReply: function(event) {
     event.preventDefault();
-    debugger;
     var $commentBox = this.$('.new-comment:first').children();
     $commentBox.slideToggle(300, function() {
       $commentBox.remove();

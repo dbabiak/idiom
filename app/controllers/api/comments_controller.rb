@@ -4,7 +4,7 @@ class Api::CommentsController < ApplicationController
     @comment = @commentable.comments.build(content: params[:content])
     @comment.user_id = current_user.id
     if @comment.save
-      render json: @comment
+      render json: @comment, status: 201
     else
       render json: ['errorz'], status: 422
     end
