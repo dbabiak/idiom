@@ -7,11 +7,7 @@ App.Views.SolutionView = Backbone.View.extend({
       this.model.fetchComments();
     },
 
-    className: 'solution-view',
-
-    events: {
-      'click new-comment': 'newComment'
-    },
+  className: 'solution-view',
 
   render: function() {
     var content = this.template({
@@ -26,14 +22,11 @@ App.Views.SolutionView = Backbone.View.extend({
   },
 
   appendComments: function() {
-    var commentsView = new App.Views.CommentsIndexView({
-      collection: this.model.comments()
+    var commentChain = new App.Views.CommentChain({
+      comments: this.model.comments(),
+      parent: this.model,
+      padding: 5
     });
-    this.$el.append(commentsView.render().$el)
-  },
-
-  newComment: function(event) {
-    debugger;
+    this.$el.append(commentChain.render().$el)
   }
-
 });
