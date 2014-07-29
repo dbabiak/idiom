@@ -31,7 +31,6 @@ App.Views.CommentChain = Backbone.View.extend({
   events: {
     'click a.toggle-comments': 'toggleComments',
     'click a.reply': 'openReply',
-    'click a.submit-reply': 'submitReply',
     'click a.close-reply': 'closeReply'
   },
 
@@ -52,37 +51,18 @@ App.Views.CommentChain = Backbone.View.extend({
       return false;
     }
     this.commentOpen = true;
+    this.attachCommentBox();
+    return false;
+  },
+
+  attachCommentBox: function() {
     var commentBox = new App.Views.NewCommentView({
-      numCols: 20
+      numCols: 20,
+      parent: this.parent
     });
     commentBox.$el.css('display', 'none');
     this.$('.new-comment:first').append(commentBox.render().$el);
     commentBox.$el.slideToggle(300);
-    return false;
-  },
-
-  submitReply: function(event) {
-    //This has to post to server properly.
-    event.preventDefault();
-    var $commentBox = this.$('.new-comment:first').children();
-    $commentBox.slideToggle(300, function() {
-      $commentBox.remove();
-    });
-
-    var parent_id = this.parent.attributes.commentable_type + '_id';
-    params = {};
-    params[parent_id] = parent.id;
-    params['content'] = $('.new-comment:first').find('textarea').text();
-    debugger;
-    var comment = new App.Models.Comment(params);
-    comment.save({
-      success: function(response) {
-        debugger;
-      }
-    });
-
-    this.commentOpen = false;
-    return false;
   },
 
   closeReply: function(event) {
@@ -96,4 +76,5 @@ App.Views.CommentChain = Backbone.View.extend({
     this.commentOpen = false;
     return false;
   }
+
 });

@@ -1,7 +1,6 @@
 App.Models.Comment = Backbone.Model.extend({
   initialize: function(options) {
     // debugger;
-    debugger;
     for (var key in options) {
       this[key] = options[key];
     }
