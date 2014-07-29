@@ -5,8 +5,7 @@ App.Models.Problem = Backbone.Model.extend({
       this._solutions = new App.Collections.Solutions([], {problem: this});
     }
     return this._solutions;
-  }
-  ,
+  },
 
   fetchSolutions: function(callback) {
     var that = this;
@@ -21,3 +20,5 @@ App.Models.Problem = Backbone.Model.extend({
     });
   }
 });
+
+App.Models.Problem.categories = ['algorithms', 'fundamentals', 'recursion', 'logic', 'data-structures'];
