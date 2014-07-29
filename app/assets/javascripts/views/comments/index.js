@@ -56,12 +56,15 @@ App.Views.CommentsIndexView = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     this.$('a.parent-reply').toggle();
-
+    this.$('.new-comment').remove();
+    debugger;
   },
 
   cancel: function(event) {
     event.preventDefault();
     this.$('a.parent-reply').toggle();
+    this.$('.new-comment').remove();
+    debugger;
   }
 });
 
@@ -82,8 +85,8 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
 
   events: {
     'click a.reply': 'beginComment',
-    'click submit-comment': 'submit',
-    'click close': 'close'
+    'click a.submit-comment': 'submit',
+    'click a.cancel': 'cancel'
 
   },
 
@@ -104,11 +107,12 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
     debugger;
     event.preventDefault();
     this.$('a.reply').toggle();
-
+    this.$('.new-comment').remove();
   },
 
-  close: function(event) {
+  cancel: function(event) {
     event.preventDefault();
     this.$('a.reply').toggle();
+    this.$('.new-comment').remove();
   }
 });
