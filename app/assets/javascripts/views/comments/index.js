@@ -1,8 +1,9 @@
 App.Views.CommentsIndexView = Backbone.View.extend({
   template: JST['comments/index'],
-  initialize: function() {
+  initialize: function(options) {
     //this.collection = options.collection;
     this.listenTo(this.collection, 'sync add', this.render);
+    this.commentable = options.commentable;
   },
 
   className: 'comment-index',
@@ -27,7 +28,8 @@ App.Views.CommentsIndexView = Backbone.View.extend({
   },
 
   events: {
-    'click a.toggle-comment': 'toggleComments'
+    'click a.toggle-comment': 'toggleComments',
+    'click a.parent-reply': 'beginComment'
   },
 
   toggleComments: function(event) {
@@ -36,6 +38,30 @@ App.Views.CommentsIndexView = Backbone.View.extend({
     var commentToggle = this.$('a.toggle-comment')
     var symbol = (commentToggle.html() === '+') ? '-' : '+';
     commentToggle.html(symbol);
+  },
+
+  beginComment: function(event) {
+    event.preventDefault();
+    this.$('a.parent-reply').toggle()
+    //this doesn't have to be a complete new view...
+    // fk, no it does. because this is goign to be abstracted for a bundh
+    // of other stuff.
+    var commentBox = new App.Views.NewCommentView({
+      numCols: 20,
+      commentable: this.model
+    });
+    this.$el.append(commentBox.render().$el);
+  },
+
+  submit: function(event) {
+    event.preventDefault();
+    this.$('a.parent-reply').toggle();
+
+  },
+
+  cancel: function(event) {
+    event.preventDefault();
+    this.$('a.parent-reply').toggle();
   }
 });
 
@@ -43,6 +69,7 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
   template: JST['comments/index_row'],
   initialize: function(options) {
     this.padding = options.padding;
+    this.commentable = options.commentable;
   },
   render: function() {
     // *********************************
@@ -54,15 +81,34 @@ App.Views.CommentsIndexRow = Backbone.View.extend({
   },
 
   events: {
-    'click a.reply': 'reply',
-    'click submit-comment cancel': 'closeCommentBox'
+    'click a.reply': 'beginComment',
+    'click submit-comment': 'submit',
+    'click close': 'close'
+
   },
 
-  reply: function(event) {
+  beginComment: function(event) {
     event.preventDefault();
+    this.$('a.reply').toggle()
+    //this doesn't have to be a complete new view...
+    // fk, no it does. because this is goign to be abstracted for a bundh
+    // of other stuff.
     var commentBox = new App.Views.NewCommentView({
-      numCols: 20
+      numCols: 20,
+      commentable: this.model
     });
     this.$el.append(commentBox.render().$el);
+  },
+
+  submit: function(event) {
+    debugger;
+    event.preventDefault();
+    this.$('a.reply').toggle();
+
+  },
+
+  close: function(event) {
+    event.preventDefault();
+    this.$('a.reply').toggle();
   }
 });
