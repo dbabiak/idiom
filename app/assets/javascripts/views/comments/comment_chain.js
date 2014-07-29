@@ -37,7 +37,7 @@ App.Views.CommentChain = Backbone.View.extend({
 
   toggleComments: function(event) {
     event.preventDefault();
-    this.$('.comment-list:first').slideToggle(500);
+    this.$('.comment-list:first').slideToggle(400);
     var commentToggle = this.$('a.toggle-comments:first');
     var symbol = (commentToggle.html() === '+') ? '-' : '+';
     commentToggle.html(symbol);
@@ -47,31 +47,43 @@ App.Views.CommentChain = Backbone.View.extend({
   openReply: function(event) {
     event.preventDefault();
     // abort mission if comment already in progress
-    if (this.commentOpen) { return false; }
+    if (this.commentOpen) {
+      this.closeReply(event);
+      return false;
+    }
     this.commentOpen = true;
     var commentBox = new App.Views.NewCommentView({
       numCols: 20
     });
     commentBox.$el.css('display', 'none');
     this.$('.new-comment:first').append(commentBox.render().$el);
-    commentBox.$el.slideToggle(400);
+    commentBox.$el.slideToggle(300);
     return false;
   },
 
   submitReply: function(event) {
     //This has to post to server properly.
     event.preventDefault();
-    this.$('.new-comment').children().remove();
-    this.commentOpen = false;
+    var $commentBox = this.$('.new-comment:first').children();
+    $commentBox.slideToggle(300, function() {
+      $commentBox.remove();
+    });
+
     var comment = new App.Models.Comment({})
-    debugger;
+
+    this.commentOpen = false;
     return false;
   },
 
   closeReply: function(event) {
     event.preventDefault();
+
+    var $commentBox = this.$('.new-comment:first').children();
+    $commentBox.slideToggle(300, function() {
+      $commentBox.remove();
+    });
+
     this.commentOpen = false;
-    this.$('.new-comment').children().remove();
     return false;
   }
 });
