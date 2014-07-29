@@ -62,7 +62,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       var view = new App.Views.SolutionView({model: solution});
       $solutions.append(view.render().$el);
     })
-    $solutions.slideToggle(800);
+    $solutions.slideToggle(700);
   }
 
 });
