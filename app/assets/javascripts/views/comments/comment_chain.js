@@ -3,7 +3,7 @@ App.Views.CommentChain = Backbone.View.extend({
   initialize: function(options) {
     this.comments = options.comments;
     this.listenTo(this.comments, 'sync', this.render);
-    this.parent = options.parent;
+    this.root = options.root;
     this.padding = options.padding;
   },
 
@@ -21,8 +21,8 @@ App.Views.CommentChain = Backbone.View.extend({
     this.comments.each(function(comment) {
       var indexRow = new App.Views.CommentView({
         model: comment,
-        padding: this.padding + 20,
-        parent: this.parent
+        padding: this.padding + 35,
+        root: this.root
       });
         that.$('.comment-list:first').append(indexRow.render().$el);
     });
@@ -58,7 +58,7 @@ App.Views.CommentChain = Backbone.View.extend({
   attachCommentBox: function() {
     var commentBox = new App.Views.NewCommentView({
       numCols: 20,
-      parent: this.parent
+      root: this.root
     });
     commentBox.$el.css('display', 'none');
     this.$('.new-comment:first').append(commentBox.render().$el);

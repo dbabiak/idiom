@@ -4,3 +4,17 @@
 </ul>
 
 <a href='#/problems/new'>Create a Problem</a>
+
+<script>
+  $(function() {
+
+    $('#response-message').bind('DOMNodeInserted', function(event){
+      if (event.target.className === 'solution-view') {
+        var seditor = ace.edit($(event.target).find('.read-editor').attr('id'));
+        seditor.setTheme('ace/theme/tomorrow_night_blue');
+        seditor.setReadOnly(true);
+        seditor.getSession().setMode('ace/mode/ruby');
+      }
+    })
+  });
+</script>

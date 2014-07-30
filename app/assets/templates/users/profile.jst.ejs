@@ -9,16 +9,3 @@
 </div>
 
 <h5>Upvoted solutions:</h5>
-
-<script>
-  $(function() {
-    $('.own-solutions').bind('DOMNodeInserted', function(event){
-      if (event.target.className === 'solution-view') {
-        var editor = ace.edit($(event.target).find('.read-editor').attr('id'));
-        editor.setTheme('ace/theme/tomorrow_night_blue');
-        editor.setReadOnly(true);
-        editor.getSession().setMode('ace/mode/ruby');
-      }
-    })
-  });
-</script>

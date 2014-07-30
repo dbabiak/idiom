@@ -2,7 +2,7 @@ App.Views.NewCommentView = Backbone.View.extend({
   template: JST['comments/new'],
   initialize: function(options) {
     // what do we need here...
-    this.parent = options.parent;
+    this.root = options.root;
     this.numCols = options.numCols
   },
 
@@ -26,13 +26,13 @@ App.Views.NewCommentView = Backbone.View.extend({
       that.$el.remove();
     });
 
-    var parent_id = this.parent.attributes.commentable_type + '_id';
+    var parent_id = this.root.attributes.commentable_type + '_id';
     params = this.$('form').serializeJSON();
-    params[parent_id] = this.parent.id;
+    params[parent_id] = this.root.id;
     var comment = new App.Models.Comment(params);
     comment.save({}, {
       success: function(response) {
-        that.parent.comments().add(response);
+        that.root.comments().add(response);
       }
     });
 

@@ -4,6 +4,7 @@ App.Views.Solution = Backbone.View.extend({
   initialize: function(options) {
       this.listenTo(this.model, 'sync', this.render);
       this.includeProblemLink = options.includeProblemLink;
+      this.includeCommentChain = options.includeCommentChain;
       this.model.fetchComments();
     },
 
@@ -16,7 +17,7 @@ App.Views.Solution = Backbone.View.extend({
     });
     // debugger;
     this.$el.html(content);
-    this.appendComments();
+    if (this.includeCommentChain) { this.appendComments(); }
 
     return this;
   },
@@ -24,8 +25,8 @@ App.Views.Solution = Backbone.View.extend({
   appendComments: function() {
     var commentChain = new App.Views.CommentChain({
       comments: this.model.comments(),
-      parent: this.model,
-      padding: 5
+      root: this.model,
+      padding: 10
     });
     this.$el.append(commentChain.render().$el)
   }

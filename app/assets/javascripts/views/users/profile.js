@@ -16,6 +16,16 @@ App.Views.ProfileView = Backbone.View.extend({
     var content = this.template({user: this.model});
     this.$el.html(content);
     this.attachOwnSolutions();
+    var self = this;
+    setTimeout(function() {
+      var ids = self.model.ownSolutions().pluck('id');
+      ids.forEach(function(id) {
+        var editor = ace.edit('solution-' + id);
+        editor.setTheme('ace/theme/tomorrow_night_blue');
+        editor.setReadOnly(true);
+        editor.getSession().setMode('ace/mode/ruby');
+      });
+    }, 200)
     return this;
   },
 
@@ -26,6 +36,8 @@ App.Views.ProfileView = Backbone.View.extend({
       solutions.comparator = 'rating';
       var view = new App.Views.SolutionsIndex({
         collection: solutions,
+        includeProblemLink: true,
+        includeCommentChain: false,
         category: cat
       });
       that.$('.own-solutions').append(view.render().$el);

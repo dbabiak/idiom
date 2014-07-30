@@ -62,9 +62,13 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     $solutions = this.$('#response-message');
     $solutions.css('display', 'none');
     solutions.forEach(function(solution) {
-      var view = new App.Views.SolutionView({model: solution});
+      var view = new App.Views.Solution({
+        model: solution,
+        includeCommentChain: true
+      });
       $solutions.append(view.render().$el);
     })
+    debugger;
     $solutions.slideToggle(500);
   }
 

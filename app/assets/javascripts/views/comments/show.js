@@ -1,9 +1,11 @@
 App.Views.CommentView = Backbone.View.extend({
   template: JST['comments/index_row'],
   initialize: function(options) {
+    debugger;
     this.padding = options.padding;
-    this.parent = options.parent;
+    this.root = options.root;
   },
+  
   render: function() {
     // *********************************
     // ***********************COME BACK TO THIS*******************
@@ -16,7 +18,7 @@ App.Views.CommentView = Backbone.View.extend({
 
   appendComments: function() {
     var commentChain = new App.Views.CommentChain({
-      parent: this.model,
+      root: this.model,
       comments: this.model.comments(),
       padding: this.padding + 25
     });
