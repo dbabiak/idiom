@@ -16,6 +16,7 @@ App.Views.NewCommentView = Backbone.View.extend({
   render: function() {
     var content = this.template({numCols: this.numCols});
     this.$el.html(content);
+    this.attachKeyboardShortcuts();
     return this;
   },
 
@@ -49,6 +50,15 @@ App.Views.NewCommentView = Backbone.View.extend({
 
     this.commentOpen = false;
     return false;
-  }
+  },
 
+  attachKeyboardShortcuts: function() {
+    var handler = function(event) {
+      $(event.target).parent()
+          .parent()
+          .find('.submit-reply')
+          .trigger('click');
+    }
+    this.$('textarea').on('keydown', null, 'ctrl+a', handler);
+  }
 });

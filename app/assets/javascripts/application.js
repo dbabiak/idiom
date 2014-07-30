@@ -27,3 +27,4 @@
 //= require src/mode-ruby
 //= require src/theme-tomorrow_night_blue
 //= require jit
+//= require jquery.hotkeys-master/jquery.hotkeys.js
