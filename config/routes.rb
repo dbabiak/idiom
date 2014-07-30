@@ -11,9 +11,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:index]
     end
     resources :solution_likes, only: [:create, :destroy]
-    resources :users, only: [:show] do
+    resources :users, only: [:create, :show] do
       resources :comments, only: [:index]
     end
+
+    resource :session, only: [:create, :destroy]
     resources :comments, only: [:create, :show] do
       resources :comments, only: [:index]
     end

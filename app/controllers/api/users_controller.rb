@@ -1,4 +1,14 @@
 class Api::UsersController < ApplicationController
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
+      render json: @user, status: 201
+    else
+      render json: ['woops'], status: 422
+    end
+  end
+
   def show
     @user = current_user
     @own_solutions = @user.solutions
