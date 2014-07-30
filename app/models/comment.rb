@@ -17,4 +17,5 @@ class Comment < ActiveRecord::Base
   has_many :comments, as: :commentable
   validates :user_id, :commentable_id, :commentable_type,
       :content, presence: true
+
 end
