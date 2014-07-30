@@ -9,24 +9,33 @@ App.Views.ProfileView = Backbone.View.extend({
   },
 
   events: {
+    'click toggle-list': 'toggleList'
   },
 
   render: function() {
     var content = this.template({user: this.model});
     this.$el.html(content);
-    this.attachSolutionViews();
+    this.attachOwnSolutions();
     return this;
   },
 
-  attachSolutionViews: function() {
-    $ownSolutions = this.$('.own-solutions');
-    this.model.ownSolutions().forEach(function(solution) {
-      var view = new App.Views.SolutionView({
-          model: solution,
-          includeProblemLink: true
-        });
-      $ownSolutions.append(view.render().$el);
-    })
+  attachOwnSolutions: function() {
+    var that = this;
+    App.Models.Problem.categories.forEach(function(cat){
+      var solutions = that.categorySolutions(that.model.ownSolutions(), cat);
+      solutions.comparator = 'rating';
+      var view = new App.Views.SolutionsIndex({
+        collection: solutions,
+        category: cat
+      });
+      that.$('.own-solutions').append(view.render().$el);
+    });
+  },
+
+  toggleList: function(event) {},
+
+  categorySolutions: function(solutions, cat) {
+    return new App.Collections.Solutions(solutions.where({category: cat}), {});
   }
 
 });

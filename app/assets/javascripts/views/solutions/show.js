@@ -1,4 +1,4 @@
-App.Views.SolutionView = Backbone.View.extend({
+App.Views.Solution = Backbone.View.extend({
   template: JST['solutions/show'],
 
   initialize: function(options) {

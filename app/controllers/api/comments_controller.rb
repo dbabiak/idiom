@@ -1,10 +1,10 @@
 class Api::CommentsController < ApplicationController
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
+    @comment = @commentable.comments.build(content: params[:content])
     @comment.user_id = current_user.id
     if @comment.save
-      render json: @comment
+      render json: @comment, status: 201
     else
       render json: ['errorz'], status: 422
     end

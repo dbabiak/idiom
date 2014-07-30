@@ -4,6 +4,7 @@ class Api::SolutionsController < ApplicationController
     @solution = Solution.new(solution_params)
     @solution.submitter_id = current_user.id
     #give sort of latency
+    sleep 0.8
     result = @solution.check
     if result[:success] && @solution.save
       render json: @solution
@@ -13,6 +14,7 @@ class Api::SolutionsController < ApplicationController
   end
 
   def index
+    sleep 0.8
     # This will be for all of a user's solutions
     # or for all of a problem's solutions
     @problem = Problem.find(params[:problem_id])
