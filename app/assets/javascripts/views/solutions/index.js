@@ -23,7 +23,6 @@ App.Views.SolutionsIndex = Backbone.View.extend({
       that.$('.solution-list').append(view.render().$el);
     });
     this.$('.solution-list').css('display', 'none');
-    debugger;
     return this;
   },
 
