@@ -20,17 +20,22 @@ App.Views.ProfileView = Backbone.View.extend({
   },
 
   attachOwnSolutions: function() {
-    App.Models.Problem.categories.each(function(cat){
-      var solutions = this.model.ownSolutions().where({category: cat});
+    var that = this;
+    App.Models.Problem.categories.forEach(function(cat){
+      var solutions = that.categorySolutions(that.model.ownSolutions(), cat);
       solutions.comparator = 'rating';
       var view = new App.Views.SolutionsIndex({
         collection: solutions,
         category: cat
       });
-      this.$('.own-solutions').append(view.render().$el);
+      that.$('.own-solutions').append(view.render().$el);
     });
   },
 
-  toggleList: function(event) {}
+  toggleList: function(event) {},
+
+  categorySolutions: function(solutions, cat) {
+    return new App.Collections.Solutions(solutions.where({category: cat}), {});
+  }
 
 });
