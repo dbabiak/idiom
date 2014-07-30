@@ -2,16 +2,17 @@ App.Views.CommentChain = Backbone.View.extend({
   template: JST['comments/comment_chain'],
   initialize: function(options) {
     this.comments = options.comments;
-    this.listenTo(this.comments, 'sync', this.render);
+    this.listenTo(this.comments, 'sync', function() { this.render(true); });
     this.root = options.root;
     this.padding = options.padding;
   },
 
-  render: function() {
+  render: function(commentsOpen) {
     var content = this.template();
     this.$el.html(content);
     this.attachComments();
-    this.$('.comment-list').css('display', 'none');
+    var display = commentsOpen ? 'block' : 'none';
+    this.$('.comment-list').css('display', display);
     this.$('.indented').css('padding-left', '10px')
     return this;
   },
