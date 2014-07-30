@@ -12,8 +12,15 @@ App.Routers.AppRouter = Backbone.Router.extend({
     'users/:id': 'usersShow',
     'profile': 'profile',
     'graph': 'graph',
-    'graph_profile': 'graph_profile'
+    'graph_profile': 'graph_profile',
+    'auth': 'auth'
   },
+
+  auth: function() {
+    var authView = new App.Views.AuthView();
+    this._swapView(authView);
+  },
+
   problemsIndex: function() {
     // for when router starts getting greedy again
     App.problems.fetch();

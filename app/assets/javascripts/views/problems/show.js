@@ -11,12 +11,39 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   render: function() {
     var content = this.template({problem: this.model});
     this.$el.html(content);
+    this.attachAuthModal();
     return this;
+  },
+
+  attachAuthModal: function() {
+    var modal = new App.Views.AuthView();
+    this.$el.append(modal.render().$el);
   },
 
   submit: function(event) {
     event.preventDefault();
-    var that = this;
+    if (App.user) {
+      this.performSubmit();
+    } else {
+      this.promptSignIn();
+    }
+  },
+
+  fetchSolutions: function(event) {
+    event.preventDefault();
+    if (App.user) {
+      $('#response-message').text('');
+      $('.spinner').toggle()
+      //Give this a callback to determine when to start a transition
+      this.model.fetchSolutions(this.insertSolutions.bind(this));
+      //pop in a modal.
+    } else {
+      this.promptSignIn();
+    }
+  },
+
+  performSubmit: function() {
+    $('#submit-modal').modal();
     $('#response-message').text('');
     $('.spinner').toggle()
     var content = App.editor.getValue();
@@ -29,8 +56,6 @@ App.Views.ProblemsShowView = Backbone.View.extend({
           $('#response-message').text('Success!');
         }, 900)
         $('.spinner').toggle(1000)
-        // that.model.solutions.add(newSoln);
-        // debugger;
       },
       error: function(response) {
         var errorMsg = "Error! " + arguments[1].responseJSON.message
@@ -42,13 +67,10 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     });
   },
 
-  fetchSolutions: function(event) {
-    event.preventDefault();
-    $('#response-message').text('');
-    $('.spinner').toggle()
-    //Give this a callback to determine when to start a transition
-    this.model.fetchSolutions(this.insertSolutions.bind(this));
-    //pop in a modal.
+  promptSignIn: function() {
+    //fire up modal that prompts for sign-in stuff
+    //it will also be bound to the links in the navbar
+    $('#auth-modal').modal();
   },
 
   close: function() {

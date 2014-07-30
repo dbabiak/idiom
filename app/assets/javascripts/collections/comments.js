@@ -4,5 +4,6 @@ App.Collections.Comments = Backbone.Collection.extend({
   initialize: function(models, options) {
     this.user = options.user;
     this.solution = options.solution;
-  }
+  },
+
 });

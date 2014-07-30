@@ -14,18 +14,24 @@ end</div>
           value='<%= problem.get('id') %>'>
 
       <input type='hidden' name='solution[content]' id='solution'>
-    <button class='btn btn-default submit' data-toggle="modal"
-        data-target="#myModal">Submit</button>
+    <button class='btn btn-default submit'>Submit</button>
   </form>
 
   <button
       id='show-solutions'
-      class='show-solutions btn btn-default roundish'
-      data-toggle="modal" data-target="#myModal">
+      class='show-solutions btn btn-default roundish'>
       View Solutions
   </button>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <!-- <button
+      id='other-modal'
+      class='show-solutions btn btn-default roundish'
+      data-toggle="modal" data-target="#otherModal">
+      Other modal
+  </button> -->
+
+
+<div class="modal fade" id="submit-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -64,6 +70,9 @@ end</div>
     </div>
   </div>
 </div>
+
+
+
 
 <script>
   $(function() {
