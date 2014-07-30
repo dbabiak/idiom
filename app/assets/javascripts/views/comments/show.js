@@ -1,11 +1,10 @@
 App.Views.CommentView = Backbone.View.extend({
   template: JST['comments/index_row'],
   initialize: function(options) {
-    debugger;
     this.padding = options.padding;
     this.root = options.root;
   },
-  
+
   render: function() {
     // *********************************
     // ***********************COME BACK TO THIS*******************

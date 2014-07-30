@@ -12,7 +12,7 @@ App.Views.CommentChain = Backbone.View.extend({
     this.$el.html(content);
     this.attachComments();
     this.$('.comment-list').css('display', 'none');
-    this.$el.css('padding', this.padding + 'px')
+    this.$('.indented').css('padding-left', '10px')
     return this;
   },
 

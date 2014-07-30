@@ -1,22 +1,22 @@
-<% if (includeProblemLink) { %>
+<div class='solution-header'>
+  <% if (includeProblemLink) { %>
+    <span class='right-margined'>
+      <a href='#/problems/<%= solution.escape('problem_id') %>'>
+        <%= solution.escape('problem_title') %>
+      </a>
+    </span>
+  <% } %>
+
   <span class='right-margined'>
-    <a href='#/problems/<%= solution.escape('problem_id') %>'>
-      <%= solution.escape('problem_title') %>
+    Submitted by:
+    <a href='#/users/<% solution.escape('submitter') %>'>
+      <%= solution.escape('submitter') %>
     </a>
   </span>
-<% } %>
 
-<span class='right-margined'>
-  Submitted by:
-  <a href='#/users/<% solution.escape('submitter') %>'>
-    <%= solution.escape('submitter') %>
-  </a>
-</span>
-
-<span class='right-margined'>
-  Upvotes: <%= solution.upvotes %>
-  <a href='#'>InsertUpvoteSymbolHere</a>
-</span>
-
-<br>
+  <span class='right-margined'>
+    Upvotes: <%= solution.escape('upvotes') %>
+    <a href='#'>InsertUpvoteSymbolHere</a>
+  </span>
+</div>
 <div id='solution-<%= solution.id %>' class='read-editor'><%= solution.escape('content') %></div>

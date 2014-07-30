@@ -9,7 +9,7 @@ App.Models.Solution = Backbone.Model.extend({
 
   parse: function(payload){
     if (payload.comments) {
-      this.comments().set(payload.comments);
+      this.comments().set(payload.comments, {parse: true});
       delete payload.comments;
     }
     return payload;

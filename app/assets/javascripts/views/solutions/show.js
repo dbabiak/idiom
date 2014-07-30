@@ -26,8 +26,9 @@ App.Views.Solution = Backbone.View.extend({
     var commentChain = new App.Views.CommentChain({
       comments: this.model.comments(),
       root: this.model,
-      padding: 10
+      padding: 0
     });
+    commentChain.$el.css('padding-left', '20px');
     this.$el.append(commentChain.render().$el)
   }
 });
