@@ -1,10 +1,10 @@
-<div id="left-container" class='col-md-8 fadein slideable'>
+<div id="left-container" class='fadein col-md-9'>
 
-  <div id="infovis" style='width: 780px; height: 780px; margin: 0 auto;'>
+  <div id="infovis">
   </div>
 </div>
 
-<div id="right-container" class='col-md-4'>
+<div id="right-container" class='col-md-3'>
 </div>
 
 
@@ -45,6 +45,9 @@
 
 
   $(function(){
+    // resize divs according to window height;
+    debugger;
+
     var labelType, useGradients, nativeTextSupport, animate;
 
     (function() {
@@ -189,7 +192,7 @@
       ht.op.sum(tree, {
         type: 'fade:seq',
         fps: 30,
-        duration: 2000
+        duration: 1400
       });
     };
 

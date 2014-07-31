@@ -28,6 +28,33 @@ div.roundish-modal {
 }
 
 
+body, html, #left-container, #content {
+  height: 100%
+}
+
+#infovis {
+  padding-top: 4%;
+  padding-left: 15%px;
+  margin: 0 auto;
+  height: 900px;
+  width: 900px;
+}
+
+#containeri{
+}
+#left-container {
+  padding-left: 6%;
+  width:  50%;
+}
+#right-container {
+  padding-top: 5%;
+  padding-left: 6%;
+}
+
+#prob-description {
+  width: 580px;
+}
+
 #auth-modal-dialog {
   margin-top: 22%;
 }
