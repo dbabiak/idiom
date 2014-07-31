@@ -26,8 +26,8 @@
           <li><a href='#/'>Problems</a></li>
           <li><a href='#/graph'>Graph</a></li>
         <% else %>
-          <li><a href='#/auth'>Sign In</a></li>
-          <li><a href='#/auth'>Sign Up</a></li>
+          <li><a href='#' class='sign-in'>Sign In</a></li>
+          <li><a href='#' class='sign-up'>Sign Up</a></li>
         <% end %>
       </ul>
       </div><!-- /.navbar-collapse -->
@@ -47,6 +47,10 @@
 
 <script>
   $(function(){
+    var authModal = function(event) {
+      debugger;
+      $(document).find('#auth-modal').modal()
+    };
     $('.sign-out').on('click', function() {
       $.ajax({
         url: 'api/session',
@@ -57,5 +61,7 @@
         }
       })
     })
+    $('.sign-in').on('click', authModal);
+    $('.sign-up').on('click', authModal);
   })
 </script>

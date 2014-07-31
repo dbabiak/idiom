@@ -11,13 +11,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   render: function() {
     var content = this.template({problem: this.model});
     this.$el.html(content);
-    this.attachAuthModal();
     return this;
-  },
-
-  attachAuthModal: function() {
-    var modal = new App.Views.AuthView();
-    this.$el.append(modal.render().$el);
   },
 
   submit: function(event) {
