@@ -46,7 +46,11 @@
 
   $(function(){
     // resize divs according to window height;
-    debugger;
+
+    var $info = $('#infovis');
+    var length = $(window).height() * 0.90;
+    $info.height(length);
+    $info.width(length);
 
     var labelType, useGradients, nativeTextSupport, animate;
 

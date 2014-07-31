@@ -1,6 +1,6 @@
 App.Views.GraphView = Backbone.View.extend({
   template: JST['graphs/example'],
-  class: 'row',
+  className: 'row',
   render: function() {
     this.$el.html(this.template());
     this.attachAuthModal();
