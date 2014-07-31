@@ -14,7 +14,6 @@ App.Views.AuthView = Backbone.View.extend({
   },
 
   signIn: function(event) {
-    debugger;
     event.preventDefault();
     var url = '/api/session';
     var data = this.$('form').serializeJSON();
@@ -48,8 +47,9 @@ App.Views.AuthView = Backbone.View.extend({
       type: 'POST',
       data: data,
       success: function(response) {
-        App.user = response;
+        App.user = (response ? new App.Models.User(response) : null);
         self.$('#auth-modal').modal('hide');
+        App.signedInNavbar();
       }
     });
   }

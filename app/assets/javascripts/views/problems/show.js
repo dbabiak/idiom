@@ -25,7 +25,6 @@ App.Views.ProblemsShowView = Backbone.View.extend({
 
   fetchSolutions: function(event) {
     event.preventDefault();
-    debugger;
     if (App.user) {
       $('#submit-modal').modal();
       $('#response-message').text('');

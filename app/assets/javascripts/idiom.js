@@ -15,8 +15,12 @@ window.App = {
       url: '/api/session',
       action: 'GET',
       success: function(response) {
-        debugger;
-        App.user = response;
+        App.user = (response ? new App.Models.User(response) : null);
+        if (App.user) {
+          App.signedInNavbar()
+        } else {
+          App.signedOutNavbar()
+        }
       }
     })
 
