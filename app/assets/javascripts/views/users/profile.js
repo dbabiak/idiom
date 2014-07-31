@@ -26,6 +26,8 @@ App.Views.ProfileView = Backbone.View.extend({
         editor.getSession().setMode('ace/mode/ruby');
       });
     }, 200)
+    this.$el.hide()
+    this.$el.fadeIn(600);
     return this;
   },
 

@@ -13,8 +13,9 @@ App.Views.AuthView = Backbone.View.extend({
     'click button.guest-submit': 'guestUser'
   },
 
-  signIn: function() {
-    var url = '/api/users';
+  signIn: function(event) {
+    event.preventDefault();
+    var url = '/api/session';
     var data = this.$('form').serializeJSON();
     this.postForm(url, data);
   },
@@ -43,8 +44,9 @@ App.Views.AuthView = Backbone.View.extend({
       type: 'POST',
       data: data,
       success: function(response) {
-        App.user = response;
-        debugger;
+        App.user = (response ? new App.Models.User(response) : null);
+        self.$('#auth-modal').modal('hide');
+        App.signedInNavbar();
       }
     });
   }

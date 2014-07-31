@@ -6,7 +6,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= flash[:status] %>
   </script>
 </head>
 <body>
@@ -18,23 +17,16 @@
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <ul class="nav navbar-nav">
-        <% if signed_in? %>
-          <li><a href='#/profile'><%= current_user.username%></a></li>
-          <!-- <li><a href='/session'>Sign Out</a></li> -->
-          <li><%= link_to 'Sign Out', session_url, method: :delete %></li>
-
-          <li><a href='#/'>Problems</a></li>
-          <li><a href='#/graph'>Graph</a></li>
-        <% else %>
-          <li><a href='#/auth'>Sign In</a></li>
-          <li><a href='#/auth'>Sign Up</a></li>
-        <% end %>
+        <li><a href='#/profile' id='profile'>set_by_jquery</a><li>
+        <li><a href='#' id='sign-out'>sign out</a></li>
+        <li><a href='#/' id=>Problems</a></li>
+        <li><a href='#' id='sign-in'>Sign In</a></li>
+        <li><a href='#' id='sign-up'>Sign Up</a></li>
       </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
-  <%= flash[:errors].join('<br>').html_safe if flash[:errors].present? %>
   <div class='container'>
     <div class='row'>
       <div id='content'>
@@ -44,3 +36,21 @@
   </div>
 </body>
 </html>
+
+<script>
+  $(function(){
+    $('#sign-out').on('click', function() {
+      $.ajax({
+        url: 'api/session',
+        type: 'DELETE',
+        success: function() {
+          App.user = null;
+          App.signedOutNavbar();
+          //another callback that updates the status bar
+        }
+      })
+    })
+    $('#sign-in').on('click', App.popAuthModal);
+    $('#sign-up').on('click', App.popAuthModal);
+  })
+</script>

@@ -35,14 +35,8 @@ App.Views.ProblemsNewView = Backbone.View.extend({
         }
       });
     } else {
-      this.promptSignIn();
+      App.popAuthModal(event, 320, 240);
     }
 
-  },
-
-  promptSignIn: function() {
-    //fire up modal that prompts for sign-in stuff
-    //it will also be bound to the links in the navbar
-    $('#auth-modal').modal();
   }
 });
