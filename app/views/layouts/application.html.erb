@@ -21,7 +21,7 @@
         <% if signed_in? %>
           <li><a href='#/profile'><%= current_user.username%></a></li>
           <!-- <li><a href='/session'>Sign Out</a></li> -->
-          <li><%= link_to 'Sign Out', session_url, method: :delete %></li>
+          <li><a href='#' class='sign-out'>sign out</a></li>
 
           <li><a href='#/'>Problems</a></li>
           <li><a href='#/graph'>Graph</a></li>
@@ -44,3 +44,18 @@
   </div>
 </body>
 </html>
+
+<script>
+  $(function(){
+    $('.sign-out').on('click', function() {
+      $.ajax({
+        url: 'api/session',
+        type: 'DELETE',
+        success: function() {
+          App.user = null;
+          //another callback that updates the status bar
+        }
+      })
+    })
+  })
+</script>

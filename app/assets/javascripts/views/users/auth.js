@@ -8,25 +8,29 @@ App.Views.AuthView = Backbone.View.extend({
   },
 
   events: {
-    'click button.submit': 'signIn',
+    'click button.sign-in': 'signIn',
     'click button.sign-up': 'signUp',
     'click button.guest-submit': 'guestUser'
   },
 
-  signIn: function() {
+  signIn: function(event) {
+    debugger;
+    event.preventDefault();
+    var url = '/api/session';
+    var data = this.$('form').serializeJSON();
+    this.postForm(url, data);
+  },
+
+  signUp: function(event) {
+    //Call a serialize JSON on the form
+    event.preventDefault();
     var url = '/api/users';
     var data = this.$('form').serializeJSON();
     this.postForm(url, data);
   },
 
-  signUp: function() {
-    //Call a serialize JSON on the form.
-    var url = '/api/users';
-    var data = this.$('form').serializeJSON();
-    this.postForm(url, data);
-  },
-
-  guestUser: function() {
+  guestUser: function(event) {
+    event.preventDefault();
     var url = '/api/session';
     var data = {
       user: {
@@ -38,13 +42,14 @@ App.Views.AuthView = Backbone.View.extend({
   },
 
   postForm: function(url, data) {
+    var self = this;
     $.ajax({
       url: url,
       type: 'POST',
       data: data,
       success: function(response) {
         App.user = response;
-        debugger;
+        self.$('#auth-modal').modal('hide');
       }
     });
   }
