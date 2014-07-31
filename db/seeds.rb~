@@ -1,0 +1,35 @@
+
+  
+User.create!([
+  {username: "otto", password_digest: "$2a$10$vaW76Ifq/wlAuIMMMNuIL.0leL6yXLMoiTQqvlEwmyA3ll3DxWJIO", token: "ut9Z0cIzRWG8_yAtAx1gXg"},
+  {username: "epicurious_george", password_digest: "$2a$10$WOGaDl9DE51FF.LODiZj5OOAN32AYE2qM7DKsJU7DOzXtyYeYex1G", token: "Sg3Fwj02bk1BXKBoFbNy_A"},
+  {username: "pesto", password_digest: "$2a$10$LHJndeOP4gpGQFUCRFPIw.FNwkWvMs.XsGFs8umVe43Kuc5qjEcJi", token: "_jugnOhZREGI2V9H95PdbA"}
+])
+User.create(username: 'otto', password: 'markov')
+
+epi_george = User.create(username: 'epicurious_george', password: 'markov')
+
+pesto = User.create(username: 'pesto', password: 'markov')
+
+otto = User.find_by(username: 'otto')
+
+Problem.create(title: "Defining Methods",
+  description: "Create a method 'greet' that returns a greeting message. Greet should take in a name as an optional parameter",
+  solution_spec: "expect('it handles a greeting with an argument', greet('oskar') == 'Hello, oksar')\nexpect('it handles a greeting with no argument', greet == 'Hello there')",
+  example_spec: "greet('pedro') == 'Hello, pedro'\ngreet() == 'Hello there'",
+  category: 'fundamentals',
+  rating: 0,
+  submitter_id: 2
+)
+
+Problem.create(title: "Monkey Patching",
+  description: "Add a method to the Array class that when called on an array, will return the sum of its elements",
+  solution_spec: 
+"expect('it handles a greeting with an argument', greet('oskar') == 'Hello, oksar')
+expect('it handles a greeting with no argument', greet == 'Hello there')",
+  example_spec: 
+"greet('pedro') == 'Hello, pedro'\ngreet() == 'Hello there'",
+  category: 'fundamentals',
+  rating: 0,
+  submitter_id: 2
+)
