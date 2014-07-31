@@ -19,7 +19,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     if (App.user) {
       this.performSubmit();
     } else {
-      this.promptSignIn();
+      App.popAuthModal(event, 320, 240);
     }
   },
 
@@ -34,7 +34,7 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       this.model.fetchSolutions(this.insertSolutions.bind(this));
       //pop in a modal.
     } else {
-      this.promptSignIn();
+      App.popAuthModal(event, 320, 240);
     }
   },
 
@@ -61,12 +61,6 @@ App.Views.ProblemsShowView = Backbone.View.extend({
         $('.spinner').toggle(1000)
       }
     });
-  },
-
-  promptSignIn: function() {
-    //fire up modal that prompts for sign-in stuff
-    //it will also be bound to the links in the navbar
-    $('#auth-modal').modal();
   },
 
   close: function() {
