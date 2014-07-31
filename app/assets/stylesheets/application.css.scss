@@ -22,42 +22,6 @@ div.container {
   margin-right: 20px;
 }
 
-div.roundish-modal {
-  border: 1px solid $dark_blue;
-  border-radius: 15px;
-}
-
-
-#auth-modal-dialog {
-  margin-top: 22%;
-}
-
-#auth-modal-content {
-  width: 400px;
-}
-
-button.thin {
-  border: 1px solid $dark_blue;
-  border-radius: 5px;
-  padding: 5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  background: #2b3e50;
-  font-size: 14px;
-}
-
-.auth-input {
-  border: 1px solid $dark_blue;
-  border-radius: 8px;
-  height: 25px;
-  font-size: 16px;
-}
-
-div.roundish-modal-top{
-  border: 1px transparent;
-  border-radius: 15px;
-}
-
 div.read-editor {
   margin-bottom: 0px;
 }

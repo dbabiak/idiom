@@ -13,9 +13,4 @@ class Api::SessionsController < ApplicationController
     sign_out
     render json: ['killed it']
   end
-
-  def show
-    render json: current_user
-  end
-
 end

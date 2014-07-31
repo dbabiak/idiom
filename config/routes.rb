@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index]
     end
 
-    resource :session, only: [:create, :destroy, :show]
+    resource :session, only: [:create, :destroy]
     resources :comments, only: [:create, :show] do
       resources :comments, only: [:index]
     end
