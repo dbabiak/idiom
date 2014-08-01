@@ -6,6 +6,7 @@ App.Views.ProfileView = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
+    this.currentList = undefined;
   },
 
   events: {
@@ -79,9 +80,13 @@ App.Views.ProfileView = Backbone.View.extend({
   },
 
   swapSolutionList: function(view) {
+    var content = view.render().$el;
+    content.hide();
     if (this.currentList) { this.currentList.remove(); }
+
+    self.$('#solution-list').append(content);
+    content.fadeIn(400);
     this.currentList = view;
-    this.$('#solution-list').append(view.render().$el);
   }
 
 });

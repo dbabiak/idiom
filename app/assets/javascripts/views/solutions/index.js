@@ -14,7 +14,6 @@ App.Views.SolutionsIndex = Backbone.View.extend({
   render: function() {
     // this comment doesn't exist
     var self = this;
-    debugger;
     this.$el.html(this.template({category: this.category}));
     this.collection.each(function(solution) {
       var view = new App.Views.Solution({
@@ -33,7 +32,7 @@ App.Views.SolutionsIndex = Backbone.View.extend({
         editor.setReadOnly(true);
         editor.getSession().setMode('ace/mode/ruby');
       });
-    }, 5)
+    }, 20)
     return this;
   },
 
