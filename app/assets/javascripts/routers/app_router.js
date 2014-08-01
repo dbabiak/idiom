@@ -43,7 +43,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
   profile: function() {
     App.user.fetch();
     var view = new App.Views.ProfileView({model: App.user});
-    this._swapView(view);
+    this._fadeSwap(view);
   },
 
   graph: function() {
@@ -62,6 +62,15 @@ App.Routers.AppRouter = Backbone.Router.extend({
     if (this.currentView) { this.currentView.remove(); }
     this.currentView = newView;
     this.$rootEl.html(newView.render().$el);
+  },
+
+  _fadeSwap: function(newView) {
+    if (this.currentView) { this.currentView.remove(); }
+    this.currentView = newView;
+    var content = newView.render().$el;
+    content.hide();
+    this.$rootEl.html(content);
+    content.fadeIn(650);
   }
 
 });

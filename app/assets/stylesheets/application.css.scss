@@ -36,6 +36,14 @@ body, html, #left-container, #content {
   height: 100%
 }
 
+.clicked {
+  font-color: pink;
+}
+
+#solution-list {
+  padding-left: 40px;
+}
+
 #infovis {
   padding-top: 0;
   padding-left: 11%px;
@@ -290,6 +298,12 @@ button.submit {
   transform: rotateZ(90deg);
 }
 
+.quick-fade {
+  animation: fadein 1.0s;
+  -moz-animation: fadein 1.0s; /* Firefox */
+  -webkit-animation: fadein 1.0s; /* Safari and Chrome */
+  -o-animation: fadein 1.0s; /* Opera */
+}
 
 .fadein {
     animation: fadein 2.5s;
