@@ -1,11 +1,21 @@
-<h3><%= user.escape('username') %><h3>
-
-
-
-
-
-<h5>Solutions:</h5>
-<div class='own-solutions'>
+<div class='row'>
+  <h3><%= user.escape('username') %><h3>
 </div>
 
-<h5>Upvoted solutions:</h5>
+<div class='row'>
+  <div class='col-md-3'>
+    <div><a href='#' class='choose-submitter-type'>own solutions</a></div>
+    <div><a href='#' class='choose-submitter-type'>upvoted solutions</a></div>
+    <div><a href='#' class='choose-category'>algorithms</a></div>
+    <div><a href='#' class='choose-category'>data-structures</a></div>
+    <div><a href='#' class='choose-category'>fundamentals</a></div>
+    <div><a href='#' class='choose-category'>logic</a></div>
+    <div><a href='#' class='choose-category'>recursion</a></div>
+  </div>
+
+  <div class='col-md-9'>
+    <h4>Solutions</h4>
+    <div id='solution-list'>
+      <div>
+  </div>
+</div>

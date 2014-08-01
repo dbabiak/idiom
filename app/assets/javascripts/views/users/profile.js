@@ -13,21 +13,10 @@ App.Views.ProfileView = Backbone.View.extend({
   },
 
   render: function() {
+    // this.$el.hide();
     var content = this.template({user: this.model});
     this.$el.html(content);
-    this.attachOwnSolutions();
-    var self = this;
-    setTimeout(function() {
-      var ids = self.model.ownSolutions().pluck('id');
-      ids.forEach(function(id) {
-        var editor = ace.edit('solution-' + id);
-        editor.setTheme('ace/theme/tomorrow_night_blue');
-        editor.setReadOnly(true);
-        editor.getSession().setMode('ace/mode/ruby');
-      });
-    }, 200)
-    this.$el.hide()
-    this.$el.fadeIn(600);
+    // this.$el.fadeIn(600);
     return this;
   },
 
@@ -40,6 +29,7 @@ App.Views.ProfileView = Backbone.View.extend({
         collection: solutions,
         includeProblemLink: true,
         includeCommentChain: false,
+        removeSubmitter: true,
         category: cat
       });
       that.$('.own-solutions').append(view.render().$el);
@@ -50,6 +40,51 @@ App.Views.ProfileView = Backbone.View.extend({
 
   categorySolutions: function(solutions, cat) {
     return new App.Collections.Solutions(solutions.where({category: cat}), {});
+  },
+
+  events: {
+    'click a.choose-category': 'setCategory',
+    'click a.choose-submitter-type': 'setSubmitterType'
+  },
+
+  attachSolutionList: function(event) {
+    event.preventDefault();
+    if (this.category && this.selectedSolutions) {
+      var solutions = this.categorySolutions(this.selectedSolutions, this.category);
+      solutions.comparator = 'rating';
+      var view = new App.Views.SolutionsIndex({
+        collection: solutions,
+        includeProblemLink: true,
+        includeCommentChain: false,
+        remvoeSubmitter: true
+      });
+      debugger;
+      this.swapSolutionList(view);
+    }
+  },
+
+  setCategory: function(event) {
+    debugger;
+    event.preventDefault();
+    this.category = event.currentTarget.text;
+    this.attachSolutionList(event);
+  },
+
+  setSubmitterType: function(event) {
+    debugger;
+    event.preventDefault();
+    if (event.currentTarget.text === 'own solutions') {
+      this.selectedSolutions = this.model.ownSolutions();
+    } else {
+      this.selectedSolutions = this.model.likedSolutions();
+    }
+    this.attachSolutionList(event);
+  },
+
+  swapSolutionList: function(view) {
+    if (this.currentList) { this.currentList.remove(); }
+    this.currentList = view;
+    this.$('#solution-list').append(view.render().$el);
   }
 
 });

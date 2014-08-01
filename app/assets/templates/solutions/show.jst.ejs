@@ -7,12 +7,14 @@
     </span>
   <% } %>
 
-  <span style='margin-right: 5px;'>
-    Submitted by:
-    <a href='#/users/<% solution.escape('submitter') %>'>
-      <%= solution.escape('submitter') %>
-    </a>
-  </span>
+  <% if (!removeSubmitter) { %>
+    <span style='margin-right: 5px;'>
+      Submitted by:
+      <a href='#/users/<% solution.escape('submitter') %>'>
+        <%= solution.escape('submitter') %>
+      </a>
+    </span>
+  <% } %>
 
 
   <span>

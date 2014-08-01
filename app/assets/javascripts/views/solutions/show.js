@@ -5,6 +5,7 @@ App.Views.Solution = Backbone.View.extend({
       this.listenTo(this.model, 'sync', this.render);
       this.includeProblemLink = options.includeProblemLink;
       this.includeCommentChain = options.includeCommentChain;
+      this.removeSubmitter = options.removeSubmitter;
       this.model.fetchComments();
     },
 
@@ -13,7 +14,8 @@ App.Views.Solution = Backbone.View.extend({
   render: function() {
     var content = this.template({
       solution: this.model,
-      includeProblemLink: this.includeProblemLink
+      includeProblemLink: this.includeProblemLink,
+      removeSubmitter: this.removeSubmitter
     });
     // debugger;
     this.$el.html(content);
