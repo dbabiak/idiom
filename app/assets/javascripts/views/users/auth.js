@@ -1,9 +1,21 @@
 App.Views.AuthView = Backbone.View.extend({
   template: JST['users/auth'],
 
+  initialize: function(options) {
+    options = options || {};
+    this.signedIn = options.signedIn;
+  },
+
   render: function() {
     var content = this.template();
     this.$el.html(content);
+    if (this.signedIn) {
+      this.$('button.sign-up').hide();
+      this.$('button.sign-in').show();
+    } else {
+      this.$('button.sign-up').show();
+      this.$('button.sign-in').hide();
+    }
     return this;
   },
 

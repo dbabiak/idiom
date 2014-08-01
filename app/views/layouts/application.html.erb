@@ -45,7 +45,9 @@
         }
       })
     })
-    $('#sign-in').on('click', App.popAuthModal);
+    $('#sign-in').on('click', function(){
+      App.popAuthModal({signIn: false})
+    });
     $('#sign-up').on('click', App.popAuthModal);
   })
 </script>
