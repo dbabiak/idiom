@@ -14,13 +14,14 @@ App.Views.SolutionsIndex = Backbone.View.extend({
   render: function() {
     // this comment doesn't exist
     var self = this;
+    debugger;
     this.$el.html(this.template({category: this.category}));
     this.collection.each(function(solution) {
       var view = new App.Views.Solution({
         model: solution,
         includeProblemLink: self.includeProblemLink,
         includeCommentChain: self.includeCommentChain,
-        removeSubmitter: this.removeSubmitter
+        removeSubmitter: self.removeSubmitter
       });
       self.$('.solution-list').append(view.render().$el);
     });

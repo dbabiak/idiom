@@ -56,22 +56,19 @@ App.Views.ProfileView = Backbone.View.extend({
         collection: solutions,
         includeProblemLink: true,
         includeCommentChain: false,
-        remvoeSubmitter: true
+        removeSubmitter: true
       });
-      debugger;
       this.swapSolutionList(view);
     }
   },
 
   setCategory: function(event) {
-    debugger;
     event.preventDefault();
     this.category = event.currentTarget.text;
     this.attachSolutionList(event);
   },
 
   setSubmitterType: function(event) {
-    debugger;
     event.preventDefault();
     if (event.currentTarget.text === 'own solutions') {
       this.selectedSolutions = this.model.ownSolutions();

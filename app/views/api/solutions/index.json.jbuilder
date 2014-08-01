@@ -10,5 +10,6 @@ json.solutions @solutions do |solution|
   json.comments solution.comments do |comment|
     json.partial! 'comment', comment: comment
   end
+  json.time_ago time_ago(solution.created_at)
 
 end

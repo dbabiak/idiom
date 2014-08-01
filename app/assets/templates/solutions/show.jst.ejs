@@ -1,6 +1,6 @@
 <div class='solution-header'>
   <% if (includeProblemLink) { %>
-    <span class='right-margined'>
+    <span style='margin-right: 6px;'>
       <a href='#/problems/<%= solution.escape('problem_id') %>'>
         <%= solution.escape('problem_title') %>
       </a>
@@ -8,13 +8,16 @@
   <% } %>
 
   <% if (!removeSubmitter) { %>
-    <span style='margin-right: 5px;'>
+    <span style='margin-right: 4px;'>
       Submitted by:
       <a href='#/users/<% solution.escape('submitter') %>'>
         <%= solution.escape('submitter') %>
       </a>
     </span>
   <% } %>
+
+  <span style='margin-right: 6px;'> <%= solution.escape('time_ago') %>
+  </span>
 
 
   <span>

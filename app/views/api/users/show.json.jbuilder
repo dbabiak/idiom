@@ -10,6 +10,7 @@ json.own_solutions @user.solutions do |solution|
   json.rating solution.problem.rating
   json.category solution.problem.category
   json.upvotes solution.likes
+  json.time_ago time_ago(solution.created_at)
 end
 
 json.liked_solutions @user.liked_solutions do |solution|
@@ -20,4 +21,5 @@ json.liked_solutions @user.liked_solutions do |solution|
   json.rating solution.problem.rating
   json.category solution.problem.category
   json.upvotes solution.likes
+  json.time_ago time_ago(solution.created_at)
 end
