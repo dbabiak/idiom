@@ -35,7 +35,8 @@ App.Views.Solution = Backbone.View.extend({
   },
 
   events: {
-    'click a.upvote': 'upvote'
+    'click a.upvote': 'upvote',
+    'click a.problem-title': 'viewInGraph'
   },
 
   upvote: function(event) {
@@ -53,5 +54,22 @@ App.Views.Solution = Backbone.View.extend({
         debugger;
       }
     })
+  },
+
+  viewInGraph: function(event) {
+    var prob_id = this.model.get('problem_id')
+    var problem = App.problems.get(prob_id)
+    view = new App.Views.ProblemsShowView({model: problem});
+    setTimeout(function() {
+      ht.onClick(prob_id);
+      App.currentView = view;
+    }, 1000);
+    setTimeout(function() {
+      $('#right-container').hide();
+      $('#right-container').html(view.render().$el);
+      $('#right-container').fadeIn(1000);
+    }, 1700)
+
   }
+
 });

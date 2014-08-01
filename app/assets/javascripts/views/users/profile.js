@@ -51,7 +51,6 @@ App.Views.ProfileView = Backbone.View.extend({
   },
 
   setSubmitterType: function(event) {
-    debugger;
     event.preventDefault();
     if (event.currentTarget.text === 'own solutions') {
       this.selectedSolutions = this.model.ownSolutions();

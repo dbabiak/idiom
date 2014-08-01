@@ -1,7 +1,8 @@
 <div class='solution-header'>
   <% if (includeProblemLink) { %>
     <span style='margin-right: 6px;'>
-      <a href='#/problems/<%= solution.escape('problem_id') %>'>
+      <a href='#'
+         class='problem-title'>
         <%= solution.escape('problem_title') %>
       </a>
     </span>
