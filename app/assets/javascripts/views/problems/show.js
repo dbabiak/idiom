@@ -50,14 +50,14 @@ App.Views.ProblemsShowView = Backbone.View.extend({
         setTimeout(function() {
           $('#response-message').text('Success!');
         }, 900)
-        $('.spinner').toggle(1000)
+        $('.spinner').slideToggle(1000)
       },
       error: function(response) {
         var errorMsg = "Error! " + arguments[1].responseJSON.message
         setTimeout(function() {
           $('#response-message').text(errorMsg);
         }, 900)
-        $('.spinner').toggle(1000)
+        $('.spinner').slideToggle(1000)
       }
     });
   },
@@ -79,6 +79,9 @@ App.Views.ProblemsShowView = Backbone.View.extend({
       });
       $solutions.append(view.render().$el);
     })
+    if (solutions.length === 0) {
+      $solutions.append('<div>No solutions yet</div>');
+    }
     $solutions.slideToggle(500);
   }
 
