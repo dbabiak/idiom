@@ -33,6 +33,7 @@ App.Views.NewCommentView = Backbone.View.extend({
     var comment = new App.Models.Comment(params);
     comment.save({}, {
       success: function(response) {
+        debugger;
         that.root.comments().add(response);
       }
     });

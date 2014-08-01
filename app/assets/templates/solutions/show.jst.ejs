@@ -7,16 +7,18 @@
     </span>
   <% } %>
 
-  <span class='right-margined'>
+  <span style='margin-right: 5px;'>
     Submitted by:
     <a href='#/users/<% solution.escape('submitter') %>'>
       <%= solution.escape('submitter') %>
     </a>
   </span>
 
-  <span class='right-margined'>
-    Upvotes: <%= solution.escape('upvotes') %>
-    <a href='#'>InsertUpvoteSymbolHere</a>
+
+  <span>
+    <a href='#' class='upvote'>upvote</a>
+    <span style='font-size:14px;' class='num-upvotes'>(<%= solution.escape('upvotes') %>)</span>
+
   </span>
 </div>
 <div id='solution-<%= solution.id %>' class='read-editor'><%= solution.escape('content') %></div>

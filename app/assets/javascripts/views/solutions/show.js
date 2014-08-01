@@ -30,5 +30,26 @@ App.Views.Solution = Backbone.View.extend({
     });
     commentChain.$el.css('padding-left', '20px');
     this.$el.append(commentChain.render().$el)
+  },
+
+  events: {
+    'click a.upvote': 'upvote'
+  },
+
+  upvote: function(event) {
+    event.preventDefault();
+    var self = this;
+    $.ajax({
+      url: '/api/solution_likes',
+      type: 'POST',
+      data: {upvote: {solution_id: this.model.id}},
+      success: function(response) {
+        var count = 1 + parseInt(self.$('span.num-upvotes').text().slice(1));
+        self.$('span.num-upvotes').text('(' + count + ')');
+      },
+      failure: function(response) {
+        debugger;
+      }
+    })
   }
 });

@@ -33,5 +33,14 @@ App.Models.Comment = Backbone.Model.extend({
         that.comments().set(response.comments, {parse: true});
       }
     });
+  },
+
+  numChildren: function() {
+    var total = this.comments().length;
+    this.comments().each(function(comment) {
+      total += comment.numChildren();
+    });
+    return total;
   }
+
 });

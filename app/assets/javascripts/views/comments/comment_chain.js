@@ -8,7 +8,8 @@ App.Views.CommentChain = Backbone.View.extend({
   },
 
   render: function(commentsOpen) {
-    var content = this.template();
+    var numComments = this.root.numChildren();
+    var content = this.template({numComments: numComments});
     this.$el.html(content);
     this.attachComments();
     var display = commentsOpen ? 'block' : 'none';
@@ -38,9 +39,9 @@ App.Views.CommentChain = Backbone.View.extend({
   toggleComments: function(event) {
     event.preventDefault();
     this.$('.comment-list:first').slideToggle(400);
-    var commentToggle = this.$('a.toggle-comments:first');
-    var symbol = (commentToggle.html() === '+') ? '-' : '+';
-    commentToggle.html(symbol);
+    // var commentToggle = this.$('a.toggle-comments:first');
+    // var symbol = (commentToggle.html() === '+') ? '-' : '+';
+    // commentToggle.html(symbol);
     return false;
   },
 

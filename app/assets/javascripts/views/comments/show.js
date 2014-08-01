@@ -23,5 +23,4 @@ App.Views.CommentView = Backbone.View.extend({
     });
     this.$el.append(commentChain.render().$el);
   }
-
 });
