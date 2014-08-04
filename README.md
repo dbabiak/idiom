@@ -1,8 +1,6 @@
-wtf
-------
 
-http://idioms.io
-------
+### http://idioms.io
+
 
 Things working so far:
   -User authentication
