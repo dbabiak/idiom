@@ -1,5 +1,8 @@
-## wtf
-## http://idioms.io
+wtf
+------
+
+http://idioms.io
+------
 
 Things working so far:
   -User authentication
