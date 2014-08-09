@@ -9,7 +9,12 @@ App.Views.ProblemsShowView = Backbone.View.extend({
   },
 
   render: function() {
-    var content = this.template({problem: this.model});
+
+    var signature = this.methodSignature();
+    var content = this.template({
+      problem: this.model,
+      signature: signature
+    });
     this.$el.html(content);
     return this;
   },
@@ -21,6 +26,17 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     } else {
       App.popAuthModal(event, 320, 240);
     }
+  },
+
+  methodSignature: function() {
+    var sig = this.model.get('example_spec');
+    var methName = sig.slice(0, sig.indexOf('('));
+    var params = sig.slice(sig.indexOf('(') + 1, sig.indexOf(')'));
+    params = params.split(',')
+        .map(function(param, i) { return 'arg' + i} )
+        .join(', ');
+    return methName + '(' + params + ')';
+    //eventually convert the numbers to integers.
   },
 
   fetchSolutions: function(event) {

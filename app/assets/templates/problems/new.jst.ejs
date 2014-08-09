@@ -1,43 +1,23 @@
 <h2 class='left-margined'>New Problem</h2>
 
-<form>
+<form style='display: inline;'>
   <label>
     Title
-    <input class='roundish' name='problem[title]' type='text'>
+    <input id='title' class='roundish' name='problem[title]' type='text'>
   </label>
   <br>
-
-
     Description
     <br>
-    <textarea class='roundish' name='problem[description]'rows="6" cols="60"></textarea>
+    <textarea id='description' class='roundish' name='problem[description]'rows="6" cols="60"></textarea>
     <br>
 
-    <!-- Example Spec:
-    <div class="new-problem" id='np-example-spec'>#It squares its target:
-tron(4) == 16
-
-#It is positive
-tron(5) > 0
-     </div>
-
-    Solution Spec:
-    <div class="new-problem" id='np-solution-spec'>#Enter solution spec here using the 'expect(msg, condition)' for
-expect('foo to do things', foo(n) == 17)
-expect('foo to be positive', foo(n) > 0)
-    </div>
-    <br>
-
-    <input name='problem[solution_spec]' type='hidden'>
-
-    <input name='problem[example_spec]' type='hidden'> -->
     solution_spec:
     <br>
-    <textarea class='roundish' name='problem[solution_spec]' rows='3' cols='60'></textarea>
+    <textarea id='solution' class='roundish' name='problem[solution_spec]' rows='3' cols='60'></textarea>
     <br>
     example spec:
     <br>
-    <textarea class='roundish' name='problem[example_spec]' rows='3' cols='60'></textarea>
+    <textarea id='example' class='roundish' name='problem[example_spec]' rows='3' cols='60'></textarea>
     <br>
 
     <div>
@@ -50,15 +30,6 @@ expect('foo to be positive', foo(n) > 0)
   <button class='submit btn btn-default'>Create Problem</button>
 </form>
 
- <script>
-//   $(function(){
-//     var editor = ace.edit('np-example-spec');
-//     editor.setTheme('ace/theme/tomorrow_night_blue')
-//     editor.getSession().setMode('ace/mode/ruby')
-//
-//     editor = ace.edit("np-solution-spec");
-//     editor.setTheme("ace/theme/tomorrow_night_blue");
-//     editor.getSession().setMode("ace/mode/ruby");
-//     debugger;
-//   })
- </script>
+<button id='show-solutions' class='demo-problem btn btn-default roundish' style='display: inline;'>
+  Demo Problem
+</button>
