@@ -21,7 +21,7 @@ class Problem < ActiveRecord::Base
 
   validates :title, :description,:submitter_id, :solution_spec,
       :example_spec, presence: true
-  validates :title, uniqueness: true
+  # validates :title, uniqueness: true
   OUTLAWS = %w{` File system( exec}
 
   # check solution --> return true, or return error messages...

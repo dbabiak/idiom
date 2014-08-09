@@ -10,6 +10,6 @@ class CreateProblems < ActiveRecord::Migration
       t.timestamps
     end
     add_index :problems, :submitter_id
-    add_index :problems, :title, unique: true
+    # add_index :problems, :title, unique: true
   end
 end

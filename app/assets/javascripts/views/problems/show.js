@@ -32,9 +32,16 @@ App.Views.ProblemsShowView = Backbone.View.extend({
     var sig = this.model.get('example_spec');
     var methName = sig.slice(0, sig.indexOf('('));
     var params = sig.slice(sig.indexOf('(') + 1, sig.indexOf(')'));
-    params = params.split(',')
-        .map(function(param, i) { return 'arg' + i} )
-        .join(', ');
+    if (params.indexOf('[') >= 0) {
+      params = params.split('],')
+          .map(function(param, i) { return 'arg' + i} )
+          .join(', ');
+    } else {
+      params = params.split(',')
+          .map(function(param, i) { return 'arg' + i} )
+          .join(', ');
+    }
+
     return methName + '(' + params + ')';
     //eventually convert the numbers to integers.
   },

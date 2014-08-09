@@ -46,7 +46,7 @@ App.Views.ProblemsNewView = Backbone.View.extend({
   demoProblem: function(event) {
     $('#title').val('Times three');
     $('#description').val('Write a method foo(n) that triples n');
-    $('#solution').val('expect("it triples its argument", foo(3) == 9)\nexpect("it handles zero correctly", foo(0) == 0)');
-    $('#example').val('foo(4) == 12\nfoo(7) == 21');
+    $('#solution').val("expect('it triples its argument', foo(3) == 9)\r\nexpect('it correctly handles zero', foo(0) == 0)");
+    $('#example').val('foo(4) == 12\r\nfoo(7) == 21');
   }
 });
