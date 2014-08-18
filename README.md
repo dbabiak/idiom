@@ -1,7 +1,7 @@
 http://idioms.io
 -----
 
-Idiom!
+Idioms!
 
 Social coding website. Problems navigable through graph visualization (done with the [javascript infovis toolkit](http://philogb.github.io/jit/)) mapped to Backbone models with Rails/Postgres back-end. 
 
